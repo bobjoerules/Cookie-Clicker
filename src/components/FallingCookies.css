@@ -8,22 +8,38 @@
     z-index: 0;
     overflow: hidden;
 }
+
 .falling-cookie {
     position: absolute;
-    top: -50px;
     animation: fall linear forwards;
     opacity: 0.6;
     pointer-events: none;
 }
+
+.falling-cookie-inner {
+    width: 100%;
+    height: 100%;
+    animation: spin linear infinite;
+}
+
 @keyframes fall {
     0% {
         top: -50px;
-        transform: rotate(0deg);
         opacity: 0.6;
     }
+
     100% {
         top: 100vh;
-        transform: rotate(360deg);
         opacity: 0;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

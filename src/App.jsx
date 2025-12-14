@@ -104,7 +104,6 @@ function App() {
       try {
         await audio.play();
       } catch (err) {
-        // Autoplay blocked, wait for interaction
         interactionListener = () => {
           audio.play().catch(e => console.error("Audio play failed:", e));
           if (interactionListener) {

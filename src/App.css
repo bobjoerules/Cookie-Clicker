@@ -384,12 +384,10 @@ html[data-theme="light"] .glass-panel {
   box-shadow: none;
 }
 
-/* Default mobile nav state (hidden on desktop) */
 .mobile-nav {
   display: none;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
   .app-container {
     display: block;
@@ -400,7 +398,6 @@ html[data-theme="light"] .glass-panel {
   .cookie-section,
   .right-column {
     height: calc(100vh - 60px);
-    /* Leave space for bottom nav */
     width: 100%;
     overflow-y: auto;
   }
@@ -408,10 +405,8 @@ html[data-theme="light"] .glass-panel {
   .cookie-section.mobile-hide,
   .right-column.mobile-hide {
     display: none !important;
-    /* Force hide based on active tab */
   }
 
-  /* Adjust section toggles for mobile */
   .section-toggles {
     top: 10px;
     left: 10px;
@@ -419,7 +414,6 @@ html[data-theme="light"] .glass-panel {
     transform-origin: top left;
   }
 
-  /* Mobile Navigation Bar */
   .mobile-nav {
     display: flex;
     position: fixed;

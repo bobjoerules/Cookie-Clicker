@@ -20,6 +20,8 @@ const FallingCookies = ({ cps, skin }) => {
                         id: `${now}-${Math.random()}-${i}`,
                         left: Math.random() * 90 + 5,
                         animationDuration: 3 + Math.random() * 2,
+                        spinDuration: 2 + Math.random() * 3,
+                        spinDelay: Math.random() * -5,
                         size: 20 + Math.random() * 20,
                         createdAt: now,
                         variant: Math.floor(Math.random() * 12) + 1
@@ -64,15 +66,23 @@ const FallingCookies = ({ cps, skin }) => {
                             height: `${cookie.size}px`
                         }}
                     >
-                        {displayImg ? (
-                            <img
-                                src={displayImg}
-                                alt="cookie"
-                                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                            />
-                        ) : (
-                            <span style={{ fontSize: `${cookie.size}px` }}>🍪</span>
-                        )}
+                        <div
+                            className="falling-cookie-inner"
+                            style={{
+                                animationDuration: `${cookie.spinDuration}s`,
+                                animationDelay: `${cookie.spinDelay}s`
+                            }}
+                        >
+                            {displayImg ? (
+                                <img
+                                    src={displayImg}
+                                    alt="cookie"
+                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                />
+                            ) : (
+                                <span style={{ fontSize: `${cookie.size}px` }}>🍪</span>
+                            )}
+                        </div>
                     </div>
                 );
             })}

@@ -13,12 +13,9 @@ export const getSkinAsset = (skin, assetName) => {
 
 export const getThemeMusic = (skin) => {
     if (!skin || skin === 'default') {
-        // Find any mp3 in the default assets folder
         const path = Object.keys(defaultAssets).find(p => p.endsWith('.mp3'));
         return path ? defaultAssets[path].default : null;
     }
-
-    // Find any mp3 in the specific skin folder
     const prefix = `../assets/skins/${skin}/`;
     const path = Object.keys(skinAssets).find(p => p.startsWith(prefix) && p.endsWith('.mp3'));
     return path ? skinAssets[path].default : null;
