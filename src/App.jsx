@@ -117,8 +117,6 @@ function App() {
       upgradesOwned,
       achievementsUnlocked,
       timePlayed,
-      achievementsUnlocked,
-      timePlayed,
       selectedMilk,
       showMilk
     };
@@ -318,13 +316,6 @@ function App() {
   };
   const getCurrencyName = (skin) => {
     const names = {
-      default: 'Cookies',
-      fortnite: 'V-Bucks',
-      genshin: 'Mora',
-      minecraft: 'Cookies',
-      amongus: 'Crewmates',
-      pokemon: 'Poké Balls',
-      cyberpunk: 'Eurodollars',
       default: 'Cookies',
       fortnite: 'V-Bucks',
       genshin: 'Mora',
