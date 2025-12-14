@@ -28,7 +28,7 @@ const Achievements = ({ unlocked, onHover, onMove, onLeave, skin, currencyName }
                                     achievement.icon === '🍪' && getSkinAsset(skin, 'cookie.png') ? (
                                         <img
                                             src={getSkinAsset(skin, 'cookie.png')}
-                                            alt="cookie" style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                            alt="cookie"
                                         />
                                     ) : (
                                         achievement.icon
