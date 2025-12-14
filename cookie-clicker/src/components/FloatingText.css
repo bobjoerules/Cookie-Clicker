@@ -1,0 +1,27 @@
+.floating-text-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 101;
+}
+.floating-text {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    animation: floatUp 1s ease-out forwards;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--dx), -100px) scale(1.2);
+    }
+}

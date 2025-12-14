@@ -1,0 +1,574 @@
+import { useState, useEffect, useCallback } from 'react';
+import BigCookie from './components/BigCookie';
+import Store from './components/Store';
+import FloatingText from './components/FloatingText';
+import FallingCookies from './components/FallingCookies';
+import Achievements from './components/Achievements';
+import AchievementNotification from './components/AchievementNotification';
+import Settings from './components/Settings';
+import { BUILDINGS } from './data/buildings';
+import { UPGRADES } from './data/upgrades';
+import { ACHIEVEMENTS } from './data/achievements';
+import './App.css';
+import './skins.css';
+import { getSkinAsset } from './utils/assetLoader';
+import defaultCookie from './assets/cookie.png';
+
+function App() {
+  const [cookies, setCookies] = useState(0);
+  const [cookiesEarned, setCookiesEarned] = useState(0);
+  const [clicks, setClicks] = useState(0);
+  const [buildingsOwned, setBuildingsOwned] = useState({});
+  const [upgradesOwned, setUpgradesOwned] = useState([]);
+  const [achievementsUnlocked, setAchievementsUnlocked] = useState([]);
+  const [cps, setCps] = useState(0);
+  const [floatingTexts, setFloatingTexts] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentAchievement, setCurrentAchievement] = useState(null);
+  const [timePlayed, setTimePlayed] = useState(0);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [hoveredAchievement, setHoveredAchievement] = useState(null);
+  const [achievementMousePos, setAchievementMousePos] = useState({ x: 0, y: 0 });
+  const [showStats, setShowStats] = useState(true);
+  const [showStore, setShowStore] = useState(true);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'system');
+  useEffect(() => {
+    const applyTheme = (selectedTheme) => {
+      let themeToApply = selectedTheme;
+      if (selectedTheme === 'system') {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        themeToApply = isDark ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', themeToApply);
+    };
+    applyTheme(theme);
+    localStorage.setItem('theme', theme);
+    if (theme === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = (e) => {
+        applyTheme('system');
+      };
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+  }, [theme]);
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+  };
+  const [selectedMilk, setSelectedMilk] = useState('plain');
+  const [showMilk, setShowMilk] = useState(localStorage.getItem('showMilk') !== 'false');
+  const [skin, setSkin] = useState(localStorage.getItem('gameSkin') || 'default');
+  const handleSkinChange = (newSkin) => {
+    setSkin(newSkin);
+    localStorage.setItem('gameSkin', newSkin);
+    document.documentElement.setAttribute('data-skin', newSkin);
+  };
+  useEffect(() => {
+    document.documentElement.setAttribute('data-skin', skin);
+    const link = document.getElementById('favicon');
+    if (link) {
+      const skinIcon = getSkinAsset(skin, 'cookie.png');
+      link.href = skinIcon || defaultCookie;
+    }
+    const currentCurrency = getCurrencyName(skin);
+    let titleCurrency = currentCurrency;
+    if (titleCurrency.endsWith('s')) {
+      titleCurrency = titleCurrency.slice(0, -1);
+    }
+    document.title = `${titleCurrency} Clicker`;
+  }, [skin]);
+  useEffect(() => {
+    const savedState = localStorage.getItem('cookieClickerSave');
+    if (savedState) {
+      try {
+        const state = JSON.parse(savedState);
+        setCookies(state.cookies || 0);
+        setCookiesEarned(state.cookiesEarned || 0);
+        setClicks(state.clicks || 0);
+        setBuildingsOwned(state.buildingsOwned || {});
+        setUpgradesOwned(state.upgradesOwned || []);
+        setAchievementsUnlocked(state.achievementsUnlocked || []);
+        setTimePlayed(state.timePlayed || 0);
+        setSelectedMilk(state.selectedMilk || 'plain');
+        if (state.showMilk !== undefined) setShowMilk(state.showMilk);
+      } catch (e) {
+        console.error('Failed to load save:', e);
+      }
+    }
+    const savedShowMilk = localStorage.getItem('showMilk');
+    if (savedShowMilk !== null) {
+      setShowMilk(savedShowMilk === 'true');
+    }
+    setIsLoaded(true);
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimePlayed(prev => prev + 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+  useEffect(() => {
+    if (!isLoaded) return;
+    const saveState = {
+      cookies,
+      cookiesEarned,
+      clicks,
+      buildingsOwned,
+      upgradesOwned,
+      achievementsUnlocked,
+      timePlayed,
+      achievementsUnlocked,
+      timePlayed,
+      selectedMilk,
+      showMilk
+    };
+    localStorage.setItem('cookieClickerSave', JSON.stringify(saveState));
+    localStorage.setItem('showMilk', showMilk);
+  }, [cookies, cookiesEarned, clicks, buildingsOwned, upgradesOwned, achievementsUnlocked, timePlayed, selectedMilk, showMilk, isLoaded]);
+  useEffect(() => {
+    let newCps = 0;
+    BUILDINGS.forEach((building) => {
+      const count = buildingsOwned[building.id] || 0;
+      if (count > 0) {
+        let buildingCps = building.cps;
+        upgradesOwned.forEach((upgradeId) => {
+          const upgrade = UPGRADES.find(u => u.id === upgradeId);
+          if (upgrade && upgrade.buildingId === building.id) {
+            buildingCps *= upgrade.multiplier;
+          }
+        });
+        newCps += buildingCps * count;
+      }
+    });
+    setCps(newCps);
+  }, [buildingsOwned, upgradesOwned]);
+  useEffect(() => {
+    if (cps === 0) return;
+    let lastTime = Date.now();
+    const timer = setInterval(() => {
+      const now = Date.now();
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+      if (dt > 0 && cps > 0) {
+        const amount = cps * dt;
+        setCookies(prev => prev + amount);
+        setCookiesEarned(prev => prev + amount);
+      }
+    }, 100);
+    return () => clearInterval(timer);
+  }, [cps]);
+  useEffect(() => {
+    const state = {
+      cookiesEarned,
+      clicks,
+      buildingsOwned,
+      cps,
+      timePlayed
+    };
+    ACHIEVEMENTS.forEach((achievement) => {
+      if (!achievementsUnlocked.includes(achievement.id) && achievement.condition(state)) {
+        setAchievementsUnlocked((prev) => [...prev, achievement.id]);
+        setCurrentAchievement(achievement);
+        setTimeout(() => setCurrentAchievement(null), 5000);
+      }
+    });
+  }, [cookiesEarned, clicks, buildingsOwned, cps, timePlayed, achievementsUnlocked]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFloatingTexts((prev) => prev.filter(ft => Date.now() - ft.timestamp < 2000));
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+  const getClickMultiplier = () => {
+    let multiplier = 1;
+    upgradesOwned.forEach((upgradeId) => {
+      const upgrade = UPGRADES.find(u => u.id === upgradeId);
+      if (upgrade && (!upgrade.buildingId || upgrade.buildingId === 'cursor')) {
+        multiplier *= upgrade.multiplier;
+      }
+    });
+    return multiplier;
+  };
+
+  const [lastClickTime, setLastClickTime] = useState(0);
+
+  const handleCookieClick = (e) => {
+    const now = Date.now();
+    const timeDiff = now - lastClickTime;
+    setLastClickTime(now);
+
+    if (timeDiff < 100 && timeDiff > 0 && !achievementsUnlocked.includes('autoClicker')) {
+      const autoClickerAch = ACHIEVEMENTS.find(a => a.id === 'autoClicker');
+      if (autoClickerAch) {
+        setAchievementsUnlocked(prev => [...prev, 'autoClicker']);
+        setCurrentAchievement(autoClickerAch);
+        setTimeout(() => setCurrentAchievement(null), 5000);
+      }
+    }
+
+    const amount = 1 * getClickMultiplier();
+    setCookies((prev) => prev + amount);
+    setCookiesEarned((prev) => prev + amount);
+    setClicks((prev) => prev + 1);
+    const newText = {
+      id: `${Date.now()}-${Math.random()}`,
+      timestamp: Date.now(),
+      value: `+${amount.toLocaleString()}`,
+      x: e.clientX,
+      y: e.clientY,
+      dx: (Math.random() - 0.5) * 100
+    };
+    setFloatingTexts((prev) => [...prev, newText]);
+  };
+  const handlePurchase = (buildingId, cost, amount = 1) => {
+    if (cookies >= cost) {
+      setCookies((prev) => prev - cost);
+      setBuildingsOwned((prev) => ({
+        ...prev,
+        [buildingId]: (prev[buildingId] || 0) + amount
+      }));
+    }
+  };
+  const handleSell = (buildingId, amount = 1) => {
+    const count = buildingsOwned[buildingId] || 0;
+    const amountToSell = Math.min(count, amount);
+
+    if (amountToSell > 0) {
+      const building = BUILDINGS.find(b => b.id === buildingId);
+      if (building) {
+        let totalRefund = 0;
+        for (let i = 0; i < amountToSell; i++) {
+          const currentBuildingIndex = count - 1 - i;
+          const costOfLast = Math.floor(building.baseCost * Math.pow(1.15, currentBuildingIndex));
+          totalRefund += Math.floor(costOfLast * 0.5);
+        }
+
+        setCookies(prev => prev + totalRefund);
+        setBuildingsOwned(prev => ({
+          ...prev,
+          [buildingId]: count - amountToSell
+        }));
+      }
+    }
+  };
+  const handleUpgradePurchase = (upgradeId, cost) => {
+    if (cookies >= cost && !upgradesOwned.includes(upgradeId)) {
+      setCookies((prev) => prev - cost);
+      setUpgradesOwned((prev) => [...prev, upgradeId]);
+    }
+  };
+  const pluralizeBuildingName = (name, count) => {
+    if (count === 1) return name;
+    if (name === 'Factory') return 'Factories';
+    if (name === 'Alchemy Lab') return 'Alchemy Labs';
+    return name + 's';
+  };
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${hours}h ${minutes}m ${secs}s`;
+  };
+
+  const handleReset = () => {
+    localStorage.removeItem('cookieClickerSave');
+    setCookies(0);
+    setCookiesEarned(0);
+    setClicks(0);
+    setBuildingsOwned({});
+    setUpgradesOwned([]);
+    setAchievementsUnlocked([]);
+    setTimePlayed(0);
+    setCps(0);
+    setFloatingTexts([]);
+    setCurrentAchievement(null);
+    setHoveredAchievement(null);
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
+  const getGameData = () => {
+    return {
+      cookies,
+      cookiesEarned,
+      clicks,
+      buildingsOwned,
+      upgradesOwned,
+      achievementsUnlocked,
+      timePlayed
+    };
+  };
+  const formatNumber = (num) => {
+    if (num >= 1000000) {
+      const suffixes = [
+        "", " Thousand", " Million", " Billion", " Trillion",
+        " Quadrillion", " Quintillion", " Sextillion", " Septillion",
+        " Octillion", " Nonillion", " Decillion"];
+      const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
+      if (tier >= suffixes.length) return num.toExponential(2);
+      const suffix = suffixes[tier];
+      const scale = Math.pow(10, tier * 3);
+      const scaled = num / scale;
+      return scaled.toFixed(3) + suffix;
+    }
+    return Math.floor(num).toLocaleString();
+  };
+  const formatCPS = (num) => {
+    return num.toLocaleString(undefined, { minimumFractionDigits: num % 1 === 0 ? 0 : 1, maximumFractionDigits: 1 });
+  };
+  const getCurrencyName = (skin) => {
+    const names = {
+      default: 'Cookies',
+      fortnite: 'V-Bucks',
+      genshin: 'Mora',
+      minecraft: 'Cookies',
+      amongus: 'Crewmates',
+      pokemon: 'Poké Balls',
+      cyberpunk: 'Eurodollars',
+      default: 'Cookies',
+      fortnite: 'V-Bucks',
+      genshin: 'Mora',
+      minecraft: 'Cookies',
+      amongus: 'Crewmates',
+      pokemon: 'Poké Balls',
+      cyberpunk: 'Eurodollars',
+      zelda: 'Rupees',
+      youtube: 'Subscribers',
+      instagram: 'Likes',
+      tiktok: 'Likes',
+      twitch: 'Bits'
+    };
+    return names[skin] || 'Cookies';
+  };
+
+  const currencyName = getCurrencyName(skin);
+  const isCentered = !showStats && !showStore;
+  const customBackground = getSkinAsset(skin, 'background.png');
+  const [mobileTab, setMobileTab] = useState('game');
+
+  return (
+    <div
+      className={`app-container ${isCentered ? 'centered-view' : ''}`}
+      style={customBackground ? {
+        backgroundImage: `url(${customBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      } : {}}
+    >
+      <FallingCookies cps={cps} skin={skin} />
+      <FloatingText texts={floatingTexts} />
+      <AchievementNotification achievement={currentAchievement} skin={skin} currencyName={currencyName} />
+      <Settings
+        isOpen={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+        onReset={handleReset}
+        gameData={getGameData()}
+        timePlayed={timePlayed}
+        currentTheme={theme}
+        onThemeChange={handleThemeChange}
+        currentSkin={skin}
+        onSkinChange={handleSkinChange}
+        showMilk={showMilk}
+        onToggleMilk={() => setShowMilk(!showMilk)}
+      />
+      { }
+      <div className="section-toggles" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button className="toggle-btn" onClick={() => setSettingsOpen(true)} title="Settings">
+            ⚙️
+          </button>
+          <button
+            className={`toggle-btn ${showStats ? 'active' : ''}`}
+            onClick={() => setShowStats(!showStats)}
+            title="Toggle Stats"
+          >
+            📊
+          </button>
+          <button
+            className={`toggle-btn ${showStore ? 'active' : ''}`}
+            onClick={() => setShowStore(!showStore)}
+            title="Toggle Store"
+          >
+            🏪
+          </button>
+        </div>
+        {upgradesOwned.includes('milkSplash') && (
+          <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+            <button
+              className={`toggle-btn ${showMilk && selectedMilk === 'plain' ? 'active' : ''}`}
+              onClick={() => {
+                if (showMilk && selectedMilk === 'plain') {
+                  setShowMilk(false);
+                } else {
+                  setSelectedMilk('plain');
+                  setShowMilk(true);
+                }
+              }}
+              title="Plain Milk"
+            >
+              🥛
+            </button>
+            {upgradesOwned.includes('chocolateMilk') && (
+              <button
+                className={`toggle-btn ${showMilk && selectedMilk === 'chocolate' ? 'active' : ''}`}
+                onClick={() => {
+                  if (showMilk && selectedMilk === 'chocolate') {
+                    setShowMilk(false);
+                  } else {
+                    setSelectedMilk('chocolate');
+                    setShowMilk(true);
+                  }
+                }}
+                title="Chocolate Milk"
+              >
+                🍫
+              </button>
+            )}
+            {upgradesOwned.includes('strawberryMilk') && (
+              <button
+                className={`toggle-btn ${showMilk && selectedMilk === 'strawberry' ? 'active' : ''}`}
+                onClick={() => {
+                  if (showMilk && selectedMilk === 'strawberry') {
+                    setShowMilk(false);
+                  } else {
+                    setSelectedMilk('strawberry');
+                    setShowMilk(true);
+                  }
+                }}
+                title={skin === 'fortnite' ? 'Slurp Juice' : 'Strawberry Milk'}
+              >
+                {skin === 'fortnite' ? '🧪' : '🍓'}
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+      { }
+      <section className={`cookie-section ${mobileTab === 'menu' ? 'mobile-hide' : ''}`}>
+        <h1>{formatNumber(cookies)} {currencyName}</h1>
+        <p>{formatCPS(cps)} per second</p>
+        { }
+        <div className="cookie-container">
+          <BigCookie onCookieClick={handleCookieClick} skin={skin} />
+        </div>
+      </section>
+      { }
+      { }
+      {showMilk && upgradesOwned.includes('milkSplash') && (
+        <>
+          <div
+            className="milk-liquid" style={{
+              height: '20%',
+              background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
+                selectedMilk === 'strawberry' ? '#ffb7b2' :
+                  selectedMilk === 'chocolate' ? '#8b4513' :
+                    'rgba(255, 255, 255, 0.8)',
+              zIndex: 2
+            }}
+          />
+          <div
+            className="milk-liquid layer-2" style={{
+              height: '22%',
+              background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
+                selectedMilk === 'strawberry' ? '#ffb7b2' :
+                  selectedMilk === 'chocolate' ? '#8b4513' :
+                    'rgba(255, 255, 255, 0.8)',
+              opacity: 0.5,
+              zIndex: 1,
+              animationDuration: '8s',
+              animationDelay: '-2s'
+            }}
+          />
+        </>
+      )}
+      { }
+      {!isCentered && (
+        <div className={`right-column ${mobileTab === 'game' ? 'mobile-hide' : ''}`}>
+          { }
+          {showStats && (
+            <section className={`stats-section glass-panel ${!showStore ? 'full-height' : ''}`}>
+              <h2>Stats</h2>
+              <div className="stats-grid">
+                <p><strong>Time Played:</strong> {formatTime(timePlayed)}</p>
+                <p><strong>{currencyName} Earned:</strong> {formatNumber(cookiesEarned)}</p>
+                <p><strong>Total Clicks:</strong> {clicks.toLocaleString()}</p>
+                <p><strong>Click Multiplier:</strong> x{getClickMultiplier().toLocaleString()}</p>
+                {BUILDINGS.map((building) => {
+                  const count = buildingsOwned[building.id] || 0;
+                  if (count === 0) return null;
+                  const perSec = building.cps * count;
+                  return (
+                    <p key={building.id}>
+                      <strong>{building.icon} {pluralizeBuildingName(building.name, count)}:</strong> {count} ({perSec.toLocaleString()} cps)
+                    </p>
+                  );
+                })}
+              </div>
+              <Achievements
+                unlocked={achievementsUnlocked}
+                skin={skin}
+                currencyName={currencyName}
+                onHover={(achievement, e) => {
+                  setHoveredAchievement(achievement);
+                  setAchievementMousePos({ x: e.clientX, y: e.clientY });
+                }}
+                onMove={(e) => {
+                  if (hoveredAchievement) {
+                    setAchievementMousePos({ x: e.clientX, y: e.clientY });
+                  }
+                }}
+                onLeave={() => setHoveredAchievement(null)}
+              />
+            </section>
+          )}
+          { }
+          {showStore && (
+            <section className={`store-section glass-panel ${!showStats ? 'full-height' : ''}`}>
+              <Store
+                cookies={cookies}
+                buildingsOwned={buildingsOwned}
+                upgradesOwned={upgradesOwned}
+                onPurchase={handlePurchase}
+                onSell={handleSell}
+                onUpgradePurchase={handleUpgradePurchase}
+                skin={skin}
+              />
+            </section>
+          )}
+        </div>
+      )}
+      { }
+      {hoveredAchievement && (
+        <div
+          className="achievement-tooltip" style={{
+            left: achievementMousePos.x,
+            top: achievementMousePos.y
+          }}
+        >
+          <strong>{achievementsUnlocked.includes(hoveredAchievement.id) ? hoveredAchievement.name : '???'}</strong><br />
+          {achievementsUnlocked.includes(hoveredAchievement.id) ?
+            hoveredAchievement.description.replace(/cookies/gi, currencyName.toLowerCase()).replace(/cookie/gi, currencyName.toLowerCase())
+            : 'Locked'}
+        </div>
+      )}
+
+      {/* Mobile Navigation */}
+      <div className="mobile-nav">
+        <button
+          className={`mobile-nav-btn ${mobileTab === 'game' ? 'active' : ''}`}
+          onClick={() => setMobileTab('game')}
+        >
+          🍪 Game
+        </button>
+        <button
+          className={`mobile-nav-btn ${mobileTab === 'menu' ? 'active' : ''}`}
+          onClick={() => setMobileTab('menu')}
+        >
+          🏪 Shop & Stats
+        </button>
+      </div>
+    </div>
+  );
+}
+export default App;
