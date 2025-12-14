@@ -510,9 +510,9 @@ function App() {
                     setShowMilk(true);
                   }
                 }}
-                title={skin === 'fortnite' ? 'Slurp Juice' : 'Strawberry Milk'}
+                title={skin === 'fortnite' ? 'Slurp Juice' : skin === 'amongus' ? 'Blood' : 'Strawberry Milk'}
               >
-                {skin === 'fortnite' ? '🧪' : '🍓'}
+                {skin === 'fortnite' ? '🧪' : skin === 'amongus' ? '🩸' : '🍓'}
               </button>
             )}
           </div>
@@ -535,9 +535,10 @@ function App() {
             className="milk-liquid" style={{
               height: '20%',
               background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
-                selectedMilk === 'strawberry' ? '#ffb7b2' :
-                  selectedMilk === 'chocolate' ? '#8b4513' :
-                    'rgba(255, 255, 255, 0.8)',
+                (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
+                  selectedMilk === 'strawberry' ? '#ffb7b2' :
+                    selectedMilk === 'chocolate' ? '#8b4513' :
+                      'rgba(255, 255, 255, 0.8)',
               zIndex: 2
             }}
           />
@@ -545,9 +546,10 @@ function App() {
             className="milk-liquid layer-2" style={{
               height: '22%',
               background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
-                selectedMilk === 'strawberry' ? '#ffb7b2' :
-                  selectedMilk === 'chocolate' ? '#8b4513' :
-                    'rgba(255, 255, 255, 0.8)',
+                (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
+                  selectedMilk === 'strawberry' ? '#ffb7b2' :
+                    selectedMilk === 'chocolate' ? '#8b4513' :
+                      'rgba(255, 255, 255, 0.8)',
               opacity: 0.5,
               zIndex: 1,
               animationDuration: '8s',

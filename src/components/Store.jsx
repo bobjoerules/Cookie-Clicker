@@ -91,25 +91,38 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
                         if (aOwned === bOwned) return a.cost - b.cost;
                         return aOwned ? 1 : -1;
                     }).map((upgrade) => {
-                        const isPurchased = upgradesOwned.includes(upgrade.id);
-                        const canAfford = cookies >= upgrade.cost;
-                        const isHovered = hoveredUpgrade === upgrade.id;
+                        const displayUpgrade = { ...upgrade };
+                        if (displayUpgrade.id === 'strawberryMilk') {
+                            if (skin === 'fortnite') {
+                                displayUpgrade.name = 'Slurp Juice';
+                                displayUpgrade.icon = '🧪';
+                                displayUpgrade.description = 'Chug it for shield! 2x click power.';
+                            } else if (skin === 'amongus') {
+                                displayUpgrade.name = 'Blood';
+                                displayUpgrade.icon = '🩸';
+                                displayUpgrade.description = 'Suspiciously red liquid. 2x click power.';
+                            }
+                        }
+
+                        const isPurchased = upgradesOwned.includes(displayUpgrade.id);
+                        const canAfford = cookies >= displayUpgrade.cost;
+                        const isHovered = hoveredUpgrade === displayUpgrade.id;
                         return (
                             <div
-                                key={upgrade.id}
+                                key={displayUpgrade.id}
                                 className={`upgrade-item glass-panel ${isPurchased ? 'purchased' : canAfford ? 'affordable' : 'locked'}`}
-                                onClick={() => !isPurchased && canAfford && onUpgradePurchase(upgrade.id, upgrade.cost)}
-                                onMouseEnter={() => setHoveredUpgrade(upgrade.id)}
+                                onClick={() => !isPurchased && canAfford && onUpgradePurchase(displayUpgrade.id, displayUpgrade.cost)}
+                                onMouseEnter={() => setHoveredUpgrade(displayUpgrade.id)}
                                 onMouseLeave={() => setHoveredUpgrade(null)}
                             >
-                                <div className="upgrade-icon">{upgrade.icon}</div>
+                                <div className="upgrade-icon">{displayUpgrade.icon}</div>
                                 <div className="upgrade-info">
-                                    <div className="upgrade-name-text">{upgrade.name}</div>
+                                    <div className="upgrade-name-text">{displayUpgrade.name}</div>
                                     <div className="upgrade-cost">
                                         {isPurchased ? (
                                             <span className="purchased-badge">✓ Owned</span>
                                         ) : isHovered ? (
-                                            <span className="upgrade-effect-inline">{getUpgradeEffect(upgrade)}</span>
+                                            <span className="upgrade-effect-inline">{getUpgradeEffect(displayUpgrade)}</span>
                                         ) : (
                                             <>
                                                 {getSkinAsset(skin, 'cookie.png') ? (
@@ -118,7 +131,7 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
                                                         alt="cookie" style={{ width: '1.2em', height: '1.2em', verticalAlign: 'middle', objectFit: 'contain', marginRight: '4px' }}
                                                     />
                                                 ) : '🍪 '}
-                                                {formatNumber(upgrade.cost)}
+                                                {formatNumber(displayUpgrade.cost)}
                                             </>
                                         )}
                                     </div>
