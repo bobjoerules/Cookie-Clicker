@@ -11,7 +11,7 @@ import { UPGRADES } from './data/upgrades';
 import { ACHIEVEMENTS } from './data/achievements';
 import './App.css';
 import './skins.css';
-import { getSkinAsset } from './utils/assetLoader';
+import { getSkinAsset, getThemeMusic } from './utils/assetLoader';
 import defaultCookie from './assets/cookie.png';
 
 const AMONG_US_VARIANTS = [
@@ -89,6 +89,47 @@ function App() {
     localStorage.setItem('gameSkin', newSkin);
     document.documentElement.setAttribute('data-skin', newSkin);
   };
+
+  useEffect(() => {
+    const musicUrl = getThemeMusic(skin);
+    if (!musicUrl) return;
+
+    const audio = new Audio(musicUrl);
+    audio.loop = true;
+    audio.volume = 0.5;
+
+    let interactionListener = null;
+
+    const playAudio = async () => {
+      try {
+        await audio.play();
+      } catch (err) {
+        // Autoplay blocked, wait for interaction
+        interactionListener = () => {
+          audio.play().catch(e => console.error("Audio play failed:", e));
+          if (interactionListener) {
+            document.removeEventListener('click', interactionListener);
+            document.removeEventListener('keydown', interactionListener);
+            interactionListener = null;
+          }
+        };
+        document.addEventListener('click', interactionListener);
+        document.addEventListener('keydown', interactionListener);
+      }
+    };
+
+    playAudio();
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+      if (interactionListener) {
+        document.removeEventListener('click', interactionListener);
+        document.removeEventListener('keydown', interactionListener);
+      }
+    };
+  }, [skin]);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-skin', skin);
     const link = document.getElementById('favicon');
