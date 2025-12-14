@@ -22,7 +22,7 @@
     max-height: 130px;
     overflow-y: auto;
     overflow-x: hidden;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: flex-start;
 }
 
