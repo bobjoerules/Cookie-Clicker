@@ -345,7 +345,7 @@ function App() {
     const timeDiff = now - lastClickTime;
     setLastClickTime(now);
 
-    if (timeDiff < 100 && timeDiff > 0 && !achievementsUnlocked.includes('autoClicker')) {
+    if (timeDiff < 20 && timeDiff > 0 && !achievementsUnlocked.includes('autoClicker')) {
       const autoClickerAch = ACHIEVEMENTS.find(a => a.id === 'autoClicker');
       if (autoClickerAch) {
         setAchievementsUnlocked(prev => [...prev, 'autoClicker']);
@@ -514,7 +514,7 @@ function App() {
         onToggleMilk={() => setShowMilk(!showMilk)}
       />
       { }
-      <div className="section-toggles" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+      <div className={`section-toggles ${mobileTab !== 'game' ? 'mobile-hide' : ''}`} style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button className="toggle-btn" onClick={() => setSettingsOpen(true)} title="Settings">
             ⚙️

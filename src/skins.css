@@ -203,6 +203,15 @@
     box-shadow: none;
 }
 
+[data-skin="amongus"] .big-cookie img {
+    border-radius: 0;
+    filter: drop-shadow(0 0 15px var(--accent-color));
+}
+
+[data-skin="amongus"] .big-cookie:hover img {
+    filter: drop-shadow(0 0 25px var(--accent-color));
+}
+
 [data-skin="amongus"] .settings-modal {
     background: var(--bg-panel);
     border: 1px solid var(--glass-border);

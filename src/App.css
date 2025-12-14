@@ -395,6 +395,10 @@ html[data-theme="light"] .glass-panel {
     overflow: hidden;
   }
 
+  h1 {
+    font-size: 2rem;
+  }
+
   .cookie-section,
   .right-column {
     height: calc(100vh - 60px);
@@ -403,7 +407,8 @@ html[data-theme="light"] .glass-panel {
   }
 
   .cookie-section.mobile-hide,
-  .right-column.mobile-hide {
+  .right-column.mobile-hide,
+  .section-toggles.mobile-hide {
     display: none !important;
   }
 
