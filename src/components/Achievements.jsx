@@ -2,7 +2,7 @@ import React from 'react';
 import { ACHIEVEMENTS } from '../data/achievements';
 import { getSkinAsset } from '../utils/assetLoader';
 import './Achievements.css';
-const Achievements = ({ unlocked, onHover, onMove, onLeave, skin, currencyName }) => {
+const Achievements = ({ unlocked, onHover, onMove, onLeave, skin, currencyName, customImage }) => {
     const validUnlocked = unlocked.filter(id => ACHIEVEMENTS.some(a => a.id === id));
     const displayedTotal = ACHIEVEMENTS.filter(a => !a.hidden || unlocked.includes(a.id)).length;
 
@@ -25,9 +25,9 @@ const Achievements = ({ unlocked, onHover, onMove, onLeave, skin, currencyName }
                         >
                             <div className="achievement-icon">
                                 {isUnlocked ? (
-                                    achievement.icon === '🍪' && getSkinAsset(skin, 'cookie.png') ? (
+                                    achievement.icon === '🍪' ? (
                                         <img
-                                            src={getSkinAsset(skin, 'cookie.png')}
+                                            src={customImage || getSkinAsset(skin, 'cookie.png')}
                                             alt="cookie"
                                         />
                                     ) : (

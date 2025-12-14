@@ -4,7 +4,7 @@ import { UPGRADES } from '../data/upgrades';
 import { getSkinAsset } from '../utils/assetLoader';
 import './Store.css';
 
-const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onUpgradePurchase, skin }) => {
+const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onUpgradePurchase, skin, customImage }) => {
     const [hoveredUpgrade, setHoveredUpgrade] = useState(null);
     const [isSellMode, setIsSellMode] = useState(false);
     const [bulkAmount, setBulkAmount] = useState(1);
@@ -125,9 +125,9 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
                                             <span className="upgrade-effect-inline">{getUpgradeEffect(displayUpgrade)}</span>
                                         ) : (
                                             <>
-                                                {getSkinAsset(skin, 'cookie.png') ? (
+                                                {customImage || getSkinAsset(skin, 'cookie.png') ? (
                                                     <img
-                                                        src={getSkinAsset(skin, 'cookie.png')}
+                                                        src={customImage || getSkinAsset(skin, 'cookie.png')}
                                                         alt="cookie" style={{ width: '1.2em', height: '1.2em', verticalAlign: 'middle', objectFit: 'contain', marginRight: '4px' }}
                                                     />
                                                 ) : '🍪 '}
@@ -216,9 +216,9 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
                                 <div className="store-name">{building.name}</div>
                                 <div className="store-cost" style={{ color: isSellMode ? '#ff8888' : undefined, display: 'flex', alignItems: 'center' }}>
                                     {isSellMode ? '💰 ' : (
-                                        getSkinAsset(skin, 'cookie.png') ? (
+                                        (customImage || getSkinAsset(skin, 'cookie.png')) ? (
                                             <img
-                                                src={getSkinAsset(skin, 'cookie.png')}
+                                                src={customImage || getSkinAsset(skin, 'cookie.png')}
                                                 alt="cookie" style={{ width: '1.2em', height: '1.2em', verticalAlign: 'middle', objectFit: 'contain', marginRight: '4px' }}
                                             />
                                         ) : '🍪 ')}

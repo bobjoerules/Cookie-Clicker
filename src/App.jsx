@@ -14,6 +14,21 @@ import './skins.css';
 import { getSkinAsset } from './utils/assetLoader';
 import defaultCookie from './assets/cookie.png';
 
+const AMONG_US_VARIANTS = [
+  { id: 1, file: 'cookie.png', color: '#c51111' }, // Red
+  { id: 2, file: 'cookie2.png', color: '#ef7d0d' }, // Orange
+  { id: 3, file: 'cookie3.png', color: '#f5f557' }, // Yellow
+  { id: 4, file: 'cookie4.png', color: '#50ef39' }, // Light Green
+  { id: 5, file: 'cookie5.png', color: '#117f2d' }, // Green
+  { id: 6, file: 'cookie6.png', color: '#38fedc' }, // Cyan
+  { id: 7, file: 'cookie7.png', color: '#132ed1' }, // Blue
+  { id: 8, file: 'cookie8.png', color: '#6b2fbb' }, // Purple
+  { id: 9, file: 'cookie9.png', color: '#ed54ba' }, // Pink
+  { id: 10, file: 'cookie10.png', color: '#71491e' }, // Brown
+  { id: 11, file: 'cookie11.png', color: '#d6e0f0' }, // White
+  { id: 12, file: 'cookie12.png', color: '#3f474e' }, // Black
+];
+
 function App() {
   const [cookies, setCookies] = useState(0);
   const [cookiesEarned, setCookiesEarned] = useState(0);
@@ -58,6 +73,7 @@ function App() {
   const [selectedMilk, setSelectedMilk] = useState('plain');
   const [showMilk, setShowMilk] = useState(localStorage.getItem('showMilk') !== 'false');
   const [skin, setSkin] = useState(localStorage.getItem('gameSkin') || 'default');
+  const [amongUsCookieIndex, setAmongUsCookieIndex] = useState(1);
 
   useEffect(() => {
     const path = window.location.pathname.slice(1).toLowerCase();
@@ -160,6 +176,15 @@ function App() {
     }
     twitterDesc.content = description;
   }, [skin]);
+
+  useEffect(() => {
+    if (skin === 'amongus') {
+      const variant = AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0];
+      document.documentElement.style.setProperty('--accent-color', variant.color);
+    } else {
+      document.documentElement.style.removeProperty('--accent-color');
+    }
+  }, [skin, amongUsCookieIndex]);
   useEffect(() => {
     const savedState = localStorage.getItem('cookieClickerSave');
     if (savedState) {
@@ -174,6 +199,7 @@ function App() {
         setTimePlayed(state.timePlayed || 0);
         setSelectedMilk(state.selectedMilk || 'plain');
         if (state.showMilk !== undefined) setShowMilk(state.showMilk);
+        setAmongUsCookieIndex(state.amongUsCookieIndex || 1);
       } catch (e) {
         console.error('Failed to load save:', e);
       }
@@ -201,11 +227,12 @@ function App() {
       achievementsUnlocked,
       timePlayed,
       selectedMilk,
-      showMilk
+      showMilk,
+      amongUsCookieIndex
     };
     localStorage.setItem('cookieClickerSave', JSON.stringify(saveState));
     localStorage.setItem('showMilk', showMilk);
-  }, [cookies, cookiesEarned, clicks, buildingsOwned, upgradesOwned, achievementsUnlocked, timePlayed, selectedMilk, showMilk, isLoaded]);
+  }, [cookies, cookiesEarned, clicks, buildingsOwned, upgradesOwned, achievementsUnlocked, timePlayed, selectedMilk, showMilk, amongUsCookieIndex, isLoaded]);
   useEffect(() => {
     let newCps = 0;
     BUILDINGS.forEach((building) => {
@@ -466,6 +493,20 @@ function App() {
           >
             🏪
           </button>
+
+          {skin === 'amongus' && (
+            <button
+              className="toggle-btn"
+              onClick={() => setAmongUsCookieIndex(prev => prev >= 12 ? 1 : prev + 1)}
+              title="Change Crewmate Color"
+            >
+              <img
+                src={getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file)}
+                alt="Crewmate"
+                style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
+              />
+            </button>
+          )}
         </div>
         {upgradesOwned.includes('milkSplash') && (
           <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
@@ -524,110 +565,122 @@ function App() {
         <p>{formatCPS(cps)} per second</p>
         { }
         <div className="cookie-container">
-          <BigCookie onCookieClick={handleCookieClick} skin={skin} />
+          <BigCookie
+            onCookieClick={handleCookieClick}
+            skin={skin}
+            customImage={skin === 'amongus' ? getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file) : null}
+          />
         </div>
       </section>
       { }
       { }
-      {showMilk && upgradesOwned.includes('milkSplash') && (
-        <>
-          <div
-            className="milk-liquid" style={{
-              height: '20%',
-              background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
-                (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
-                  selectedMilk === 'strawberry' ? '#ffb7b2' :
-                    selectedMilk === 'chocolate' ? '#8b4513' :
-                      'rgba(255, 255, 255, 0.8)',
-              zIndex: 2
-            }}
-          />
-          <div
-            className="milk-liquid layer-2" style={{
-              height: '22%',
-              background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
-                (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
-                  selectedMilk === 'strawberry' ? '#ffb7b2' :
-                    selectedMilk === 'chocolate' ? '#8b4513' :
-                      'rgba(255, 255, 255, 0.8)',
-              opacity: 0.5,
-              zIndex: 1,
-              animationDuration: '8s',
-              animationDelay: '-2s'
-            }}
-          />
-        </>
-      )}
+      {
+        showMilk && upgradesOwned.includes('milkSplash') && (
+          <>
+            <div
+              className="milk-liquid" style={{
+                height: '20%',
+                background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
+                  (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
+                    selectedMilk === 'strawberry' ? '#ffb7b2' :
+                      selectedMilk === 'chocolate' ? '#8b4513' :
+                        'rgba(255, 255, 255, 0.8)',
+                zIndex: 2
+              }}
+            />
+            <div
+              className="milk-liquid layer-2" style={{
+                height: '22%',
+                background: (skin === 'fortnite' && selectedMilk === 'strawberry') ? '#29ffc6' :
+                  (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
+                    selectedMilk === 'strawberry' ? '#ffb7b2' :
+                      selectedMilk === 'chocolate' ? '#8b4513' :
+                        'rgba(255, 255, 255, 0.8)',
+                opacity: 0.5,
+                zIndex: 1,
+                animationDuration: '8s',
+                animationDelay: '-2s'
+              }}
+            />
+          </>
+        )
+      }
       { }
-      {!isCentered && (
-        <div className={`right-column ${mobileTab === 'game' ? 'mobile-hide' : ''}`}>
-          { }
-          {showStats && (
-            <section className={`stats-section glass-panel ${!showStore ? 'full-height' : ''}`}>
-              <h2>Stats</h2>
-              <div className="stats-grid">
-                <p><strong>Time Played:</strong> {formatTime(timePlayed)}</p>
-                <p><strong>{currencyName} Earned:</strong> {formatNumber(cookiesEarned)}</p>
-                <p><strong>Total Clicks:</strong> {clicks.toLocaleString()}</p>
-                <p><strong>Click Multiplier:</strong> x{getClickMultiplier().toLocaleString()}</p>
-                {BUILDINGS.map((building) => {
-                  const count = buildingsOwned[building.id] || 0;
-                  if (count === 0) return null;
-                  const perSec = building.cps * count;
-                  return (
-                    <p key={building.id}>
-                      <strong>{building.icon} {pluralizeBuildingName(building.name, count)}:</strong> {count} ({perSec.toLocaleString()} cps)
-                    </p>
-                  );
-                })}
-              </div>
-              <Achievements
-                unlocked={achievementsUnlocked}
-                skin={skin}
-                currencyName={currencyName}
-                onHover={(achievement, e) => {
-                  setHoveredAchievement(achievement);
-                  setAchievementMousePos({ x: e.clientX, y: e.clientY });
-                }}
-                onMove={(e) => {
-                  if (hoveredAchievement) {
+      {
+        !isCentered && (
+          <div className={`right-column ${mobileTab === 'game' ? 'mobile-hide' : ''}`}>
+            { }
+            {showStats && (
+              <section className={`stats-section glass-panel ${!showStore ? 'full-height' : ''}`}>
+                <h2>Stats</h2>
+                <div className="stats-grid">
+                  <p><strong>Time Played:</strong> {formatTime(timePlayed)}</p>
+                  <p><strong>{currencyName} Earned:</strong> {formatNumber(cookiesEarned)}</p>
+                  <p><strong>Total Clicks:</strong> {clicks.toLocaleString()}</p>
+                  <p><strong>Click Multiplier:</strong> x{getClickMultiplier().toLocaleString()}</p>
+                  {BUILDINGS.map((building) => {
+                    const count = buildingsOwned[building.id] || 0;
+                    if (count === 0) return null;
+                    const perSec = building.cps * count;
+                    return (
+                      <p key={building.id}>
+                        <strong>{building.icon} {pluralizeBuildingName(building.name, count)}:</strong> {count} ({perSec.toLocaleString()} cps)
+                      </p>
+                    );
+                  })}
+                </div>
+                <Achievements
+                  unlocked={achievementsUnlocked}
+                  skin={skin}
+                  currencyName={currencyName}
+                  customImage={skin === 'amongus' ? getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file) : null}
+                  onHover={(achievement, e) => {
+                    setHoveredAchievement(achievement);
                     setAchievementMousePos({ x: e.clientX, y: e.clientY });
-                  }
-                }}
-                onLeave={() => setHoveredAchievement(null)}
-              />
-            </section>
-          )}
-          { }
-          {showStore && (
-            <section className={`store-section glass-panel ${!showStats ? 'full-height' : ''}`}>
-              <Store
-                cookies={cookies}
-                buildingsOwned={buildingsOwned}
-                upgradesOwned={upgradesOwned}
-                onPurchase={handlePurchase}
-                onSell={handleSell}
-                onUpgradePurchase={handleUpgradePurchase}
-                skin={skin}
-              />
-            </section>
-          )}
-        </div>
-      )}
+                  }}
+                  onMove={(e) => {
+                    if (hoveredAchievement) {
+                      setAchievementMousePos({ x: e.clientX, y: e.clientY });
+                    }
+                  }}
+                  onLeave={() => setHoveredAchievement(null)}
+                />
+              </section>
+            )}
+            { }
+            {showStore && (
+              <section className={`store-section glass-panel ${!showStats ? 'full-height' : ''}`}>
+                <Store
+                  cookies={cookies}
+                  buildingsOwned={buildingsOwned}
+                  upgradesOwned={upgradesOwned}
+                  onPurchase={handlePurchase}
+                  onSell={handleSell}
+                  onUpgradePurchase={handleUpgradePurchase}
+                  skin={skin}
+                  customImage={skin === 'amongus' ? getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file) : null}
+                />
+              </section>
+            )}
+          </div>
+        )
+      }
       { }
-      {hoveredAchievement && (
-        <div
-          className="achievement-tooltip" style={{
-            left: achievementMousePos.x,
-            top: achievementMousePos.y
-          }}
-        >
-          <strong>{achievementsUnlocked.includes(hoveredAchievement.id) ? hoveredAchievement.name : '???'}</strong><br />
-          {achievementsUnlocked.includes(hoveredAchievement.id) ?
-            hoveredAchievement.description.replace(/cookies/gi, currencyName.toLowerCase()).replace(/cookie/gi, currencyName.toLowerCase())
-            : 'Locked'}
-        </div>
-      )}
+      {
+        hoveredAchievement && (
+          <div
+            className="achievement-tooltip" style={{
+              left: achievementMousePos.x,
+              top: achievementMousePos.y
+            }}
+          >
+            <strong>{achievementsUnlocked.includes(hoveredAchievement.id) ? hoveredAchievement.name : '???'}</strong><br />
+            {achievementsUnlocked.includes(hoveredAchievement.id) ?
+              hoveredAchievement.description.replace(/cookies/gi, currencyName.toLowerCase()).replace(/cookie/gi, currencyName.toLowerCase())
+              : 'Locked'}
+          </div>
+        )
+      }
 
       {/* Mobile Navigation */}
       <div className="mobile-nav">
@@ -644,7 +697,7 @@ function App() {
           🏪 Shop & Stats
         </button>
       </div>
-    </div>
+    </div >
   );
 }
 export default App;

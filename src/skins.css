@@ -186,33 +186,40 @@
 }
 
 [data-skin="amongus"] h1 {
-    background: linear-gradient(to right, #ff0000, #ff4d4d);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    color: var(--accent-color);
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--accent-color);
+    text-shadow: 0 0 15px var(--accent-color);
     font-family: 'Arial Black', sans-serif;
     letter-spacing: 2px;
 }
 
 [data-skin="amongus"] .glass-panel {
     background: rgba(30, 30, 30, 0.9);
-    border: 3px solid #c51111;
+    border: 3px solid var(--accent-color);
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(197, 17, 17, 0.2);
+    box-shadow: none;
+}
+
+[data-skin="amongus"] .settings-modal {
+    background: var(--bg-panel);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
 }
 
 [data-skin="amongus"] .store-item.affordable,
 [data-skin="amongus"] .upgrade-item.affordable {
-    background: rgba(197, 17, 17, 0.2);
-    border: 2px solid #c51111;
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border: 2px solid var(--accent-color);
     border-radius: 10px;
 }
 
 [data-skin="amongus"] .store-item.affordable:hover,
 [data-skin="amongus"] .upgrade-item.affordable:hover {
-    background: rgba(197, 17, 17, 0.4);
-    box-shadow: 0 0 15px rgba(197, 17, 17, 0.5);
+    background: color-mix(in srgb, var(--accent-color), transparent 60%);
+    box-shadow: none;
 }
 
 [data-skin="pokemon"] {
@@ -496,8 +503,8 @@
 }
 
 [data-skin="amongus"] .achievement-item.unlocked {
-    background: rgba(197, 17, 17, 0.2);
-    border-color: #c51111;
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-color: var(--accent-color);
     box-shadow: none;
 }
 
@@ -586,19 +593,25 @@
 }
 
 [data-skin="amongus"] .toggle-btn {
-    background: rgba(197, 17, 17, 0.2);
-    border: 2px solid #c51111;
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border: 2px solid var(--accent-color);
     border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 [data-skin="amongus"] .toggle-btn:hover {
-    background: rgba(197, 17, 17, 0.4);
-    box-shadow: 0 0 15px rgba(197, 17, 17, 0.5);
+    background: color-mix(in srgb, var(--accent-color), transparent 60%);
+    box-shadow: none;
 }
 
 [data-skin="amongus"] .toggle-btn.active {
-    background: rgba(197, 17, 17, 0.6);
-    box-shadow: 0 0 15px rgba(197, 17, 17, 0.8);
+    background: color-mix(in srgb, var(--accent-color), transparent 40%);
+    box-shadow: none;
 }
 
 [data-skin="amongus"] .achievement-item {
