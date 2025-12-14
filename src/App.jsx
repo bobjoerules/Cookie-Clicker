@@ -58,6 +58,16 @@ function App() {
   const [selectedMilk, setSelectedMilk] = useState('plain');
   const [showMilk, setShowMilk] = useState(localStorage.getItem('showMilk') !== 'false');
   const [skin, setSkin] = useState(localStorage.getItem('gameSkin') || 'default');
+
+  useEffect(() => {
+    const path = window.location.pathname.slice(1).toLowerCase();
+    const validSkins = ['default', 'fortnite', 'genshin', 'minecraft', 'amongus', 'pokemon', 'cyberpunk', 'zelda', 'youtube', 'instagram', 'tiktok', 'twitch'];
+
+    if (path && validSkins.includes(path)) {
+      handleSkinChange(path);
+    }
+  }, []);
+
   const handleSkinChange = (newSkin) => {
     setSkin(newSkin);
     localStorage.setItem('gameSkin', newSkin);
@@ -76,6 +86,79 @@ function App() {
       titleCurrency = titleCurrency.slice(0, -1);
     }
     document.title = `${titleCurrency} Clicker`;
+
+    const descriptions = {
+      default: 'Click cookies, build your empire! A modern recreation of the classic Cookie Clicker game.',
+      fortnite: 'Earn V-Bucks and build your Battle Royale empire! Cookie Clicker with a Fortnite twist.',
+      genshin: 'Collect Mora and explore Teyvat! Cookie Clicker meets Genshin Impact.',
+      minecraft: 'Mine cookies and craft your world! Cookie Clicker in the Minecraft universe.',
+      amongus: 'Collect Crewmates and complete tasks! Cookie Clicker with an Among Us theme.',
+      pokemon: 'Catch Poké Balls and become the very best! Cookie Clicker meets Pokémon.',
+      cyberpunk: 'Earn Eurodollars in Night City! Cookie Clicker with a Cyberpunk 2077 aesthetic.',
+      zelda: 'Collect Rupees and save Hyrule! Cookie Clicker meets The Legend of Zelda.',
+      youtube: 'Gain Subscribers and grow your channel! Cookie Clicker for content creators.',
+      instagram: 'Collect Likes and build your following! Cookie Clicker meets Instagram.',
+      tiktok: 'Get Likes and go viral! Cookie Clicker with a TikTok vibe.',
+      twitch: 'Earn Bits and build your streaming empire! Cookie Clicker for streamers.'
+    };
+
+    const description = descriptions[skin] || descriptions.default;
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.name = 'description';
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = description;
+
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.content = `${titleCurrency} Clicker`;
+
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (!ogDesc) {
+      ogDesc = document.createElement('meta');
+      ogDesc.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDesc);
+    }
+    ogDesc.content = description;
+
+    let ogType = document.querySelector('meta[property="og:type"]');
+    if (!ogType) {
+      ogType = document.createElement('meta');
+      ogType.setAttribute('property', 'og:type');
+      document.head.appendChild(ogType);
+    }
+    ogType.content = 'website';
+
+    let twitterCard = document.querySelector('meta[name="twitter:card"]');
+    if (!twitterCard) {
+      twitterCard = document.createElement('meta');
+      twitterCard.name = 'twitter:card';
+      document.head.appendChild(twitterCard);
+    }
+    twitterCard.content = 'summary_large_image';
+
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (!twitterTitle) {
+      twitterTitle = document.createElement('meta');
+      twitterTitle.name = 'twitter:title';
+      document.head.appendChild(twitterTitle);
+    }
+    twitterTitle.content = `${titleCurrency} Clicker`;
+
+    let twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (!twitterDesc) {
+      twitterDesc = document.createElement('meta');
+      twitterDesc.name = 'twitter:description';
+      document.head.appendChild(twitterDesc);
+    }
+    twitterDesc.content = description;
   }, [skin]);
   useEffect(() => {
     const savedState = localStorage.getItem('cookieClickerSave');
