@@ -225,5 +225,140 @@ export const UPGRADES = [
         multiplier: 20,
         description: 'A divine touch. 20x power!',
         icon: '😇'
+    },
+    {
+        id: 'goldPlatedVaults',
+        name: 'Gold Plated Vaults',
+        cost: 14000000,
+        multiplier: 2,
+        description: 'Banks are twice as efficient.',
+        icon: '💰',
+        buildingId: 'bank'
+    },
+    {
+        id: 'sacrificialAlters',
+        name: 'Sacrificial Alters',
+        cost: 200000000,
+        multiplier: 2,
+        description: 'Temples are twice as efficient.',
+        icon: '⛩️',
+        buildingId: 'temple'
+    },
+    {
+        id: 'beardGroomingKit',
+        name: 'Beard Grooming Kit',
+        cost: 3300000000,
+        multiplier: 2,
+        description: 'Wizard Towers are twice as efficient.',
+        icon: '🧙‍♂️',
+        buildingId: 'wizardTower'
+    },
+    {
+        id: 'fasterRockets',
+        name: 'Faster Rockets',
+        cost: 51000000000,
+        multiplier: 2,
+        description: 'Shipments are twice as efficient.',
+        icon: '🚀',
+        buildingId: 'shipment'
+    },
+    {
+        id: 'philosophersStone',
+        name: 'Philosopher\'s Stone',
+        cost: 750000000000,
+        multiplier: 2,
+        description: 'Alchemy Labs are twice as efficient.',
+        icon: '⚗️',
+        buildingId: 'alchemyLab'
+    },
+    {
+        id: 'stableWormholes',
+        name: 'Stable Wormholes',
+        cost: 10000000000000,
+        multiplier: 2,
+        description: 'Portals are twice as efficient.',
+        icon: '🌀',
+        buildingId: 'portal'
+    },
+    {
+        id: 'fluxCapacitor',
+        name: 'Flux Capacitor',
+        cost: 140000000000000,
+        multiplier: 2,
+        description: 'Time Machines are twice as efficient.',
+        icon: '⏳',
+        buildingId: 'timeMachine'
+    },
+    {
+        id: 'sugarBosons',
+        name: 'Sugar Bosons',
+        cost: 1700000000000000,
+        multiplier: 2,
+        description: 'Antimatter Condensers are twice as efficient.',
+        icon: '⚡',
+        buildingId: 'antimatterCondenser'
+    },
+    {
+        id: 'gemPolish',
+        name: 'Gem Polish',
+        cost: 21000000000000000,
+        multiplier: 2,
+        description: 'Prisms are twice as efficient.',
+        icon: '💎',
+        buildingId: 'prism'
+    },
+    {
+        id: 'loadedDice',
+        name: 'Loaded Dice',
+        cost: 260000000000000000,
+        multiplier: 2,
+        description: 'Chancemakers are twice as efficient.',
+        icon: '🎲',
+        buildingId: 'chancemaker'
+    },
+    {
+        id: 'mandelbrotSweets',
+        name: 'Mandelbrot Sweets',
+        cost: 3100000000000000000,
+        multiplier: 2,
+        description: 'Fractal Engines are twice as efficient.',
+        icon: '🌀',
+        buildingId: 'fractalEngine'
+    },
+    {
+        id: 'jitCompilation',
+        name: 'JIT Compilation',
+        cost: 710000000000000000000,
+        multiplier: 2,
+        description: 'Javascript Consoles are twice as efficient.',
+        icon: '💻',
+        buildingId: 'javascriptConsole'
+    },
+    {
+        id: 'multiverseFranchising',
+        name: 'Multiverse Franchising',
+        cost: 120000000000000000000000,
+        multiplier: 2,
+        description: 'Idleverses are twice as efficient.',
+        icon: '🌌',
+        buildingId: 'idleverse'
+    },
+    {
+        id: 'synapticAcceleration',
+        name: 'Synaptic Acceleration',
+        cost: 19000000000000000000000000,
+        multiplier: 2,
+        description: 'Cortex Bakers are twice as efficient.',
+        icon: '🧠',
+        buildingId: 'cortexBaker'
+    },
+    {
+        id: 'cloningVats',
+        name: 'Cloning Vats',
+        cost: 5400000000000000000000000000,
+        multiplier: 2,
+        description: 'You are twice as efficient.',
+        icon: '👤',
+        buildingId: 'you'
     }
 ];
