@@ -219,7 +219,7 @@ body {
   left: 20px;
   display: flex;
   gap: 10px;
-  z-index: 100;
+  z-index: 2001;
 }
 
 .toggle-btn {
@@ -413,10 +413,12 @@ html[data-theme="light"] .glass-panel {
   }
 
   .section-toggles {
-    top: 10px;
+    position: fixed;
+    top: max(10px, env(safe-area-inset-top));
     left: 10px;
     scale: 0.9;
     transform-origin: top left;
+    z-index: 2001;
   }
 
   .mobile-nav {
