@@ -155,7 +155,13 @@ function App() {
       youtube: 'Gain Subscribers and grow your channel! Cookie Clicker for content creators.',
       instagram: 'Collect Likes and build your following! Cookie Clicker meets Instagram.',
       tiktok: 'Get Likes and go viral! Cookie Clicker with a TikTok vibe.',
-      twitch: 'Earn Bits and build your streaming empire! Cookie Clicker for streamers.'
+      twitch: 'Earn Bits and build your streaming empire! Cookie Clicker for streamers.',
+      miku: 'Create songs and become a virtual idol! Cookie Clicker with a Hatsune Miku theme.',
+      discord: 'Send messages and build your server! Cookie Clicker for Discord mods.',
+      apple: 'Earn revenue and build your ecosystem! Cookie Clicker with an Apple aesthetic.',
+      android: 'Install apps and customize your system! Cookie Clicker with an Android theme.',
+      windows: 'Update your system and avoid blue screens! Cookie Clicker with a Windows theme.',
+      linux: 'Compile kernels and customize your distro! Cookie Clicker for Linux users.'
     };
 
     const description = descriptions[skin] || descriptions.default;
@@ -602,6 +608,22 @@ function App() {
                 {skin === 'fortnite' ? '🧪' : skin === 'amongus' ? '🩸' : '🍓'}
               </button>
             )}
+            {upgradesOwned.includes('coffeeMilk') && (
+              <button
+                className={`toggle-btn ${showMilk && selectedMilk === 'coffee' ? 'active' : ''}`}
+                onClick={() => {
+                  if (showMilk && selectedMilk === 'coffee') {
+                    setShowMilk(false);
+                  } else {
+                    setSelectedMilk('coffee');
+                    setShowMilk(true);
+                  }
+                }}
+                title="Coffee"
+              >
+                ☕
+              </button>
+            )}
           </div>
         )}
       </div>
@@ -630,7 +652,8 @@ function App() {
                   (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
                     selectedMilk === 'strawberry' ? '#ffb7b2' :
                       selectedMilk === 'chocolate' ? '#8b4513' :
-                        'rgba(255, 255, 255, 0.8)',
+                        selectedMilk === 'coffee' ? '#6f4e37' :
+                          'rgba(255, 255, 255, 0.8)',
                 zIndex: 2
               }}
             />
@@ -641,7 +664,8 @@ function App() {
                   (skin === 'amongus' && selectedMilk === 'strawberry') ? '#C51111' :
                     selectedMilk === 'strawberry' ? '#ffb7b2' :
                       selectedMilk === 'chocolate' ? '#8b4513' :
-                        'rgba(255, 255, 255, 0.8)',
+                        selectedMilk === 'coffee' ? '#6f4e37' :
+                          'rgba(255, 255, 255, 0.8)',
                 opacity: 0.5,
                 zIndex: 1,
                 animationDuration: '8s',

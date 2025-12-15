@@ -201,5 +201,29 @@ export const UPGRADES = [
         multiplier: 10,
         description: 'Beyond comprehension. 10x clicking power!',
         icon: '♾️'
+    },
+    {
+        id: 'coffeeMilk',
+        name: 'Coffee',
+        cost: 250000,
+        multiplier: 2,
+        description: 'The energy boost you need. 2x click power.',
+        icon: '☕'
+    },
+    {
+        id: 'singularityCursor',
+        name: 'Singularity Mouse',
+        cost: 250000000,
+        multiplier: 15,
+        description: 'Clicks condense into a single point of infinite density. 15x power!',
+        icon: '⚫'
+    },
+    {
+        id: 'godCursor',
+        name: 'God Mouse',
+        cost: 1000000000,
+        multiplier: 20,
+        description: 'A divine touch. 20x power!',
+        icon: '😇'
     }
 ];
