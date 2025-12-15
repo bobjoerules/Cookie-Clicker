@@ -310,3 +310,36 @@
     color: #333;
     border-color: rgba(0, 0, 0, 0.4);
 }
+
+.store-controls-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .store-controls-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .store-controls-container h3 {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+
+    .store-controls-wrapper {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .bulk-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

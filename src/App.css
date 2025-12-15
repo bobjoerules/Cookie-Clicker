@@ -432,6 +432,10 @@ html[data-theme="light"] .glass-panel {
     z-index: 1000;
   }
 
+  .desktop-only {
+    display: none !important;
+  }
+
   .mobile-nav-btn {
     flex: 1;
     background: transparent;

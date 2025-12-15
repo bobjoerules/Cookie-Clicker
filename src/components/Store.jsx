@@ -144,7 +144,7 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
             { }
             <div className="store-controls-container">
                 <h3>Production</h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div className="store-controls-wrapper">
                     <div className="bulk-controls">
                         {availableMultipliers.map(amt => (
                             <button

@@ -527,7 +527,7 @@ function App() {
             📊
           </button>
           <button
-            className={`toggle-btn ${showStore ? 'active' : ''}`}
+            className={`toggle-btn desktop-only ${showStore ? 'active' : ''}`}
             onClick={() => setShowStore(!showStore)}
             title="Toggle Store"
           >
