@@ -477,7 +477,13 @@ function App() {
       youtube: 'Subscribers',
       instagram: 'Likes',
       tiktok: 'Likes',
-      twitch: 'Bits'
+      twitch: 'Bits',
+      miku: 'Leeks',
+      discord: 'Messages',
+      apple: 'Apples',
+      android: 'Robots',
+      windows: 'Windows',
+      linux: 'Penguins'
     };
     return names[skin] || 'Cookies';
   };

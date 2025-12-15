@@ -123,6 +123,12 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                             {renderSkinButton('instagram', 'Instagram', '📷')}
                             {renderSkinButton('tiktok', 'TikTok', '🎵')}
                             {renderSkinButton('twitch', 'Twitch', '👾')}
+                            {renderSkinButton('miku', 'Miku', '🎤')}
+                            {renderSkinButton('discord', 'Discord', '💬')}
+                            {renderSkinButton('apple', 'Apple', '🍎')}
+                            {renderSkinButton('android', 'Android', '🤖')}
+                            {renderSkinButton('windows', 'Windows', '🪟')}
+                            {renderSkinButton('linux', 'Linux', '🐧')}
                         </div>
                     </div>
                     { }
@@ -139,7 +145,7 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                             </button>
                         </div>
                     </div>
-                    { }
+
                     <div className="settings-section danger-zone">
                         <h3>⚠️ Danger Zone</h3>
                         <button className="settings-action-button reset-button" onClick={handleReset}>
@@ -148,7 +154,7 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 export default Settings;

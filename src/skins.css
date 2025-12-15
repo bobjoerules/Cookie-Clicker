@@ -517,6 +517,186 @@
     box-shadow: none;
 }
 
+
+/* Miku Theme */
+[data-skin="miku"] {
+    --primary-gradient: linear-gradient(135deg, #39C5BB 0%, #2a9ba0 100%);
+    --accent-color: #e5097f;
+    --secondary-color: #39C5BB;
+    --bg-dark: #0a1f25;
+    --bg-panel: rgba(57, 197, 187, 0.15);
+    --glass-border: rgba(57, 197, 187, 0.3);
+}
+
+[data-skin="miku"] .app-container {
+    background: radial-gradient(circle at center, #1a3c40 0%, #051014 100%);
+}
+
+[data-skin="miku"] h1 {
+    background: linear-gradient(to right, #39C5BB, #e5097f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(57, 197, 187, 0.3);
+}
+
+/* Discord Theme */
+[data-skin="discord"] {
+    --primary-gradient: linear-gradient(135deg, #5865F2 0%, #404EED 100%);
+    --accent-color: #5865F2;
+    --secondary-color: #EB459E;
+    --bg-dark: #313338;
+    --bg-panel: #2B2D31;
+    --glass-border: #1E1F22;
+    --text-main: #F2F3F5;
+    --text-dim: #B5BAC1;
+}
+
+[data-skin="discord"] .app-container {
+    background: #313338;
+}
+
+[data-skin="discord"] .glass-panel {
+    background: #2B2D31;
+    border: none;
+    border-radius: 8px;
+    opacity: 1;
+    backdrop-filter: none;
+}
+
+[data-skin="discord"] h1 {
+    color: #5865F2;
+    background: none;
+    -webkit-text-fill-color: #5865F2;
+    font-weight: 900;
+}
+
+/* Apple Theme */
+[data-skin="apple"] {
+    --primary-gradient: linear-gradient(135deg, #f5f5f7 0%, #d2d2d7 100%);
+    --accent-color: #2997ff;
+    --secondary-color: #8E8E93;
+    --bg-dark: #000000;
+    --bg-panel: rgba(28, 28, 30, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-skin="apple"] .app-container {
+    background: #000000;
+}
+
+[data-skin="apple"] h1 {
+    background: linear-gradient(to right, #ffffff, #a1a1a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+}
+
+[data-skin="apple"][data-theme="light"] {
+    --bg-panel: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+/* Android Theme */
+[data-skin="android"] {
+    --primary-gradient: linear-gradient(135deg, #3DDC84 0%, #35c759 100%);
+    --accent-color: #3DDC84;
+    --secondary-color: #202124;
+    --bg-dark: #121212;
+    --bg-panel: rgba(61, 220, 132, 0.1);
+    --glass-border: rgba(61, 220, 132, 0.3);
+}
+
+[data-skin="android"] .app-container {
+    background: #121212;
+}
+
+[data-skin="android"] h1 {
+    color: #3DDC84;
+    background: none;
+    -webkit-text-fill-color: #3DDC84;
+    font-family: Roboto, sans-serif;
+}
+
+/* Windows Theme */
+[data-skin="windows"] {
+    --primary-gradient: linear-gradient(135deg, #0078D7 0%, #0063B1 100%);
+    --accent-color: #0078D7;
+    --secondary-color: #50E6FF;
+    --bg-dark: #000000;
+    --bg-panel: rgba(32, 32, 32, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-skin="windows"] .app-container {
+    background: radial-gradient(circle at 100% 100%, #003765 0%, #000000 70%);
+}
+
+[data-skin="windows"] h1 {
+    color: #0078D7;
+    background: none;
+    -webkit-text-fill-color: #0078D7;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: lighter;
+}
+
+[data-skin="windows"] .glass-panel {
+    border-radius: 4px;
+    /* Square Windows look */
+    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    backdrop-filter: blur(20px) saturate(125%);
+    /* Mica effectish */
+}
+
+/* Linux Theme */
+[data-skin="linux"] {
+    --primary-gradient: linear-gradient(135deg, #FCC624 0%, #E6B520 100%);
+    --accent-color: #FCC624;
+    /* Tux beak yellow */
+    --secondary-color: #FFFFFF;
+    --bg-dark: #000000;
+    --bg-panel: rgba(20, 20, 20, 0.95);
+    --glass-border: #333333;
+    font-family: monospace;
+}
+
+[data-skin="linux"] .app-container {
+    background: #000000;
+}
+
+[data-skin="linux"] h1 {
+    color: #FFFFFF;
+    background: none;
+    -webkit-text-fill-color: #FFFFFF;
+    font-family: monospace;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    /* Hackery feel */
+    border-right: 0.1em solid #FFFFFF;
+    /* Cursor cursor */
+    display: inline-block;
+}
+
+[data-skin="linux"] .glass-panel {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #333;
+    border-radius: 0;
+}
+
+[data-skin="linux"] .upgrade-item,
+[data-skin="linux"] .store-item,
+[data-skin="linux"] button {
+    border-radius: 0;
+    font-family: monospace;
+}
+
+[data-skin="linux"] .upgrade-item:hover,
+[data-skin="linux"] .store-item:hover,
+[data-skin="linux"] button:hover {
+    background-color: #333;
+}
+
 [data-skin="pokemon"] .achievement-item.unlocked {
     background: rgba(255, 222, 0, 0.3);
     border-color: #3B4CCA;
