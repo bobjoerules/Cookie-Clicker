@@ -94,7 +94,7 @@ function App() {
 
   useEffect(() => {
     const path = window.location.pathname.slice(1).toLowerCase();
-    const validSkins = ['default', 'fortnite', 'genshin', 'minecraft', 'amongus', 'pokemon', 'cyberpunk', 'zelda', 'youtube', 'instagram', 'tiktok', 'twitch', 'netflix'];
+    const validSkins = ['default', 'fortnite', 'genshin', 'minecraft', 'amongus', 'pokemon', 'cyberpunk', 'zelda', 'youtube', 'instagram', 'tiktok', 'twitch', 'netflix', 'reddit', 'spotify', 'snapchat', 'xbox', 'playstation', 'steam', 'duolingo', 'google', 'x'];
 
     if (path && validSkins.includes(path)) {
       handleSkinChange(path);
@@ -157,6 +157,10 @@ function App() {
         iconFile = (GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0]).file;
       } else if (skin === 'minecraft') {
         iconFile = (MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0]).file;
+      } else if (skin === 'apple' && theme === 'light') {
+        iconFile = 'cookie2.png';
+      } else if (skin === 'x' && theme === 'light') {
+        iconFile = 'cookie2.png';
       }
       const skinIcon = getSkinAsset(skin, iconFile);
       link.href = skinIcon || defaultCookie;
@@ -173,6 +177,15 @@ function App() {
       tiktok: 'TikTok',
       twitch: 'Twitch',
       netflix: 'Netflix',
+      reddit: 'Reddit',
+      spotify: 'Spotify',
+      snapchat: 'Snapchat',
+      xbox: 'Xbox',
+      playstation: 'PlayStation',
+      steam: 'Steam',
+      duolingo: 'Duolingo',
+      google: 'Google',
+      x: '',
       pokemon: 'Pokémon',
       cyberpunk: 'Cyberpunk',
       zelda: 'Zelda',
@@ -191,7 +204,11 @@ function App() {
       }
     }
 
-    document.title = `${titleCurrency} Clicker`;
+    if (skin === 'x') {
+      document.title = 'Clicker';
+    } else {
+      document.title = `${titleCurrency} Clicker`;
+    }
 
     const descriptions = {
       default: 'Click cookies, build your empire! A modern recreation of the classic Cookie Clicker game.',
@@ -206,8 +223,16 @@ function App() {
       instagram: 'Collect Likes and build your following! Cookie Clicker meets Instagram.',
       tiktok: 'Get Likes and go viral! Cookie Clicker with a TikTok vibe.',
       twitch: 'Earn Bits and build your streaming empire! Cookie Clicker for streamers.',
-      twitch: 'Earn Bits and build your streaming empire! Cookie Clicker for streamers.',
       netflix: 'Watch shows and chill! Cookie Clicker with a Netflix theme.',
+      reddit: 'Earn Upvotes and hit the front page! Cookie Clicker for Redditors.',
+      spotify: 'Get streams and top the charts! Cookie Clicker for music lovers.',
+      snapchat: 'Send Snaps and keep your streak! Cookie Clicker with a Snapchat theme.',
+      xbox: 'Earn Gamerscore and unlock achievements! Cookie Clicker for Xbox fans.',
+      playstation: 'Collect Trophies and reach Platinum! Cookie Clicker for PlayStation fans.',
+      steam: 'Earn Steam Points and craft badges! Cookie Clicker for PC gamers.',
+      duolingo: 'Learn languages and keep your streak! Cookie Clicker with a Duolingo theme.',
+      google: 'Search the web and find answers! Cookie Clicker with a Google theme.',
+      x: 'Post thoughts and join the conversation! Cookie Clicker with an X theme.',
       miku: 'Create songs and become a virtual idol! Cookie Clicker with a Hatsune Miku theme.',
       discord: 'Send messages and build your server! Cookie Clicker for Discord mods.',
       apple: 'Earn revenue and build your ecosystem! Cookie Clicker with an Apple aesthetic.',
@@ -273,7 +298,7 @@ function App() {
       document.head.appendChild(twitterDesc);
     }
     twitterDesc.content = description;
-  }, [skin, genshinCookieIndex, minecraftCookieIndex, amongUsCookieIndex]);
+  }, [skin, genshinCookieIndex, minecraftCookieIndex, amongUsCookieIndex, theme]);
 
   useEffect(() => {
     if (skin === 'amongus') {
@@ -548,6 +573,15 @@ function App() {
       tiktok: 'Likes',
       twitch: 'Bits',
       netflix: 'Shows',
+      reddit: 'Upvotes',
+      spotify: 'Streams',
+      snapchat: 'Snaps',
+      xbox: 'Gamerscore',
+      playstation: 'Trophies',
+      steam: 'Steam Points',
+      duolingo: 'Gems',
+      google: 'Searches',
+      x: 'Posts',
       miku: 'Leeks',
       discord: 'Messages',
       apple: 'Devices',
@@ -572,6 +606,10 @@ function App() {
       return getSkinAsset('genshin', (GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0]).file);
     } else if (skin === 'minecraft') {
       return getSkinAsset('minecraft', (MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0]).file);
+    } else if (skin === 'apple' && theme === 'light') {
+      return getSkinAsset('apple', 'cookie2.png');
+    } else if (skin === 'x' && theme === 'light') {
+      return getSkinAsset('x', 'cookie2.png');
     }
     return null;
   };
@@ -587,8 +625,12 @@ function App() {
         backgroundRepeat: 'no-repeat'
       } : {}}
     >
-      <FallingCookies cps={cps} skin={skin} customImage={currentCustomImage} />
-      <FloatingText texts={floatingTexts} />
+      <FallingCookies
+        cps={cps}
+        skin={skin}
+        customImage={currentCustomImage}
+        theme={theme}
+      /><FloatingText texts={floatingTexts} />
       <AchievementNotification achievement={currentAchievement} skin={skin} currencyName={currencyName} customImage={currentCustomImage} />
       <Settings
         isOpen={settingsOpen}

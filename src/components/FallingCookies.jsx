@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cookieImg from '../assets/cookie.png';
 import { getSkinAsset } from '../utils/assetLoader';
 import './FallingCookies.css';
-const FallingCookies = ({ cps, skin, customImage }) => {
+const FallingCookies = ({ cps, skin, customImage, theme }) => {
     const [cookies, setCookies] = useState([]);
     const lastSpawnTime = React.useRef(Date.now());
     const requestRef = React.useRef();
@@ -50,10 +50,15 @@ const FallingCookies = ({ cps, skin, customImage }) => {
                     displayImg = getSkinAsset(skin, variantName);
                 } else if ((skin === 'genshin' || skin === 'minecraft') && customImage) {
                     displayImg = customImage;
+                } else if ((skin === 'apple' || skin === 'x') && theme === 'light') {
+                    displayImg = getSkinAsset(skin, 'cookie2.png');
                 }
+
                 if (!displayImg) {
-                    displayImg = getSkinAsset(skin, 'cookie.png');
+                    // This covers most cases, including Apple/X dark mode
+                    displayImg = customImage || getSkinAsset(skin, 'cookie.png');
                 }
+
                 if (!displayImg) {
                     displayImg = cookieImg;
                 }
