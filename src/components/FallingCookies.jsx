@@ -8,36 +8,41 @@ const FallingCookies = ({ cps, skin, customImage, theme }) => {
     const requestRef = React.useRef();
     useEffect(() => {
         if (cps === 0) return;
-        const spawnRate = 1000;
-        const animate = (time) => {
+
+        const spawnCookie = () => {
             const now = Date.now();
-            const delta = now - lastSpawnTime.current;
-            if (delta > spawnRate) {
-                const numCookiesToSpawn = Math.max(1, Math.min(Math.floor(cps / 2), 10));
-                const newCookies = [];
-                for (let i = 0; i < numCookiesToSpawn; i++) {
-                    newCookies.push({
-                        id: `${now}-${Math.random()}-${i}`,
-                        left: Math.random() * 90 + 5,
-                        animationDuration: 3 + Math.random() * 2,
-                        spinDuration: 2 + Math.random() * 3,
-                        spinDelay: Math.random() * -5,
-                        size: 20 + Math.random() * 20,
-                        createdAt: now,
-                        variant: Math.floor(Math.random() * 12) + 1
-                    });
-                }
-                setCookies(prev => {
-                    const activeCookies = prev.filter(c => now - c.createdAt < (c.animationDuration * 1000));
-                    return [...activeCookies, ...newCookies];
-                });
-                lastSpawnTime.current = now;
-            }
-            requestRef.current = requestAnimationFrame(animate);
+            const newCookie = {
+                id: `${now}-${Math.random()}`,
+                left: Math.random() * 90 + 5,
+                animationDuration: 3 + Math.random() * 2,
+                spinDuration: 2 + Math.random() * 3,
+                spinDelay: Math.random() * -5,
+                size: 20 + Math.random() * 20,
+                createdAt: now,
+                variant: Math.floor(Math.random() * 12) + 1
+            };
+
+            setCookies(prev => {
+                const activeCookies = prev.filter(c => now - c.createdAt < (c.animationDuration * 1000));
+                return [...activeCookies, newCookie];
+            });
         };
-        requestRef.current = requestAnimationFrame(animate);
+
+        const scheduleNext = () => {
+            const numCookiesPerSecond = Math.max(1, Math.min(Math.floor(cps / 2), 10));
+            const avgDelay = 1000 / numCookiesPerSecond;
+            const randomDelay = avgDelay * (0.5 + Math.random());
+
+            return setTimeout(() => {
+                spawnCookie();
+                timeoutId = scheduleNext();
+            }, randomDelay);
+        };
+
+        let timeoutId = scheduleNext();
+
         return () => {
-            if (requestRef.current) cancelAnimationFrame(requestRef.current);
+            if (timeoutId) clearTimeout(timeoutId);
         };
     }, [cps]);
     if (cps === 0) return null;
