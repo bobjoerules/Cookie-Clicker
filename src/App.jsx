@@ -456,7 +456,7 @@ function App() {
       setGoldenCookieKey(prev => prev + 1);
     };
 
-    const randomDelay = () => Math.random() * 60000 + 30000;
+    const randomDelay = () => Math.random() * 150000 + 30000;
 
     let timeoutId;
     const scheduleNext = () => {
