@@ -116,7 +116,6 @@
 
 [data-theme="light"] .achievements-container {
     background: rgba(0, 0, 0, 0.03);
-    padding: 20px;
 }
 
 [data-theme="light"] .achievements-list::-webkit-scrollbar-track {
