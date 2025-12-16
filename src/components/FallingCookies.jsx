@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cookieImg from '../assets/cookie.png';
 import { getSkinAsset } from '../utils/assetLoader';
 import './FallingCookies.css';
-const FallingCookies = ({ cps, skin }) => {
+const FallingCookies = ({ cps, skin, customImage }) => {
     const [cookies, setCookies] = useState([]);
     const lastSpawnTime = React.useRef(Date.now());
     const requestRef = React.useRef();
@@ -48,6 +48,8 @@ const FallingCookies = ({ cps, skin }) => {
                 if (skin === 'amongus') {
                     const variantName = `cookie${cookie.variant > 1 ? cookie.variant : ''}.png`;
                     displayImg = getSkinAsset(skin, variantName);
+                } else if ((skin === 'genshin' || skin === 'minecraft') && customImage) {
+                    displayImg = customImage;
                 }
                 if (!displayImg) {
                     displayImg = getSkinAsset(skin, 'cookie.png');

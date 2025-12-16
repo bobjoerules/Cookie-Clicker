@@ -99,29 +99,33 @@
 }
 
 [data-skin="genshin"] h1 {
-    background: linear-gradient(to right, #FFD700, #FFA500, #FF6B6B);
+    background: linear-gradient(to right, var(--accent-color), #FFA500);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 30px color-mix(in srgb, var(--accent-color), transparent 50%);
 }
 
 [data-skin="genshin"] .glass-panel {
-    background: rgba(74, 144, 226, 0.1);
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    box-shadow: 0 8px 32px rgba(74, 144, 226, 0.2);
+    background: color-mix(in srgb, var(--accent-color), transparent 90%);
+    border: 2px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+    box-shadow: 0 8px 32px color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
 [data-skin="genshin"] .store-item.affordable,
 [data-skin="genshin"] .upgrade-item.affordable {
-    background: rgba(255, 215, 0, 0.15);
-    border-color: rgba(255, 215, 0, 0.4);
+    background: color-mix(in srgb, var(--accent-color), transparent 85%);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+[data-skin="genshin"] .big-cookie img {
+    border-radius: 0;
 }
 
 [data-skin="genshin"] .store-item.affordable:hover,
 [data-skin="genshin"] .upgrade-item.affordable:hover {
-    background: rgba(255, 215, 0, 0.25);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    background: color-mix(in srgb, var(--accent-color), transparent 75%);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color), transparent 60%);
 }
 
 [data-skin="minecraft"] {
@@ -143,6 +147,10 @@
     font-family: 'Courier New', monospace;
     background: none;
     -webkit-text-fill-color: #ffffff;
+}
+
+[data-skin="minecraft"] .big-cookie img {
+    border-radius: 0;
 }
 
 [data-skin="minecraft"] .glass-panel {
@@ -491,8 +499,8 @@
 }
 
 [data-skin="genshin"] .achievement-item.unlocked {
-    background: rgba(255, 215, 0, 0.2);
-    border-color: rgba(255, 215, 0, 0.6);
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 40%);
     box-shadow: none;
 }
 
@@ -725,24 +733,24 @@
 
 
 [data-skin="genshin"] .toggle-btn {
-    background: rgba(255, 215, 0, 0.15);
-    border-color: rgba(255, 215, 0, 0.4);
+    background: color-mix(in srgb, var(--accent-color), transparent 85%);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
 }
 
 [data-skin="genshin"] .toggle-btn:hover {
-    background: rgba(255, 215, 0, 0.25);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    background: color-mix(in srgb, var(--accent-color), transparent 75%);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color), transparent 60%);
 }
 
 [data-skin="genshin"] .toggle-btn.active {
-    background: rgba(255, 215, 0, 0.4);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-    border-color: rgba(255, 215, 0, 0.8);
+    background: color-mix(in srgb, var(--accent-color), transparent 60%);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color), transparent 60%);
+    border-color: var(--accent-color);
 }
 
 [data-skin="genshin"] .achievement-item {
-    background: rgba(255, 215, 0, 0.05);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+    background: color-mix(in srgb, var(--accent-color), transparent 95%);
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
 

@@ -29,6 +29,21 @@ const AMONG_US_VARIANTS = [
   { id: 12, file: 'cookie12.png', color: '#3f474e' }, // Black
 ];
 
+const GENSHIN_VARIANTS = [
+  { id: 1, file: 'cookie.png', name: 'Mora', color: '#ffbf00' },
+  { id: 2, file: 'cookie2.png', name: 'Primogems', color: '#e16c87' },
+  { id: 3, file: 'cookie3.png', name: 'Acquaint Fates', color: '#4a78c2' },
+  { id: 4, file: 'cookie4.png', name: 'Intertwined Fates', color: '#b483c6' },
+];
+
+const MINECRAFT_VARIANTS = [
+  { id: 1, file: 'cookie.png', name: 'Cookies' },
+  { id: 2, file: 'cookie2.png', name: 'Diamonds' },
+  { id: 3, file: 'cookie3.png', name: 'Gold' },
+  { id: 4, file: 'cookie4.png', name: 'Emeralds' },
+  { id: 5, file: 'cookie5.png', name: 'Netherite' },
+];
+
 function App() {
   const [cookies, setCookies] = useState(0);
   const [cookiesEarned, setCookiesEarned] = useState(0);
@@ -74,6 +89,8 @@ function App() {
   const [showMilk, setShowMilk] = useState(localStorage.getItem('showMilk') !== 'false');
   const [skin, setSkin] = useState(localStorage.getItem('gameSkin') || 'default');
   const [amongUsCookieIndex, setAmongUsCookieIndex] = useState(1);
+  const [genshinCookieIndex, setGenshinCookieIndex] = useState(1);
+  const [minecraftCookieIndex, setMinecraftCookieIndex] = useState(1);
 
   useEffect(() => {
     const path = window.location.pathname.slice(1).toLowerCase();
@@ -133,7 +150,15 @@ function App() {
     document.documentElement.setAttribute('data-skin', skin);
     const link = document.getElementById('favicon');
     if (link) {
-      const skinIcon = getSkinAsset(skin, 'cookie.png');
+      let iconFile = 'cookie.png';
+      if (skin === 'amongus') {
+        iconFile = (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file;
+      } else if (skin === 'genshin') {
+        iconFile = (GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0]).file;
+      } else if (skin === 'minecraft') {
+        iconFile = (MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0]).file;
+      }
+      const skinIcon = getSkinAsset(skin, iconFile);
       link.href = skinIcon || defaultCookie;
     }
     const currentCurrency = getCurrencyName(skin);
@@ -221,16 +246,19 @@ function App() {
       document.head.appendChild(twitterDesc);
     }
     twitterDesc.content = description;
-  }, [skin]);
+  }, [skin, genshinCookieIndex, minecraftCookieIndex]);
 
   useEffect(() => {
     if (skin === 'amongus') {
       const variant = AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0];
       document.documentElement.style.setProperty('--accent-color', variant.color);
+    } else if (skin === 'genshin') {
+      const variant = GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0];
+      document.documentElement.style.setProperty('--accent-color', variant.color);
     } else {
       document.documentElement.style.removeProperty('--accent-color');
     }
-  }, [skin, amongUsCookieIndex]);
+  }, [skin, amongUsCookieIndex, genshinCookieIndex]);
   useEffect(() => {
     const savedState = localStorage.getItem('cookieClickerSave');
     if (savedState) {
@@ -246,6 +274,8 @@ function App() {
         setSelectedMilk(state.selectedMilk || 'plain');
         if (state.showMilk !== undefined) setShowMilk(state.showMilk);
         setAmongUsCookieIndex(state.amongUsCookieIndex || 1);
+        setGenshinCookieIndex(state.genshinCookieIndex || 1);
+        setMinecraftCookieIndex(state.minecraftCookieIndex || 1);
       } catch (e) {
         console.error('Failed to load save:', e);
       }
@@ -274,11 +304,14 @@ function App() {
       timePlayed,
       selectedMilk,
       showMilk,
-      amongUsCookieIndex
+      amongUsCookieIndex,
+      genshinCookieIndex,
+      minecraftCookieIndex
     };
+
     localStorage.setItem('cookieClickerSave', JSON.stringify(saveState));
     localStorage.setItem('showMilk', showMilk);
-  }, [cookies, cookiesEarned, clicks, buildingsOwned, upgradesOwned, achievementsUnlocked, timePlayed, selectedMilk, showMilk, amongUsCookieIndex, isLoaded]);
+  }, [cookies, cookiesEarned, clicks, buildingsOwned, upgradesOwned, achievementsUnlocked, timePlayed, selectedMilk, showMilk, amongUsCookieIndex, genshinCookieIndex, minecraftCookieIndex, isLoaded]);
   useEffect(() => {
     let newCps = 0;
     BUILDINGS.forEach((building) => {
@@ -474,8 +507,8 @@ function App() {
     const names = {
       default: 'Cookies',
       fortnite: 'V-Bucks',
-      genshin: 'Mora',
-      minecraft: 'Cookies',
+      genshin: (GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0]).name,
+      minecraft: (MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0]).name,
       amongus: 'Crewmates',
       pokemon: 'Poké Balls',
       cyberpunk: 'Eurodollars',
@@ -499,6 +532,18 @@ function App() {
   const customBackground = getSkinAsset(skin, 'background.png');
   const [mobileTab, setMobileTab] = useState('game');
 
+  const getCustomImage = () => {
+    if (skin === 'amongus') {
+      return getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file);
+    } else if (skin === 'genshin') {
+      return getSkinAsset('genshin', (GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0]).file);
+    } else if (skin === 'minecraft') {
+      return getSkinAsset('minecraft', (MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0]).file);
+    }
+    return null;
+  };
+  const currentCustomImage = getCustomImage();
+
   return (
     <div
       className={`app-container ${isCentered ? 'centered-view' : ''}`}
@@ -509,9 +554,9 @@ function App() {
         backgroundRepeat: 'no-repeat'
       } : {}}
     >
-      <FallingCookies cps={cps} skin={skin} />
+      <FallingCookies cps={cps} skin={skin} customImage={currentCustomImage} />
       <FloatingText texts={floatingTexts} />
-      <AchievementNotification achievement={currentAchievement} skin={skin} currencyName={currencyName} />
+      <AchievementNotification achievement={currentAchievement} skin={skin} currencyName={currencyName} customImage={currentCustomImage} />
       <Settings
         isOpen={settingsOpen}
         onClose={() => setSettingsOpen(false)}
@@ -555,6 +600,34 @@ function App() {
               <img
                 src={getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file)}
                 alt="Crewmate"
+                style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
+              />
+            </button>
+          )}
+
+          {skin === 'genshin' && (
+            <button
+              className="toggle-btn"
+              onClick={() => setGenshinCookieIndex(prev => prev >= 4 ? 1 : prev + 1)}
+              title="Change Item"
+            >
+              <img
+                src={getSkinAsset('genshin', (GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0]).file)}
+                alt="Genshin Item"
+                style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
+              />
+            </button>
+          )}
+
+          {skin === 'minecraft' && (
+            <button
+              className="toggle-btn"
+              onClick={() => setMinecraftCookieIndex(prev => prev >= 5 ? 1 : prev + 1)}
+              title="Change Material"
+            >
+              <img
+                src={getSkinAsset('minecraft', (MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0]).file)}
+                alt="Item"
                 style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
               />
             </button>
@@ -636,7 +709,7 @@ function App() {
           <BigCookie
             onCookieClick={handleCookieClick}
             skin={skin}
-            customImage={skin === 'amongus' ? getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file) : null}
+            customImage={currentCustomImage}
           />
         </div>
       </section>
@@ -703,7 +776,7 @@ function App() {
                   unlocked={achievementsUnlocked}
                   skin={skin}
                   currencyName={currencyName}
-                  customImage={skin === 'amongus' ? getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file) : null}
+                  customImage={currentCustomImage}
                   onHover={(achievement, e) => {
                     setHoveredAchievement(achievement);
                     setAchievementMousePos({ x: e.clientX, y: e.clientY });
@@ -728,7 +801,7 @@ function App() {
                   onSell={handleSell}
                   onUpgradePurchase={handleUpgradePurchase}
                   skin={skin}
-                  customImage={skin === 'amongus' ? getSkinAsset('amongus', (AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0]).file) : null}
+                  customImage={currentCustomImage}
                 />
               </section>
             )}
