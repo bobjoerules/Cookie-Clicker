@@ -78,10 +78,10 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                     <img
                         src={symbol}
                         alt={label}
-                        style={{ width: '1.2em', height: '1.2em', marginRight: '8px', objectFit: 'contain', verticalAlign: 'middle' }}
+                        style={{ width: '1.2em', height: '1.2em', marginRight: label ? '8px' : '0', objectFit: 'contain', verticalAlign: 'middle' }}
                     />
                 ) : (
-                    <span style={{ marginRight: '8px' }}>{defaultEmoji}</span>
+                    <span style={{ marginRight: label ? '8px' : '0' }}>{defaultEmoji}</span>
                 )}
                 {label}
             </button>

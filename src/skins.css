@@ -101,6 +101,57 @@
     border-bottom-color: rgba(0, 0, 0, 0.15) !important;
 }
 
+/* Light Mode Settings Modal for All Themes */
+[data-theme="light"] .settings-modal {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .settings-section {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .settings-section h3 {
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .settings-section p {
+    color: #555 !important;
+}
+
+[data-theme="light"] .theme-button {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .theme-button:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .theme-button.active {
+    background: rgba(0, 0, 0, 0.12) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .close-button {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .close-button:hover {
+    background: rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .settings-header {
+    border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+
 [data-skin="fortnite"] {
     --primary-gradient: linear-gradient(135deg, #7928CA 0%, #FF0080 100%);
     --accent-color: #00D9FF;
