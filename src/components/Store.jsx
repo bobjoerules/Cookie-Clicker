@@ -115,7 +115,17 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
                                 onMouseEnter={() => setHoveredUpgrade(displayUpgrade.id)}
                                 onMouseLeave={() => setHoveredUpgrade(null)}
                             >
-                                <div className="upgrade-icon">{displayUpgrade.icon}</div>
+                                <div className="upgrade-icon">
+                                    {displayUpgrade.id === 'goldenCookie' && getSkinAsset(skin, 'golden.png') ? (
+                                        <img
+                                            src={getSkinAsset(skin, 'golden.png')}
+                                            alt={displayUpgrade.name}
+                                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                        />
+                                    ) : (
+                                        displayUpgrade.icon
+                                    )}
+                                </div>
                                 <div className="upgrade-info">
                                     <div className="upgrade-name-text">{displayUpgrade.name}</div>
                                     <div className="upgrade-cost">
