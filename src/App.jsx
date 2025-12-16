@@ -161,11 +161,35 @@ function App() {
       const skinIcon = getSkinAsset(skin, iconFile);
       link.href = skinIcon || defaultCookie;
     }
-    const currentCurrency = getCurrencyName(skin);
-    let titleCurrency = currentCurrency;
-    if (titleCurrency.endsWith('s')) {
-      titleCurrency = titleCurrency.slice(0, -1);
+
+    const skinTitles = {
+      linux: 'Linux',
+      windows: 'Windows',
+      android: 'Android',
+      apple: 'Apple',
+      discord: 'Discord',
+      youtube: 'YouTube',
+      instagram: 'Instagram',
+      tiktok: 'TikTok',
+      twitch: 'Twitch',
+      pokemon: 'Pokémon',
+      cyberpunk: 'Cyberpunk',
+      zelda: 'Zelda',
+      amongus: 'Among Us',
+      genshin: 'Genshin'
+    };
+
+    let titleCurrency;
+    if (skinTitles[skin]) {
+      titleCurrency = skinTitles[skin];
+    } else {
+      const currentCurrency = getCurrencyName(skin);
+      titleCurrency = currentCurrency;
+      if (titleCurrency.endsWith('s')) {
+        titleCurrency = titleCurrency.slice(0, -1);
+      }
     }
+
     document.title = `${titleCurrency} Clicker`;
 
     const descriptions = {
@@ -522,7 +546,7 @@ function App() {
       twitch: 'Bits',
       miku: 'Leeks',
       discord: 'Messages',
-      apple: 'Apples',
+      apple: 'Devices',
       android: 'Robots',
       windows: 'Windows',
       linux: 'Penguins'

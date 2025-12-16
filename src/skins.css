@@ -580,6 +580,17 @@
     font-weight: 900;
 }
 
+[data-skin="discord"] ::selection {
+    background: #5865F2;
+    color: #ffffff;
+}
+
+[data-skin="discord"] .store-item,
+[data-skin="discord"] .upgrade-item {
+    border: 1px solid var(--glass-border);
+    background: var(--bg-panel);
+}
+
 /* Apple Theme */
 [data-skin="apple"] {
     --primary-gradient: linear-gradient(135deg, #f5f5f7 0%, #d2d2d7 100%);
