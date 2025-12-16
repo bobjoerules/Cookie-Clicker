@@ -1,8 +1,15 @@
 const skinAssets = import.meta.glob('../assets/skins/**/*.{png,jpg,jpeg,svg,webp,mp3}', { eager: true });
-const defaultAssets = import.meta.glob('../assets/*.mp3', { eager: true });
+const defaultAssets = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp,mp3}', { eager: true });
 
 export const getSkinAsset = (skin, assetName) => {
-    if (!skin || skin === 'default') return null;
+    if (!skin || skin === 'default') {
+        const path = `../assets/${assetName}`;
+        const assetModule = defaultAssets[path];
+        if (assetModule) {
+            return assetModule.default;
+        }
+        return null;
+    }
     const path = `../assets/skins/${skin}/${assetName}`;
     const assetModule = skinAssets[path];
     if (assetModule) {

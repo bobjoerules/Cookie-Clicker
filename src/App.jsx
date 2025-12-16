@@ -38,7 +38,7 @@ const GENSHIN_VARIANTS = [
 ];
 
 const MINECRAFT_VARIANTS = [
-  { id: 1, file: 'cookie.png', name: 'Cookies', color: '#b97f39' },
+  { id: 1, file: 'cookie.png', name: 'Cookies', color: '#FFD700' },
   { id: 2, file: 'cookie2.png', name: 'Diamonds', color: '#00d9ff' },
   { id: 3, file: 'cookie3.png', name: 'Gold', color: '#ffd700' },
   { id: 4, file: 'cookie4.png', name: 'Emeralds', color: '#00cc00' },

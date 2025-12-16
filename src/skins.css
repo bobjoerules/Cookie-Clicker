@@ -1,7 +1,7 @@
 :root,
 [data-skin="default"] {
     --primary-gradient: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
-    --accent-color: #0096ff;
+    --accent-color: #ffcc00;
     --secondary-color: #ff9900;
 }
 
@@ -3829,6 +3829,49 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 
 /* Settings Theme Button: Hide "X" text, keep Emoji */
 button.theme-button[onClick*="handleSkinChange('x')"] {
-    /* This selector is tricky in pure CSS without a specific class/ID on the button. 
+    /* This selector is tricky in pure CSS without a specific class/ID on the button.
       React code update is cleaner. */
+}
+
+/* Shop price colors using theme accent colors */
+
+[data-skin="default"] .store-cost,
+[data-skin="default"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+[data-skin="fortnite"] .store-cost,
+[data-skin="fortnite"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+[data-skin="genshin"] .store-cost,
+[data-skin="genshin"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+[data-skin="minecraft"] .store-cost,
+[data-skin="minecraft"] .upgrade-cost {
+    color: #000000;
+}
+
+[data-skin="amongus"] .store-cost,
+[data-skin="amongus"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+[data-skin="cyberpunk"] .store-cost,
+[data-skin="cyberpunk"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+[data-skin="zelda"] .store-cost,
+[data-skin="zelda"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+/* Override affordable prices in light mode to use theme accent color instead of green */
+[data-theme="light"] .store-item.affordable .store-cost,
+[data-theme="light"] .upgrade-item.affordable .upgrade-cost {
+    color: var(--accent-color);
 }
