@@ -406,9 +406,7 @@ html[data-theme="light"] .glass-panel {
     overflow-y: auto;
   }
 
-  .cookie-section.mobile-hide,
-  .right-column.mobile-hide,
-  .section-toggles.mobile-hide {
+  .mobile-hide {
     display: none !important;
   }
 
@@ -469,5 +467,45 @@ html[data-theme="light"] .glass-panel {
     color: #000;
     background: rgba(0, 0, 0, 0.05);
     border-top-color: #000;
+  }
+
+  /* Center content and fix padding */
+  .right-column {
+    padding: 15px !important;
+  }
+
+  /* Full page stats */
+  .stats-section .stats-grid,
+  .stats-section.full-height .stats-grid {
+    max-height: none !important;
+    overflow-y: visible;
+  }
+
+  .stats-section .achievements-list,
+  .stats-section.full-height .achievements-list {
+    overflow-y: visible;
+    flex: none;
+    max-height: none;
+  }
+
+  .stats-section,
+  .stats-section.full-height {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100%;
+  }
+
+  /* Disable selection and image dragging */
+  * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  img {
+    pointer-events: auto;
+    /* Ensure clicks still work */
+    -webkit-user-drag: none;
   }
 }

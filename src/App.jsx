@@ -532,7 +532,7 @@ function App() {
             ⚙️
           </button>
           <button
-            className={`toggle-btn ${showStats ? 'active' : ''}`}
+            className={`toggle-btn desktop-only ${showStats ? 'active' : ''}`}
             onClick={() => setShowStats(!showStats)}
             title="Toggle Stats"
           >
@@ -628,7 +628,7 @@ function App() {
         )}
       </div>
       { }
-      <section className={`cookie-section ${mobileTab === 'menu' ? 'mobile-hide' : ''}`}>
+      <section className={`cookie-section ${mobileTab !== 'game' ? 'mobile-hide' : ''}`}>
         <h1>{formatNumber(cookies)} {currencyName}</h1>
         <p>{formatCPS(cps)} per second</p>
         { }
@@ -680,8 +680,8 @@ function App() {
         !isCentered && (
           <div className={`right-column ${mobileTab === 'game' ? 'mobile-hide' : ''}`}>
             { }
-            {showStats && (
-              <section className={`stats-section glass-panel ${!showStore ? 'full-height' : ''}`}>
+            {(showStats || mobileTab === 'stats') && (
+              <section className={`stats-section glass-panel ${!showStore ? 'full-height' : ''} ${mobileTab !== 'stats' ? 'mobile-hide' : ''}`}>
                 <h2>Stats</h2>
                 <div className="stats-grid">
                   <p><strong>Time Played:</strong> {formatTime(timePlayed)}</p>
@@ -718,8 +718,8 @@ function App() {
               </section>
             )}
             { }
-            {showStore && (
-              <section className={`store-section glass-panel ${!showStats ? 'full-height' : ''}`}>
+            {(showStore || mobileTab === 'shop') && (
+              <section className={`store-section glass-panel ${!showStats ? 'full-height' : ''} ${mobileTab !== 'shop' ? 'mobile-hide' : ''}`}>
                 <Store
                   cookies={cookies}
                   buildingsOwned={buildingsOwned}
@@ -761,10 +761,16 @@ function App() {
           🍪 Game
         </button>
         <button
-          className={`mobile-nav-btn ${mobileTab === 'menu' ? 'active' : ''}`}
-          onClick={() => setMobileTab('menu')}
+          className={`mobile-nav-btn ${mobileTab === 'stats' ? 'active' : ''}`}
+          onClick={() => setMobileTab('stats')}
         >
-          🏪 Shop & Stats
+          📊 Stats
+        </button>
+        <button
+          className={`mobile-nav-btn ${mobileTab === 'shop' ? 'active' : ''}`}
+          onClick={() => setMobileTab('shop')}
+        >
+          🏪 Shop
         </button>
       </div>
     </div >
