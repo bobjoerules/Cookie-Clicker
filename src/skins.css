@@ -151,6 +151,7 @@
 
 [data-skin="minecraft"] .big-cookie img {
     border-radius: 0;
+    filter: drop-shadow(0 0 15px var(--accent-color));
 }
 
 [data-skin="minecraft"] .glass-panel {

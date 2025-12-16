@@ -37,11 +37,11 @@ const GENSHIN_VARIANTS = [
 ];
 
 const MINECRAFT_VARIANTS = [
-  { id: 1, file: 'cookie.png', name: 'Cookies' },
-  { id: 2, file: 'cookie2.png', name: 'Diamonds' },
-  { id: 3, file: 'cookie3.png', name: 'Gold' },
-  { id: 4, file: 'cookie4.png', name: 'Emeralds' },
-  { id: 5, file: 'cookie5.png', name: 'Netherite' },
+  { id: 1, file: 'cookie.png', name: 'Cookies', color: '#b97f39' },
+  { id: 2, file: 'cookie2.png', name: 'Diamonds', color: '#00d9ff' },
+  { id: 3, file: 'cookie3.png', name: 'Gold', color: '#ffd700' },
+  { id: 4, file: 'cookie4.png', name: 'Emeralds', color: '#00cc00' },
+  { id: 5, file: 'cookie5.png', name: 'Netherite', color: '#444444' },
 ];
 
 function App() {
@@ -255,10 +255,13 @@ function App() {
     } else if (skin === 'genshin') {
       const variant = GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0];
       document.documentElement.style.setProperty('--accent-color', variant.color);
+    } else if (skin === 'minecraft') {
+      const variant = MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0];
+      document.documentElement.style.setProperty('--accent-color', variant.color);
     } else {
       document.documentElement.style.removeProperty('--accent-color');
     }
-  }, [skin, amongUsCookieIndex, genshinCookieIndex]);
+  }, [skin, amongUsCookieIndex, genshinCookieIndex, minecraftCookieIndex]);
   useEffect(() => {
     const savedState = localStorage.getItem('cookieClickerSave');
     if (savedState) {
