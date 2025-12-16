@@ -44,6 +44,20 @@ const MINECRAFT_VARIANTS = [
   { id: 5, file: 'cookie5.png', name: 'Netherite', color: '#444444' },
 ];
 
+const DUOLINGO_VARIANTS = [
+  { id: 1, file: 'cookie.png', name: 'Duo', color: '#58CC02' },
+  { id: 2, file: 'cookie2.png', name: 'Bea', color: '#FF9600' },
+  { id: 3, file: 'cookie3.png', name: 'Oscar', color: '#CE82FF' },
+  { id: 4, file: 'cookie4.png', name: 'Lily', color: '#CF72F9' },
+  { id: 5, file: 'cookie5.png', name: 'Zari', color: '#FF86D0' },
+  { id: 6, file: 'cookie6.png', name: 'Falstaff', color: '#1CB0F6' },
+  { id: 7, file: 'cookie7.png', name: 'Vikram', color: '#2B70C9' },
+  { id: 8, file: 'cookie8.png', name: 'lucy', color: '#FF4B4B' },
+  { id: 9, file: 'cookie9.png', name: 'Eddy', color: '#FA5A5A' },
+  { id: 10, file: 'cookie10.png', name: 'Lin', color: '#A54752' },
+  { id: 11, file: 'cookie11.png', name: 'Junior', color: '#78C9FA' },
+];
+
 function App() {
   const [cookies, setCookies] = useState(0);
   const [cookiesEarned, setCookiesEarned] = useState(0);
@@ -91,6 +105,7 @@ function App() {
   const [amongUsCookieIndex, setAmongUsCookieIndex] = useState(1);
   const [genshinCookieIndex, setGenshinCookieIndex] = useState(1);
   const [minecraftCookieIndex, setMinecraftCookieIndex] = useState(1);
+  const [duolingoCookieIndex, setDuolingoCookieIndex] = useState(1);
 
   useEffect(() => {
     const path = window.location.pathname.slice(1).toLowerCase();
@@ -161,6 +176,10 @@ function App() {
         iconFile = 'cookie2.png';
       } else if (skin === 'x' && theme === 'light') {
         iconFile = 'cookie2.png';
+      } else if (skin === 'playstation' && theme === 'light') {
+        iconFile = 'cookie2.png';
+      } else if (skin === 'duolingo') {
+        iconFile = (DUOLINGO_VARIANTS.find(v => v.id === duolingoCookieIndex) || DUOLINGO_VARIANTS[0]).file;
       }
       const skinIcon = getSkinAsset(skin, iconFile);
       link.href = skinIcon || defaultCookie;
@@ -298,11 +317,14 @@ function App() {
       document.head.appendChild(twitterDesc);
     }
     twitterDesc.content = description;
-  }, [skin, genshinCookieIndex, minecraftCookieIndex, amongUsCookieIndex, theme]);
+  }, [skin, genshinCookieIndex, minecraftCookieIndex, amongUsCookieIndex, duolingoCookieIndex, theme]);
 
   useEffect(() => {
     if (skin === 'amongus') {
       const variant = AMONG_US_VARIANTS.find(v => v.id === amongUsCookieIndex) || AMONG_US_VARIANTS[0];
+      document.documentElement.style.setProperty('--accent-color', variant.color);
+    } else if (skin === 'duolingo') {
+      const variant = DUOLINGO_VARIANTS.find(v => v.id === duolingoCookieIndex) || DUOLINGO_VARIANTS[0];
       document.documentElement.style.setProperty('--accent-color', variant.color);
     } else if (skin === 'genshin') {
       const variant = GENSHIN_VARIANTS.find(v => v.id === genshinCookieIndex) || GENSHIN_VARIANTS[0];
@@ -313,7 +335,7 @@ function App() {
     } else {
       document.documentElement.style.removeProperty('--accent-color');
     }
-  }, [skin, amongUsCookieIndex, genshinCookieIndex, minecraftCookieIndex]);
+  }, [skin, amongUsCookieIndex, genshinCookieIndex, minecraftCookieIndex, duolingoCookieIndex]);
   useEffect(() => {
     const savedState = localStorage.getItem('cookieClickerSave');
     if (savedState) {
@@ -610,6 +632,10 @@ function App() {
       return getSkinAsset('apple', 'cookie2.png');
     } else if (skin === 'x' && theme === 'light') {
       return getSkinAsset('x', 'cookie2.png');
+    } else if (skin === 'playstation' && theme === 'light') {
+      return getSkinAsset('playstation', 'cookie2.png');
+    } else if (skin === 'duolingo') {
+      return getSkinAsset('duolingo', (DUOLINGO_VARIANTS.find(v => v.id === duolingoCookieIndex) || DUOLINGO_VARIANTS[0]).file);
     }
     return null;
   };
@@ -703,6 +729,20 @@ function App() {
               <img
                 src={getSkinAsset('minecraft', (MINECRAFT_VARIANTS.find(v => v.id === minecraftCookieIndex) || MINECRAFT_VARIANTS[0]).file)}
                 alt="Item"
+                style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
+              />
+            </button>
+          )}
+
+          {skin === 'duolingo' && (
+            <button
+              className="toggle-btn"
+              onClick={() => setDuolingoCookieIndex(prev => prev >= 11 ? 1 : prev + 1)}
+              title="Change Character"
+            >
+              <img
+                src={getSkinAsset('duolingo', (DUOLINGO_VARIANTS.find(v => v.id === duolingoCookieIndex) || DUOLINGO_VARIANTS[0]).file)}
+                alt="Character"
                 style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
               />
             </button>

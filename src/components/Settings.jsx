@@ -55,7 +55,20 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
         return `${hours}h ${minutes}m ${secs}s`;
     };
     const renderSkinButton = (skinId, label, defaultEmoji) => {
-        const symbol = getSkinAsset(skinId, 'cookie.png');
+        let cookieFile = 'cookie.png';
+
+        // For Apple, X, and PlayStation themes, use the opposite version based on current theme
+        if (skinId === 'apple' || skinId === 'x' || skinId === 'playstation') {
+            // Determine actual theme (resolve 'system' to light or dark)
+            let actualTheme = currentTheme;
+            if (currentTheme === 'system') {
+                actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            // Use dark logo (cookie2.png) in light mode, light logo (cookie.png) in dark mode
+            cookieFile = actualTheme === 'light' ? 'cookie2.png' : 'cookie.png';
+        }
+
+        const symbol = getSkinAsset(skinId, cookieFile);
         return (
             <button
                 className={`theme-button ${currentSkin === skinId ? 'active' : ''}`}

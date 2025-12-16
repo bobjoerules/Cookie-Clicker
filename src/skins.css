@@ -52,6 +52,55 @@
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+[data-skin="default"][data-theme="light"] .settings-modal {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-skin="default"][data-theme="light"] .settings-section {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-skin="default"][data-theme="light"] .settings-section h3 {
+    color: #1a1a1a !important;
+}
+
+[data-skin="default"][data-theme="light"] .settings-section p {
+    color: #555 !important;
+}
+
+[data-skin="default"][data-theme="light"] .theme-button {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #1a1a1a !important;
+}
+
+[data-skin="default"][data-theme="light"] .theme-button:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-skin="default"][data-theme="light"] .theme-button.active {
+    background: rgba(0, 0, 0, 0.12) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+    color: #1a1a1a !important;
+}
+
+[data-skin="default"][data-theme="light"] .close-button {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #1a1a1a !important;
+}
+
+[data-skin="default"][data-theme="light"] .close-button:hover {
+    background: rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-skin="default"][data-theme="light"] .settings-header {
+    border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+}
+
 [data-skin="fortnite"] {
     --primary-gradient: linear-gradient(135deg, #7928CA 0%, #FF0080 100%);
     --accent-color: #00D9FF;
@@ -549,6 +598,11 @@
     text-shadow: 0 0 15px rgba(57, 197, 187, 0.3);
 }
 
+[data-skin="miku"] .store-cost,
+[data-skin="miku"] .upgrade-cost {
+    color: #39C5BB;
+}
+
 /* Discord Theme */
 [data-skin="discord"] {
     --primary-gradient: linear-gradient(135deg, #5865F2 0%, #404EED 100%);
@@ -591,10 +645,15 @@
     background: var(--bg-panel);
 }
 
+[data-skin="discord"] .store-cost,
+[data-skin="discord"] .upgrade-cost {
+    color: #5865F2;
+}
+
 /* Apple Theme */
 [data-skin="apple"] {
     --primary-gradient: linear-gradient(135deg, #f5f5f7 0%, #d2d2d7 100%);
-    --accent-color: #2997ff;
+    --accent-color: #ffffff;
     --secondary-color: #8E8E93;
     --bg-dark: #000000;
     --bg-panel: rgba(28, 28, 30, 0.8);
@@ -619,6 +678,11 @@
     --glass-border: rgba(0, 0, 0, 0.1);
 }
 
+[data-skin="apple"] .store-cost,
+[data-skin="apple"] .upgrade-cost {
+    color: #ffffff;
+}
+
 /* Android Theme */
 [data-skin="android"] {
     --primary-gradient: linear-gradient(135deg, #3DDC84 0%, #35c759 100%);
@@ -638,6 +702,11 @@
     background: none;
     -webkit-text-fill-color: #3DDC84;
     font-family: Roboto, sans-serif;
+}
+
+[data-skin="android"] .store-cost,
+[data-skin="android"] .upgrade-cost {
+    color: #3DDC84;
 }
 
 /* Windows Theme */
@@ -670,6 +739,11 @@
     /* Mica effectish */
 }
 
+[data-skin="windows"] .store-cost,
+[data-skin="windows"] .upgrade-cost {
+    color: #0078D7;
+}
+
 /* Linux Theme */
 [data-skin="linux"] {
     --primary-gradient: linear-gradient(135deg, #FCC624 0%, #E6B520 100%);
@@ -694,6 +768,11 @@
 [data-skin="linux"] .glass-panel {
     background: rgba(0, 0, 0, 0.9);
     border: 1px solid #333;
+}
+
+[data-skin="linux"] .store-cost,
+[data-skin="linux"] .upgrade-cost {
+    color: #FCC624;
 }
 
 
@@ -984,6 +1063,11 @@
     color: #fff;
 }
 
+[data-skin="youtube"][data-theme="dark"] .store-cost,
+[data-skin="youtube"][data-theme="dark"] .upgrade-cost {
+    color: #FF0000;
+}
+
 [data-skin="youtube"][data-theme="dark"] .toggle-btn {
     background: rgba(255, 0, 0, 0.15);
     border: 1px solid #FF0000;
@@ -1138,6 +1222,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+[data-skin="tiktok"] .store-cost,
+[data-skin="tiktok"] .upgrade-cost {
+    color: #00f2ea;
+}
+
 [data-skin="tiktok"][data-theme="light"] .store-item.affordable {
     background: rgba(0, 0, 0, 0.03);
     border: 1px solid rgba(22, 24, 35, 0.12);
@@ -1199,6 +1288,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #2b2b30;
     /* a bit lighter background for items */
     border-left: 4px solid #9146FF;
+}
+
+[data-skin="twitch"] .store-cost,
+[data-skin="twitch"] .upgrade-cost {
+    color: #bf94ff;
 }
 
 [data-skin="twitch"][data-theme="light"] .store-item.affordable {
@@ -1390,9 +1484,9 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 [data-skin="apple"][data-theme="light"] .toggle-btn.active {
-    background: #007aff;
+    background: #000000;
     color: white;
-    border-color: #007aff;
+    border-color: #000000;
 }
 
 /* Android Toggle Buttons */
@@ -1555,6 +1649,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="netflix"] .upgrade-item:hover {
     background: #2a2a2a;
     border-color: #E50914;
+}
+
+[data-skin="netflix"] .store-cost,
+[data-skin="netflix"] .upgrade-cost {
+    color: #E50914;
 }
 
 [data-skin="netflix"] .toggle-btn {
@@ -1750,6 +1849,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #FF4500;
 }
 
+[data-skin="reddit"][data-theme="dark"] .store-cost,
+[data-skin="reddit"][data-theme="dark"] .upgrade-cost {
+    color: #FF4500;
+}
+
 /* Fix Reddit Dark Mode Text Visibility */
 [data-skin="reddit"][data-theme="dark"] {
     --text-main: #D7DADC;
@@ -1799,6 +1903,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="spotify"] .store-item:hover,
 [data-skin="spotify"] .upgrade-item:hover {
     background: #282828;
+}
+
+[data-skin="spotify"] .store-cost,
+[data-skin="spotify"] .upgrade-cost {
+    color: #1DB954;
 }
 
 [data-skin="spotify"] .toggle-btn {
@@ -1947,6 +2056,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: linear-gradient(to right, #2a475e, rgba(0, 0, 0, 0));
 }
 
+[data-skin="steam"] .store-cost,
+[data-skin="steam"] .upgrade-cost {
+    color: #66c0f4;
+}
+
 /* Xbox Theme */
 [data-skin="xbox"] {
     --primary-gradient: linear-gradient(135deg, #107C10 0%, #3A3A3A 100%);
@@ -1977,6 +2091,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border: none;
     border-left: 4px solid #107C10;
     border-radius: 0;
+}
+
+[data-skin="xbox"] .store-cost,
+[data-skin="xbox"] .upgrade-cost {
+    color: #107C10;
 }
 
 [data-skin="xbox"] .toggle-btn.active {
@@ -2019,6 +2138,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border: 1px solid rgba(0, 112, 209, 0.3);
 }
 
+[data-skin="playstation"] .store-cost,
+[data-skin="playstation"] .upgrade-cost {
+    color: #0070D1;
+}
+
 /* Dark Mode Overrides for light-based themes (Snapchat, Duolingo) */
 [data-skin="snapchat"][data-theme="dark"] .app-container {
     background: #000000;
@@ -2039,6 +2163,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="snapchat"][data-theme="dark"] .upgrade-item {
     background: #222;
     color: white;
+}
+
+[data-skin="snapchat"][data-theme="dark"] .store-cost,
+[data-skin="snapchat"][data-theme="dark"] .upgrade-cost {
+    color: #FFFC00;
 }
 
 [data-skin="snapchat"][data-theme="dark"] .toggle-btn {
@@ -2066,6 +2195,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #2b2b2b;
     border-color: #333;
     color: #fff;
+}
+
+[data-skin="duolingo"][data-theme="dark"] .store-cost,
+[data-skin="duolingo"][data-theme="dark"] .upgrade-cost {
+    color: #58CC02;
 }
 
 
@@ -2303,11 +2437,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     /* Reset generic transform */
 }
 
-[data-skin="duolingo"] .toggle-btn:active {
-    border-bottom-width: 0px;
-    margin-top: 4px;
-    transform: none;
-}
 
 [data-skin="duolingo"] .toggle-btn.active {
     background: #58CC02;
@@ -2318,10 +2447,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: none;
 }
 
-[data-skin="duolingo"] .toggle-btn.active:active {
-    border-bottom-width: 0px;
-    margin-top: 4px;
-}
 
 [data-skin="duolingo"][data-theme="dark"] .toggle-btn {
     background: #2b2b2b;
@@ -2712,6 +2837,12 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #ffffff;
 }
 
+[data-skin="x"] .store-cost,
+[data-skin="x"] .upgrade-cost {
+    color: #ffffff;
+}
+
+
 /* X Light Mode */
 [data-skin="x"][data-theme="light"] {
     --text-main: #0f1419;
@@ -2819,6 +2950,12 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     font-weight: 500;
 }
 
+[data-skin="google"][data-theme="dark"] .toggle-btn.active {
+    background: #4285f4;
+    color: #ffffff;
+    border-color: #4285f4;
+}
+
 /* Ensure Light Mode stays correct */
 [data-skin="google"][data-theme="light"] {
     --accent-color: #1a73e8;
@@ -2871,6 +3008,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #303134;
     border: none;
     color: #e8eaed;
+}
+
+[data-skin="google"][data-theme="dark"] .store-cost,
+[data-skin="google"][data-theme="dark"] .upgrade-cost {
+    color: #4285f4;
 }
 
 [data-skin="google"][data-theme="dark"] h1 {
@@ -3126,14 +3268,14 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 
 [data-skin="apple"][data-theme="light"] .toggle-btn:hover {
     background: #f5f5f7;
-    border-color: #007aff;
+    border-color: #000000;
     /* Apple Blue */
 }
 
 [data-skin="apple"][data-theme="light"] .toggle-btn.active {
-    background: #007aff;
+    background: #000000;
     color: #FFFFFF;
-    border-color: #007aff;
+    border-color: #000000;
 }
 
 
@@ -3421,12 +3563,12 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 /* Apple Light */
 [data-skin="apple"][data-theme="light"] .store-cost,
 [data-skin="apple"][data-theme="light"] .upgrade-cost {
-    color: #1d1d1f;
+    color: #000000;
 }
 
 [data-skin="apple"][data-theme="light"] .affordable .store-cost,
 [data-skin="apple"][data-theme="light"] .affordable .upgrade-cost {
-    color: #007aff;
+    color: #000000;
 }
 
 /* Apple Blue */

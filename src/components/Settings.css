@@ -246,51 +246,52 @@
 }
 
 [data-theme="light"] .settings-modal {
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] .settings-header {
-    border-bottom-color: rgba(0, 0, 0, 0.1);
+    border-bottom-color: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] .close-button {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.1);
-    color: #333;
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a1a;
 }
 
 [data-theme="light"] .close-button:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] .settings-section {
-    background: rgba(0, 0, 0, 0.03);
-    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] .settings-section h3 {
-    color: #333;
+    color: #1a1a1a;
 }
 
 [data-theme="light"] .settings-section p {
-    color: #666;
+    color: #555;
 }
 
 [data-theme="light"] .theme-button {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.1);
-    color: #333;
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #1a1a1a;
 }
 
 [data-theme="light"] .theme-button:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] .theme-button.active {
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(0, 0, 0, 0.4);
-    color: #333;
+    background: rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.3);
+    color: #1a1a1a;
     opacity: 1;
 }
 

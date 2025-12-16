@@ -48,7 +48,7 @@ const FallingCookies = ({ cps, skin, customImage, theme }) => {
                 if (skin === 'amongus') {
                     const variantName = `cookie${cookie.variant > 1 ? cookie.variant : ''}.png`;
                     displayImg = getSkinAsset(skin, variantName);
-                } else if ((skin === 'genshin' || skin === 'minecraft') && customImage) {
+                } else if ((skin === 'genshin' || skin === 'minecraft' || skin === 'duolingo') && customImage) {
                     displayImg = customImage;
                 } else if ((skin === 'apple' || skin === 'x') && theme === 'light') {
                     displayImg = getSkinAsset(skin, 'cookie2.png');
