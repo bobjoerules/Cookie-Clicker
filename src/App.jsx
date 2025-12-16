@@ -246,7 +246,7 @@ function App() {
       document.head.appendChild(twitterDesc);
     }
     twitterDesc.content = description;
-  }, [skin, genshinCookieIndex, minecraftCookieIndex]);
+  }, [skin, genshinCookieIndex, minecraftCookieIndex, amongUsCookieIndex]);
 
   useEffect(() => {
     if (skin === 'amongus') {
