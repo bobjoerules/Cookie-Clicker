@@ -211,6 +211,14 @@ export const UPGRADES = [
         icon: '☕'
     },
     {
+        id: 'goldenCookie',
+        name: 'Golden Cookie',
+        cost: 100000,
+        multiplier: 1,
+        description: 'Golden cookies will randomly appear. Click them for a huge bonus!',
+        icon: '🪙'
+    },
+    {
         id: 'singularityCursor',
         name: 'Singularity Mouse',
         cost: 250000000,

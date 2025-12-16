@@ -6,6 +6,7 @@ import FallingCookies from './components/FallingCookies';
 import Achievements from './components/Achievements';
 import AchievementNotification from './components/AchievementNotification';
 import Settings from './components/Settings';
+import GoldenCookie from './components/GoldenCookie';
 import { BUILDINGS } from './data/buildings';
 import { UPGRADES } from './data/upgrades';
 import { ACHIEVEMENTS } from './data/achievements';
@@ -106,6 +107,9 @@ function App() {
   const [genshinCookieIndex, setGenshinCookieIndex] = useState(1);
   const [minecraftCookieIndex, setMinecraftCookieIndex] = useState(1);
   const [duolingoCookieIndex, setDuolingoCookieIndex] = useState(1);
+  const [goldenCookieVisible, setGoldenCookieVisible] = useState(false);
+  const [goldenCookieKey, setGoldenCookieKey] = useState(0);
+
 
   useEffect(() => {
     const path = window.location.pathname.slice(1).toLowerCase();
@@ -443,6 +447,52 @@ function App() {
     }, 100);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!upgradesOwned.includes('goldenCookie')) return;
+
+    const spawnGoldenCookie = () => {
+      setGoldenCookieVisible(true);
+      setGoldenCookieKey(prev => prev + 1);
+    };
+
+    const randomDelay = () => Math.random() * 60000 + 30000;
+
+    let timeoutId;
+    const scheduleNext = () => {
+      const delay = randomDelay();
+      timeoutId = setTimeout(() => {
+        spawnGoldenCookie();
+        scheduleNext();
+      }, delay);
+    };
+
+    scheduleNext();
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [upgradesOwned]);
+
+  const handleGoldenCookieCollect = () => {
+    const bonus = Math.max(cookies * 0.1, cps * 60);
+    setCookies(prev => prev + bonus);
+    setCookiesEarned(prev => prev + bonus);
+    setGoldenCookieVisible(false);
+
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const newText = {
+      id: `golden-${Date.now()}`,
+      timestamp: Date.now(),
+      value: `+${Math.floor(bonus).toLocaleString()} 🪙`,
+      x: centerX,
+      y: centerY,
+      dx: 0
+    };
+    setFloatingTexts(prev => [...prev, newText]);
+  };
+
   const getClickMultiplier = () => {
     let multiplier = 1;
     upgradesOwned.forEach((upgradeId) => {
@@ -658,6 +708,13 @@ function App() {
         theme={theme}
       /><FloatingText texts={floatingTexts} />
       <AchievementNotification achievement={currentAchievement} skin={skin} currencyName={currencyName} customImage={currentCustomImage} />
+      {goldenCookieVisible && (
+        <GoldenCookie
+          key={goldenCookieKey}
+          onCollect={handleGoldenCookieCollect}
+          skin={skin}
+        />
+      )}
       <Settings
         isOpen={settingsOpen}
         onClose={() => setSettingsOpen(false)}

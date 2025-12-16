@@ -1,0 +1,56 @@
+.golden-cookie {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 9999;
+    animation: goldenPulse 1s ease-in-out infinite, goldenAppear 0.5s ease-out;
+    transition: opacity 2s ease-out;
+    opacity: 1;
+}
+
+.golden-cookie.fading {
+    opacity: 0;
+}
+
+.golden-cookie img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+    pointer-events: none;
+}
+
+.golden-cookie:hover {
+    transform: scale(1.1);
+}
+
+.golden-cookie:active {
+    transform: scale(0.95);
+}
+
+@keyframes goldenPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+    }
+
+    50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1));
+    }
+}
+
+@keyframes goldenAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+    }
+}
