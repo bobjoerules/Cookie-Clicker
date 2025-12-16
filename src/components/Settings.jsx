@@ -122,7 +122,9 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                             {renderSkinButton('youtube', 'YouTube', '▶️')}
                             {renderSkinButton('instagram', 'Instagram', '📷')}
                             {renderSkinButton('tiktok', 'TikTok', '🎵')}
+                            {renderSkinButton('tiktok', 'TikTok', '🎵')}
                             {renderSkinButton('twitch', 'Twitch', '👾')}
+                            {renderSkinButton('netflix', 'Netflix', '🍿')}
                             {renderSkinButton('miku', 'Miku', '🎤')}
                             {renderSkinButton('discord', 'Discord', '💬')}
                             {renderSkinButton('apple', 'Apple', '🍎')}

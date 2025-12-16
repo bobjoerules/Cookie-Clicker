@@ -1511,3 +1511,69 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #5865F2;
     color: white;
 }
+/* Netflix Theme */
+[data-skin="netflix"] {
+    --primary-gradient: linear-gradient(180deg, #E50914 0%, #B20710 100%);
+    --accent-color: #E50914;
+    --secondary-color: #FFFFFF;
+    --bg-dark: #141414;
+    --bg-panel: rgba(20, 20, 20, 0.95);
+    --glass-border: #333333;
+}
+
+[data-skin="netflix"] .app-container {
+    background: #141414;
+}
+
+[data-skin="netflix"] h1 {
+    color: #E50914;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: none;
+    -webkit-text-fill-color: #E50914;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+[data-skin="netflix"] .glass-panel {
+    background: rgba(0, 0, 0, 0.75);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-skin="netflix"] .store-item,
+[data-skin="netflix"] .upgrade-item {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 2px;
+    color: #fff;
+}
+
+[data-skin="netflix"] .store-item:hover,
+[data-skin="netflix"] .upgrade-item:hover {
+    background: #2a2a2a;
+    border-color: #E50914;
+}
+
+[data-skin="netflix"] .toggle-btn {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+[data-skin="netflix"] .toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-skin="netflix"] .toggle-btn.active {
+    background: #E50914;
+    border-color: #E50914;
+    color: #fff;
+    font-weight: bold;
+}
+
+[data-skin="netflix"] .big-cookie img {
+    filter: drop-shadow(0 0 20px rgba(229, 9, 20, 0.3));
+}

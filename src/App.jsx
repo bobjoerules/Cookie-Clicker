@@ -94,7 +94,7 @@ function App() {
 
   useEffect(() => {
     const path = window.location.pathname.slice(1).toLowerCase();
-    const validSkins = ['default', 'fortnite', 'genshin', 'minecraft', 'amongus', 'pokemon', 'cyberpunk', 'zelda', 'youtube', 'instagram', 'tiktok', 'twitch'];
+    const validSkins = ['default', 'fortnite', 'genshin', 'minecraft', 'amongus', 'pokemon', 'cyberpunk', 'zelda', 'youtube', 'instagram', 'tiktok', 'twitch', 'netflix'];
 
     if (path && validSkins.includes(path)) {
       handleSkinChange(path);
@@ -172,6 +172,7 @@ function App() {
       instagram: 'Instagram',
       tiktok: 'TikTok',
       twitch: 'Twitch',
+      netflix: 'Netflix',
       pokemon: 'Pokémon',
       cyberpunk: 'Cyberpunk',
       zelda: 'Zelda',
@@ -205,6 +206,8 @@ function App() {
       instagram: 'Collect Likes and build your following! Cookie Clicker meets Instagram.',
       tiktok: 'Get Likes and go viral! Cookie Clicker with a TikTok vibe.',
       twitch: 'Earn Bits and build your streaming empire! Cookie Clicker for streamers.',
+      twitch: 'Earn Bits and build your streaming empire! Cookie Clicker for streamers.',
+      netflix: 'Watch shows and chill! Cookie Clicker with a Netflix theme.',
       miku: 'Create songs and become a virtual idol! Cookie Clicker with a Hatsune Miku theme.',
       discord: 'Send messages and build your server! Cookie Clicker for Discord mods.',
       apple: 'Earn revenue and build your ecosystem! Cookie Clicker with an Apple aesthetic.',
@@ -544,6 +547,7 @@ function App() {
       instagram: 'Likes',
       tiktok: 'Likes',
       twitch: 'Bits',
+      netflix: 'Shows',
       miku: 'Leeks',
       discord: 'Messages',
       apple: 'Devices',
