@@ -81,7 +81,7 @@ export const ACHIEVEMENTS = [
         name: 'Speed Clicker',
         description: 'Click the cookie 10,000 times.',
         condition: (state) => state.clicks >= 10000,
-        icon: '⚡'
+        icon: '🚀'
     },
     {
         id: 'worldFamousBakery',

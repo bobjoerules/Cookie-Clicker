@@ -30,6 +30,22 @@ const Achievements = ({ unlocked, onHover, onMove, onLeave, skin, currencyName, 
                                             src={customImage || getSkinAsset(skin, 'cookie.png')}
                                             alt="cookie"
                                         />
+                                    ) : achievement.icon === '👑' && getSkinAsset(skin, 'crown.png') ? (
+                                        <div className="custom-icon-wrapper" style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <img
+                                                src={getSkinAsset(skin, 'crown.png')}
+                                                alt="crown"
+                                                style={{ width: '24px', height: '24px', objectFit: 'contain' }}
+                                            />
+                                        </div>
+                                    ) : achievement.icon === '🍞' && getSkinAsset(skin, 'bread.png') ? (
+                                        <div className="custom-icon-wrapper" style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <img
+                                                src={getSkinAsset(skin, 'bread.png')}
+                                                alt="bread"
+                                                style={{ width: '24px', height: '24px', objectFit: 'contain' }}
+                                            />
+                                        </div>
                                     ) : (
                                         achievement.icon
                                     )

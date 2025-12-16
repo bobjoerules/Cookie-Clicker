@@ -530,6 +530,8 @@ function App() {
   const currencyName = getCurrencyName(skin);
   const isCentered = !showStats && !showStore;
   const customBackground = getSkinAsset(skin, 'background.png');
+  const chocolateImage = getSkinAsset(skin, 'chocolate.png');
+  const milkImage = getSkinAsset(skin, 'milk.png');
   const [mobileTab, setMobileTab] = useState('game');
 
   const getCustomImage = () => {
@@ -647,7 +649,15 @@ function App() {
               }}
               title="Plain Milk"
             >
-              🥛
+              {milkImage ? (
+                <img
+                  src={milkImage}
+                  alt="Milk"
+                  style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
+                />
+              ) : (
+                '🥛'
+              )}
             </button>
             {upgradesOwned.includes('chocolateMilk') && (
               <button
@@ -662,7 +672,15 @@ function App() {
                 }}
                 title="Chocolate Milk"
               >
-                🍫
+                {chocolateImage ? (
+                  <img
+                    src={chocolateImage}
+                    alt="Chocolate"
+                    style={{ width: '24px', height: '24px', objectFit: 'contain', verticalAlign: 'middle' }}
+                  />
+                ) : (
+                  '🍫'
+                )}
               </button>
             )}
             {upgradesOwned.includes('strawberryMilk') && (
