@@ -81,7 +81,6 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
 
     return (
         <div className="store-container">
-            { }
             <div className="upgrades-section">
                 <h3>Upgrades</h3>
                 <div className="upgrades-list">
@@ -151,7 +150,6 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
                     })}
                 </div>
             </div>
-            { }
             <div className="store-controls-container">
                 <h3>Production</h3>
                 <div className="store-controls-wrapper">

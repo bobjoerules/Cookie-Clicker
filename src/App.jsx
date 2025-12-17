@@ -583,7 +583,6 @@ function App() {
     const secs = Math.floor(seconds % 60);
     return `${hours}h ${minutes}m ${secs}s`;
   };
-
   const handleReset = () => {
     localStorage.removeItem('cookieClickerSave');
     setCookies(0);
@@ -728,7 +727,6 @@ function App() {
         showMilk={showMilk}
         onToggleMilk={() => setShowMilk(!showMilk)}
       />
-      { }
       <div className={`section-toggles ${mobileTab !== 'game' ? 'mobile-hide' : ''}`} style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button className="toggle-btn" onClick={() => setSettingsOpen(true)} title="Settings">
@@ -888,11 +886,9 @@ function App() {
           </div>
         )}
       </div>
-      { }
       <section className={`cookie-section ${mobileTab !== 'game' ? 'mobile-hide' : ''}`}>
         <h1>{formatNumber(cookies)} {currencyName}</h1>
         <p>{formatCPS(cps)} per second</p>
-        { }
         <div className="cookie-container">
           <BigCookie
             onCookieClick={handleCookieClick}
@@ -901,8 +897,6 @@ function App() {
           />
         </div>
       </section>
-      { }
-      { }
       {
         showMilk && upgradesOwned.includes('milkSplash') && (
           <>
@@ -936,7 +930,6 @@ function App() {
           </>
         )
       }
-      { }
       {
         !isCentered && (
           <div className={`right-column ${mobileTab === 'game' ? 'mobile-hide' : ''}`}>
@@ -996,7 +989,6 @@ function App() {
           </div>
         )
       }
-      { }
       {
         hoveredAchievement && (
           <div
@@ -1012,8 +1004,6 @@ function App() {
           </div>
         )
       }
-
-      {/* Mobile Navigation */}
       <div className="mobile-nav">
         <button
           className={`mobile-nav-btn ${mobileTab === 'game' ? 'active' : ''}`}

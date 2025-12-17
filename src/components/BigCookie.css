@@ -6,14 +6,17 @@
     transition: transform 0.1s ease;
     line-height: 0;
 }
+
 .big-cookie-wrapper:active {
     transform: scale(1.05);
 }
+
 .big-cookie {
     position: relative;
     z-index: 2;
     transition: transform 0.1s ease, filter 0.2s ease;
 }
+
 .big-cookie img {
     width: 250px;
     height: 250px;
@@ -22,17 +25,22 @@
     transition: filter 0.2s ease;
     pointer-events: auto;
 }
+
 .big-cookie:hover img {
     filter: drop-shadow(0 15px 40px rgba(255, 204, 0, 0.5));
 }
+
 .big-cookie.clicking {
     animation: bounce 0.1s ease;
 }
+
 @keyframes bounce {
+
     0%,
     100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }

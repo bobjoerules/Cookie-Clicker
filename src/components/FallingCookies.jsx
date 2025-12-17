@@ -60,7 +60,6 @@ const FallingCookies = ({ cps, skin, customImage, theme }) => {
                 }
 
                 if (!displayImg) {
-                    // This covers most cases, including Apple/X dark mode
                     displayImg = customImage || getSkinAsset(skin, 'cookie.png');
                 }
 

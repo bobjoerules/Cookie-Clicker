@@ -56,15 +56,11 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
     };
     const renderSkinButton = (skinId, label, defaultEmoji) => {
         let cookieFile = 'cookie.png';
-
-        // For Apple, X, and PlayStation themes, use the opposite version based on current theme
         if (skinId === 'apple' || skinId === 'x' || skinId === 'playstation') {
-            // Determine actual theme (resolve 'system' to light or dark)
             let actualTheme = currentTheme;
             if (currentTheme === 'system') {
                 actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             }
-            // Use dark logo (cookie2.png) in light mode, light logo (cookie.png) in dark mode
             cookieFile = actualTheme === 'light' ? 'cookie2.png' : 'cookie.png';
         }
 
@@ -120,7 +116,6 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                             </button>
                         </div>
                     </div>
-                    {/* Skin selection */}
                     <div className="settings-section">
                         <h3>🎨 Theme</h3>
                         <div className="skin-options">
@@ -154,9 +149,6 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                             {renderSkinButton('linux', 'Linux', '🐧')}
                         </div>
                     </div>
-                    { }
-                    { }
-                    { }
                     <div className="settings-section">
                         <h3>💾 Data Management</h3>
                         <div className="data-buttons">

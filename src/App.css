@@ -477,12 +477,10 @@ html[data-theme="light"] .glass-panel {
     border-top-color: #000;
   }
 
-  /* Center content and fix padding */
   .right-column {
     padding: 15px !important;
   }
 
-  /* Full page stats */
   .stats-section .stats-grid,
   .stats-section.full-height .stats-grid {
     max-height: none !important;
@@ -504,7 +502,6 @@ html[data-theme="light"] .glass-panel {
     min-height: 100%;
   }
 
-  /* Disable selection and image dragging */
   * {
     -webkit-user-select: none;
     user-select: none;
@@ -513,7 +510,6 @@ html[data-theme="light"] .glass-panel {
 
   img {
     pointer-events: auto;
-    /* Ensure clicks still work */
     -webkit-user-drag: none;
   }
 }

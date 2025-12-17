@@ -626,8 +626,6 @@
     box-shadow: none;
 }
 
-
-/* Miku Theme */
 [data-skin="miku"] {
     --primary-gradient: linear-gradient(135deg, #39C5BB 0%, #2a9ba0 100%);
     --accent-color: #e5097f;
@@ -654,7 +652,6 @@
     color: #39C5BB;
 }
 
-/* Discord Theme */
 [data-skin="discord"] {
     --primary-gradient: linear-gradient(135deg, #5865F2 0%, #404EED 100%);
     --accent-color: #5865F2;
@@ -701,7 +698,6 @@
     color: #5865F2;
 }
 
-/* Apple Theme */
 [data-skin="apple"] {
     --primary-gradient: linear-gradient(135deg, #f5f5f7 0%, #d2d2d7 100%);
     --accent-color: #ffffff;
@@ -734,7 +730,6 @@
     color: #ffffff;
 }
 
-/* Android Theme */
 [data-skin="android"] {
     --primary-gradient: linear-gradient(135deg, #3DDC84 0%, #35c759 100%);
     --accent-color: #3DDC84;
@@ -760,7 +755,6 @@
     color: #3DDC84;
 }
 
-/* Windows Theme */
 [data-skin="windows"] {
     --primary-gradient: linear-gradient(135deg, #0078D7 0%, #0063B1 100%);
     --accent-color: #0078D7;
@@ -784,10 +778,8 @@
 
 [data-skin="windows"] .glass-panel {
     border-radius: 4px;
-    /* Square Windows look */
     -webkit-backdrop-filter: blur(20px) saturate(125%);
     backdrop-filter: blur(20px) saturate(125%);
-    /* Mica effectish */
 }
 
 [data-skin="windows"] .store-cost,
@@ -795,11 +787,9 @@
     color: #0078D7;
 }
 
-/* Linux Theme */
 [data-skin="linux"] {
     --primary-gradient: linear-gradient(135deg, #FCC624 0%, #E6B520 100%);
     --accent-color: #FCC624;
-    /* Tux beak yellow */
     --secondary-color: #FFFFFF;
     --bg-dark: #000000;
     --bg-panel: rgba(20, 20, 20, 0.95);
@@ -895,8 +885,6 @@
     border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
-
-
 [data-skin="minecraft"] .toggle-btn {
     background: #8b8b8b;
     border: 2px solid #373737;
@@ -946,8 +934,6 @@
     height: 48px !important;
 }
 
-
-
 [data-skin="pokemon"] .toggle-btn {
     background: #FFDE00;
     border: 2px solid #3B4CCA;
@@ -976,8 +962,6 @@
     height: 48px !important;
 }
 
-
-
 [data-skin="cyberpunk"] .toggle-btn {
     background: rgba(0, 240, 255, 0.1);
     border: 1px solid #00f0ff;
@@ -1002,8 +986,6 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-
-
 [data-skin="zelda"] .toggle-btn {
     background: rgba(31, 68, 30, 0.6);
     border: 1px solid #C4A347;
@@ -1027,8 +1009,6 @@
     border: 2px solid #C4A347;
     background: rgba(31, 68, 30, 0.3);
 }
-
-
 
 [data-skin="youtube"] {
     --primary-gradient: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
@@ -1104,9 +1084,6 @@
     border: 2px solid #FF0000;
 }
 
-
-
-
 [data-skin="youtube"][data-theme="dark"] .store-item.affordable,
 [data-skin="youtube"][data-theme="dark"] .upgrade-item.affordable {
     background: rgba(255, 0, 0, 0.15);
@@ -1141,9 +1118,6 @@
     border: 1px solid #FF0000;
 }
 
-/* Subway Surfers block removed */
-
-/* Instagram */
 [data-skin="instagram"] {
     --primary-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     --accent-color: #bc1888;
@@ -1213,7 +1187,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="instagram"][data-theme="dark"] .store-cost,
 [data-skin="instagram"][data-theme="dark"] .upgrade-cost {
     color: #e1306c;
-    /* Instagram pinkish color */
 }
 
 [data-skin="instagram"] .store-item.affordable,
@@ -1227,7 +1200,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #fafafa;
 }
 
-/* TikTok */
 [data-skin="tiktok"] {
     --primary-gradient: linear-gradient(90deg, #00f2ea 0%, #ff0050 100%);
     --accent-color: #00f2ea;
@@ -1283,7 +1255,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border: 1px solid rgba(22, 24, 35, 0.12);
 }
 
-/* Twitch */
 [data-skin="twitch"] {
     --primary-gradient: linear-gradient(135deg, #9146FF 0%, #F0F0FF 100%);
     --accent-color: #9146FF;
@@ -1306,8 +1277,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="twitch"] .big-cookie:hover img {
     filter: drop-shadow(0 15px 40px rgba(145, 70, 255, 0.5));
 }
-
-
 
 [data-skin="twitch"] h1 {
     color: #bf94ff;
@@ -1337,7 +1306,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="twitch"] .store-item.affordable,
 [data-skin="twitch"] .upgrade-item.affordable {
     background: #2b2b30;
-    /* a bit lighter background for items */
     border-left: 4px solid #9146FF;
 }
 
@@ -1352,7 +1320,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-left: 4px solid #9146FF;
 }
 
-/* Instagram Toggle Buttons */
 [data-skin="instagram"] .toggle-btn {
     background: rgba(188, 24, 136, 0.15);
     border: 1px solid #bc1888;
@@ -1371,7 +1338,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 0 15px rgba(188, 24, 136, 0.4);
 }
 
-/* TikTok Toggle Buttons */
 [data-skin="tiktok"] .toggle-btn {
     background: rgba(0, 242, 234, 0.1);
     border: 1px solid rgba(0, 242, 234, 0.5);
@@ -1392,7 +1358,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 2px 2px 0 #ff0050, -2px -2px 0 #00f2ea;
 }
 
-/* Twitch Toggle Buttons */
 [data-skin="twitch"] .toggle-btn {
     background: rgba(145, 70, 255, 0.15);
     border: 1px solid #9146FF;
@@ -1412,7 +1377,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 0 15px rgba(145, 70, 255, 0.4);
 }
 
-/* Big Cookie Glow Overrides */
 [data-skin="fortnite"] .big-cookie img {
     filter: drop-shadow(0 10px 30px rgba(0, 217, 255, 0.4));
 }
@@ -1503,7 +1467,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     filter: drop-shadow(0 15px 40px rgba(252, 198, 36, 0.6));
 }
 
-/* Apple Toggle Buttons */
 [data-skin="apple"] .toggle-btn {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1540,12 +1503,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #000000;
 }
 
-/* Android Toggle Buttons */
 [data-skin="android"] .toggle-btn {
     background: rgba(61, 220, 132, 0.1);
     border: 1px solid transparent;
     border-radius: 20px;
-    /* Pill shape */
     color: #3DDC84;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
@@ -1562,12 +1523,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 4px 12px rgba(61, 220, 132, 0.3);
 }
 
-/* Windows Toggle Buttons */
 [data-skin="windows"] .toggle-btn {
     background: rgba(0, 120, 215, 0.1);
     border: 2px solid #0078D7;
     border-radius: 2px;
-    /* Very slight roundness or 0 */
     color: #0078D7;
     text-transform: uppercase;
     font-size: 0.9em;
@@ -1586,7 +1545,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 0 15px rgba(0, 120, 215, 0.4);
 }
 
-/* Linux Toggle Buttons */
 [data-skin="linux"] .toggle-btn {
     background: #1a1a1a;
     border: 1px solid #333;
@@ -1597,7 +1555,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     min-width: 44px;
     height: 44px;
     padding: 0 2px 0 0;
-    /* Add 2px right padding to balance 3px left border */
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -1616,7 +1573,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 0 10px rgba(252, 198, 36, 0.3);
 }
 
-/* Miku Toggle Buttons */
 [data-skin="miku"] .toggle-btn {
     background: rgba(57, 197, 187, 0.15);
     border: 1px solid #39C5BB;
@@ -1638,7 +1594,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 0 15px rgba(229, 9, 127, 0.5);
 }
 
-/* Discord Toggle Buttons */
 [data-skin="discord"] .toggle-btn {
     background: #2B2D31;
     border: none;
@@ -1657,7 +1612,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: white;
 }
 
-/* Netflix Theme */
 [data-skin="netflix"] {
     --primary-gradient: linear-gradient(180deg, #E50914 0%, #B20710 100%);
     --accent-color: #E50914;
@@ -1729,7 +1683,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     filter: drop-shadow(0 0 20px rgba(229, 9, 20, 0.3));
 }
 
-/* Reddit Theme */
 [data-skin="reddit"] {
     --primary-gradient: linear-gradient(135deg, #FF4500 0%, #FF8700 100%);
     --accent-color: #FF4500;
@@ -1796,9 +1749,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #F6F7F8;
 }
 
-/* Fix similar Settings Themes */
-
-/* Miku - Teal Glass */
 [data-skin="miku"] .glass-panel {
     background: rgba(57, 197, 187, 0.1);
     border: 2px solid #39C5BB;
@@ -1810,7 +1760,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #39C5BB;
 }
 
-/* Apple - Frosted Light/Dark Glass */
 [data-skin="apple"] .glass-panel {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1823,12 +1772,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     font-weight: 500;
 }
 
-/* Android - Material You (Greenish) */
 [data-skin="android"] .glass-panel {
     background: #001e0a;
     border: none;
     border-radius: 28px;
-    /* High radius for Material You */
     box-shadow: none;
     outline: 4px solid #355e3b;
     color: #c4eed0;
@@ -1838,13 +1785,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #78db93;
 }
 
-/* Windows - Mica/Acrylic */
 [data-skin="windows"] .glass-panel {
     background: rgba(32, 32, 32, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    /* Subtle border */
     border-radius: 6px;
-    /* Slightly rounded, almost square */
     backdrop-filter: blur(50px);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
 }
@@ -1854,7 +1798,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 
-/* Reddit Dark Mode */
 [data-skin="reddit"][data-theme="dark"] .app-container {
     background: #030303;
 }
@@ -1905,7 +1848,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #FF4500;
 }
 
-/* Fix Reddit Dark Mode Text Visibility */
 [data-skin="reddit"][data-theme="dark"] {
     --text-main: #D7DADC;
 }
@@ -1914,7 +1856,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #D7DADC;
 }
 
-/* Spotify Theme */
 [data-skin="spotify"] {
     --primary-gradient: linear-gradient(135deg, #1DB954 0%, #191414 100%);
     --accent-color: #1DB954;
@@ -1975,7 +1916,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #1DB954;
 }
 
-/* Snapchat Theme */
 [data-skin="snapchat"] {
     --primary-gradient: linear-gradient(135deg, #FFFC00 0%, #FFFFFF 100%);
     --accent-color: #FFFC00;
@@ -2020,7 +1960,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-radius: 50%;
 }
 
-/* Duolingo Theme */
 [data-skin="duolingo"] {
     --primary-gradient: linear-gradient(135deg, #58CC02 0%, #2B70C9 100%);
     --accent-color: #58CC02;
@@ -2066,7 +2005,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     margin-top: 4px;
 }
 
-/* Steam Theme */
 [data-skin="steam"] {
     --primary-gradient: linear-gradient(135deg, #171a21 0%, #1b2838 100%);
     --accent-color: #66c0f4;
@@ -2112,7 +2050,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #66c0f4;
 }
 
-/* Xbox Theme */
 [data-skin="xbox"] {
     --primary-gradient: linear-gradient(135deg, #107C10 0%, #3A3A3A 100%);
     --accent-color: #107C10;
@@ -2155,7 +2092,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #107C10;
 }
 
-/* PlayStation Theme */
 [data-skin="playstation"] {
     --primary-gradient: linear-gradient(135deg, #00439C 0%, #0070D1 100%);
     --accent-color: #0070D1;
@@ -2194,7 +2130,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #0070D1;
 }
 
-/* Dark Mode Overrides for light-based themes (Snapchat, Duolingo) */
 [data-skin="snapchat"][data-theme="dark"] .app-container {
     background: #000000;
 }
@@ -2253,8 +2188,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #58CC02;
 }
 
-
-/* Spotify Light Mode */
 [data-skin="spotify"][data-theme="light"] .app-container {
     background: #FFFFFF;
 }
@@ -2289,7 +2222,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #f0f0f0;
 }
 
-/* Snapchat Light Mode (Text Fixes) */
 [data-skin="snapchat"][data-theme="light"] .app-container {
     background: #FFFC00;
 }
@@ -2313,7 +2245,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Xbox Light Mode */
 [data-skin="xbox"][data-theme="light"] .app-container {
     background: #f2f2f2;
 }
@@ -2343,7 +2274,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #e6e6e6;
 }
 
-/* PlayStation Light Mode */
 [data-skin="playstation"][data-theme="light"] .app-container {
     background: #f0f4f9;
     background-image: radial-gradient(circle at top right, #e1efff 0%, #f0f4f9 70%);
@@ -2373,7 +2303,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #0070D1;
 }
 
-/* Steam Light Mode */
 [data-skin="steam"][data-theme="light"] .app-container {
     background: #e3eaef;
 }
@@ -2404,7 +2333,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #66c0f4;
 }
 
-/* Duolingo Light Mode (Text Fixes) */
 [data-skin="duolingo"][data-theme="light"] .app-container {
     background: #FFFFFF;
 }
@@ -2428,8 +2356,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #3C3C3C;
 }
 
-
-/* Fix Text Visibility in Dark Mode for Snapchat and Duolingo */
 [data-skin="snapchat"][data-theme="dark"] p {
     color: #FFFFFF;
 }
@@ -2438,7 +2364,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #FFFFFF;
 }
 
-/* Improved Snapchat Toggle Buttons */
 [data-skin="snapchat"] .toggle-btn {
     background: rgba(0, 0, 0, 0.05);
     border: 2px solid #000;
@@ -2470,7 +2395,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #FFFC00;
 }
 
-/* Improved Duolingo Toggle Buttons */
 [data-skin="duolingo"] .toggle-btn {
     background: #FFFFFF;
     border: 2px solid #E5E5E5;
@@ -2485,19 +2409,15 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #F7F7F7;
     border-color: #D6D6D6;
     transform: translateY(0);
-    /* Reset generic transform */
 }
-
 
 [data-skin="duolingo"] .toggle-btn.active {
     background: #58CC02;
     border-color: #46A302;
-    /* Darker green for depth */
     border-bottom-width: 4px;
     color: #FFFFFF;
     box-shadow: none;
 }
-
 
 [data-skin="duolingo"][data-theme="dark"] .toggle-btn {
     background: #2b2b2b;
@@ -2511,11 +2431,9 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #fff;
 }
 
-/* Improved Spotify Toggle Buttons */
 [data-skin="spotify"] .toggle-btn {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    /* Circular buttons */
     color: #B3B3B3;
     border: none;
     transition: all 0.2s ease;
@@ -2525,14 +2443,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: rgba(255, 255, 255, 0.2);
     color: #FFFFFF;
     transform: scale(1.05);
-    /* Slight grow like Spotify UI */
 }
 
 [data-skin="spotify"] .toggle-btn.active {
     color: #1DB954;
-    /* Spotify Green text */
     background: rgba(255, 255, 255, 0.1);
-    /* Keep dark/transparent bg */
 }
 
 [data-skin="spotify"][data-theme="light"] .toggle-btn {
@@ -2550,16 +2465,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: rgba(0, 0, 0, 0.05);
 }
 
-
-/* Improved Steam Toggle Buttons */
 [data-skin="steam"] .toggle-btn {
     background: linear-gradient(to bottom, #2a475e 5%, #171a21 95%);
     border: 1px solid #4a5c6d;
-    /* Subtle bevel */
     border-radius: 2px;
-    /* Sharp corners */
     color: #66c0f4;
-    /* Steam Blue text */
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -2574,7 +2484,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #66c0f4;
     color: #ffffff;
     box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.5);
-    /* Depressed look */
 }
 
 [data-skin="steam"][data-theme="light"] .toggle-btn {
@@ -2591,13 +2500,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Improved PlayStation Toggle Buttons */
 [data-skin="playstation"] .toggle-btn {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    /* Circular */
     color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(4px);
     transition: all 0.2s ease;
@@ -2605,7 +2511,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 
 [data-skin="playstation"] .toggle-btn:hover {
     background: rgba(0, 112, 209, 0.4);
-    /* PS Blue tint */
     border-color: rgba(255, 255, 255, 0.8);
     color: #fff;
     box-shadow: 0 0 15px rgba(0, 112, 209, 0.3);
@@ -2613,7 +2518,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 
 [data-skin="playstation"] .toggle-btn.active {
     background: #0070D1;
-    /* Solid PS Blue */
     border-color: #0070D1;
     color: white;
     box-shadow: 0 0 20px rgba(0, 112, 209, 0.6);
@@ -2636,13 +2540,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 4px 12px rgba(0, 112, 209, 0.3);
 }
 
-
-/* Fix Steam Toggle Buttons (Revert to Semi-Transparent Square) */
 [data-skin="steam"] .toggle-btn {
     background: rgba(23, 26, 33, 0.6);
     border: 1px solid #4a5c6d;
     border-radius: 2px;
-    /* Sharp corners */
     color: #66c0f4;
     box-shadow: none;
     backdrop-filter: blur(4px);
@@ -2673,13 +2574,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #2a475e;
 }
 
-/* Fix PlayStation Toggle Buttons (Revert to Semi-Transparent Rounded) */
 [data-skin="playstation"] .toggle-btn {
     background: rgba(0, 55, 145, 0.4);
-    /* Dark blue tint */
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
-    /* Rounded rect, not circle */
     color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -2711,7 +2609,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #003791;
 }
 
-/* Google Theme */
 [data-skin="google"] {
     --primary-gradient: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
     --accent-color: #4285F4;
@@ -2774,7 +2671,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     font-weight: 500;
 }
 
-/* Google Light Mode */
 [data-skin="google"][data-theme="light"] {
     --text-main: #202124;
 }
@@ -2787,10 +2683,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #ffffff;
     border: 1px solid #dadce0;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-}
-
-[data-skin="google"][data-theme="light"] h1 {
-    /* Keep the gradient or distinct colors? Gradient works well */
 }
 
 [data-skin="google"][data-theme="light"] .store-item,
@@ -2822,7 +2714,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #4285F4;
 }
 
-/* X (Twitter) Theme */
 [data-skin="x"] {
     --primary-gradient: linear-gradient(135deg, #ffffff 0%, #71767B 100%);
     --accent-color: #ffffff;
@@ -2856,7 +2747,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #000000;
     border: 1px solid #333639;
     border-radius: 16px;
-    /* Pill/round style */
     color: #e7e9ea;
 }
 
@@ -2864,7 +2754,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="x"] .upgrade-item:hover {
     background: #16181c;
     border-color: #1d9bf0;
-    /* Twitter blue hover legacy or white? White fits X better but blue is recognizable */
     border-color: #ffffff;
 }
 
@@ -2872,7 +2761,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #000000;
     border: 1px solid #333639;
     border-radius: 9999px;
-    /* Fully rounded */
     color: #71767b;
     font-weight: bold;
 }
@@ -2893,8 +2781,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #ffffff;
 }
 
-
-/* X Light Mode */
 [data-skin="x"][data-theme="light"] {
     --text-main: #0f1419;
 }
@@ -2943,14 +2829,12 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #000000;
 }
 
-/* Google Dark Mode Refinement (Official Material Dark Colors) */
 [data-skin="google"] {
     --bg-dark: #202124;
     --bg-panel: #303134;
     --glass-border: #5f6368;
     --text-main: #E8EAED;
     --accent-color: #8AB4F8;
-    /* Google Blue 300 for Dark Mode */
 }
 
 [data-skin="google"] .app-container {
@@ -2960,35 +2844,29 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="google"] .store-item,
 [data-skin="google"] .upgrade-item {
     background: #303134;
-    /* Surface color */
     border-color: transparent;
-    /* Google usually doesn't use borders on cards in dark mode, just elevation (lighter color) */
     color: #E8EAED;
 }
 
 [data-skin="google"] .store-item:hover,
 [data-skin="google"] .upgrade-item:hover {
     background: #3c4043;
-    /* Slightly lighter surface for hover */
     border-color: #5f6368;
 }
 
 [data-skin="google"] .glass-panel {
     background: #303134;
     border: none;
-    /* Material Design prefers no borders on dark surfaces */
 }
 
 [data-skin="google"] .toggle-btn {
     background: transparent;
     border: 1px solid #5f6368;
     color: #9AA0A6;
-    /* Medium emphasis text */
 }
 
 [data-skin="google"] .toggle-btn:hover {
     background: rgba(138, 180, 248, 0.08);
-    /* Blue tint on hover */
     color: #E8EAED;
     border-color: #8AB4F8;
 }
@@ -2996,7 +2874,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="google"] .toggle-btn.active {
     background: #8AB4F8;
     color: #202124;
-    /* Dark text on light accent for readability */
     border-color: #8AB4F8;
     font-weight: 500;
 }
@@ -3007,10 +2884,8 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #4285f4;
 }
 
-/* Ensure Light Mode stays correct */
 [data-skin="google"][data-theme="light"] {
     --accent-color: #1a73e8;
-    /* Google Blue 600 */
 }
 
 [data-skin="google"][data-theme="light"] .toggle-btn.active {
@@ -3023,7 +2898,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border: 1px solid #dadce0;
 }
 
-/* Google Dark Mode Background Fix */
 [data-skin="google"] .app-container {
     background-color: #202124 !important;
     background-image: none !important;
@@ -3033,22 +2907,17 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     --bg-dark: #202124;
 }
 
-/* Ensure Store/Upgrade items match Google Card style */
 [data-skin="google"] .store-item,
 [data-skin="google"] .upgrade-item {
     background-color: #303134 !important;
     border: 1px solid #3c4043 !important;
 }
 
-/* --- Fix Google Theme Issues --- */
-
-/* Reset base variables for Google to prevent bleeding */
 [data-skin="google"] {
     --bg-dark: #202124;
     --text-main: #e8eaed;
 }
 
-/* Google Dark Mode - Explicitly target dark theme */
 [data-skin="google"][data-theme="dark"] .app-container {
     background-color: #202124 !important;
     background-image: none !important;
@@ -3067,13 +2936,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 [data-skin="google"][data-theme="dark"] h1 {
-    /* Main title in dark mode - white/light gray */
     color: #e8eaed;
     -webkit-text-fill-color: #e8eaed;
     background: none;
 }
 
-/* Google Light Mode - Explicitly target light theme and fix broken background/text */
 [data-skin="google"][data-theme="light"] .app-container {
     background-color: #FFFFFF !important;
     background-image: none !important;
@@ -3093,15 +2960,12 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 [data-skin="google"][data-theme="light"] h1 {
-    /* Colorful logo for Light Mode */
     background: linear-gradient(to right, #4285F4, #EA4335, #FBBC05, #34A853);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-
-/* --- Fix X (Twitter) Light Mode Cost --- */
 [data-skin="x"][data-theme="light"] .store-cost,
 [data-skin="x"][data-theme="light"] .upgrade-cost {
     color: #000000 !important;
@@ -3111,13 +2975,9 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="x"][data-theme="light"] .store-item.affordable .store-cost,
 [data-skin="x"][data-theme="light"] .upgrade-item.affordable .upgrade-cost {
     color: #1d9bf0 !important;
-    /* Blue cost when affordable? Or just black. Let's stick to black/dark gray standards */
     color: #0f1419 !important;
 }
 
-/* --- Fix Light Mode Themes --- */
-
-/* Discord Light Mode */
 [data-skin="discord"][data-theme="light"] {
     --bg-dark: #FFFFFF;
     --bg-panel: #F2F3F5;
@@ -3151,7 +3011,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #EBEBEB;
 }
 
-/* Apple Light Mode */
 [data-skin="apple"][data-theme="light"] .app-container {
     background: #F5F5F7;
 }
@@ -3177,7 +3036,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
 }
 
-/* Windows Light Mode */
 [data-skin="windows"][data-theme="light"] .app-container {
     background: #F3F3F3;
     background-image: radial-gradient(circle at 100% 100%, #e6f4ff 0%, #F3F3F3 70%);
@@ -3204,7 +3062,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-radius: 4px;
 }
 
-/* Linux Light Mode */
 [data-skin="linux"][data-theme="light"] .app-container {
     background: #E0E0E0;
 }
@@ -3228,23 +3085,16 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #333333;
 }
 
-/* --- Improved Modern Android Theme --- */
-/* Removing the ugly thick borders and using Material 3 style */
-
 [data-skin="android"] {
     --primary-gradient: linear-gradient(135deg, #3DDC84 0%, #35c759 100%);
     --accent-color: #3DDC84;
 }
 
-/* Dark Mode (Default) */
 [data-skin="android"] .glass-panel {
     background: #2D2F31;
-    /* Material Surface */
     border: none;
     border-radius: 24px;
-    /* Modern rounded corners */
     outline: none;
-    /* Removed the ugly green outline */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #E3E3E3;
 }
@@ -3264,10 +3114,8 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="android"] .store-item:hover,
 [data-skin="android"] .upgrade-item:hover {
     background: #383B3E;
-    /* Lighter surface */
 }
 
-/* Light Mode */
 [data-skin="android"][data-theme="light"] .app-container {
     background: #F5F5F5;
 }
@@ -3286,7 +3134,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="android"][data-theme="light"] .store-item,
 [data-skin="android"][data-theme="light"] .upgrade-item {
     background: #EDF2FA;
-    /* Material 3 blue tint surface */
     color: #1F1F1F;
 }
 
@@ -3295,9 +3142,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #E3E3E3;
 }
 
-/* --- Apple Fixes --- */
-
-/* Remove weird shadow in shop items */
 [data-skin="apple"] .store-item,
 [data-skin="apple"] .upgrade-item {
     box-shadow: none !important;
@@ -3306,11 +3150,9 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="apple"][data-theme="light"] .store-item,
 [data-skin="apple"][data-theme="light"] .upgrade-item {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-    /* Smarter, subtle shadow for light mode */
     border-color: #d1d1d6;
 }
 
-/* Apple Toggle Buttons - Light Mode Color Fix */
 [data-skin="apple"][data-theme="light"] .toggle-btn {
     background: #FFFFFF;
     border: 1px solid #d1d1d6;
@@ -3320,7 +3162,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="apple"][data-theme="light"] .toggle-btn:hover {
     background: #f5f5f7;
     border-color: #000000;
-    /* Apple Blue */
 }
 
 [data-skin="apple"][data-theme="light"] .toggle-btn.active {
@@ -3330,45 +3171,33 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 
-/* --- Google Price Color Fix (Light Mode) --- */
-/* Fixes the price color in the shop for Google Light Mode */
 [data-skin="google"][data-theme="light"] .store-cost,
 [data-skin="google"][data-theme="light"] .upgrade-cost {
     color: #202124 !important;
-    /* Dark Gray to match text */
     font-weight: 600;
 }
 
 [data-skin="google"][data-theme="light"] .store-item.affordable .store-cost,
 [data-skin="google"][data-theme="light"] .upgrade-item.affordable .upgrade-cost {
     color: #1a73e8 !important;
-    /* Google Blue when affordable */
 }
 
-
-/* --- Fix Apple Shadow Issues --- */
-/* Remove external drop shadows that might look cut off in scrolling containers */
 [data-skin="apple"] .glass-panel,
 [data-skin="apple"][data-theme="light"] .glass-panel {
     box-shadow: none !important;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    /* Use border for definition instead */
 }
 
-/* Ensure nice separation without shadows */
 [data-skin="apple"][data-theme="light"] .store-item,
 [data-skin="apple"][data-theme="light"] .upgrade-item {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-    /* Keep item shadows very subtle */
 }
 
 
-/* --- Fix Discord Light Mode Toggle Buttons --- */
 [data-skin="discord"][data-theme="light"] .toggle-btn {
     background: #FFFFFF;
     border: 1px solid #E3E5E8;
     color: #4F545C;
-    /* Discrete gray text */
 }
 
 [data-skin="discord"][data-theme="light"] .toggle-btn:hover {
@@ -3378,12 +3207,10 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 
 [data-skin="discord"][data-theme="light"] .toggle-btn.active {
     background: #5865F2;
-    /* Discord Blurple */
     color: #FFFFFF;
     border-color: #5865F2;
 }
 
-/* Fix Discord Light Mode Achievement Tooltip */
 [data-skin="discord"][data-theme="light"] .achievement-tooltip {
     background: #FFFFFF;
     color: #060607;
@@ -3391,8 +3218,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* --- GLOBAL LIGHT MODE ACHIEVEMENT TOOLTIP FIX --- */
-/* Sets a sane default for all themes in Light Mode */
 [data-theme="light"] .achievement-tooltip {
     background: #FFFFFF;
     color: #333333;
@@ -3400,9 +3225,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Specific Light Mode Tooltip Overrides for Theme Consistency */
-
-/* Gaming Themes */
 [data-skin="xbox"][data-theme="light"] .achievement-tooltip {
     border-color: #107C10;
     color: #107C10;
@@ -3458,7 +3280,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-radius: 10px;
 }
 
-/* Social/App Themes */
 [data-skin="discord"][data-theme="light"] .achievement-tooltip {
     border-color: #5865F2;
 }
@@ -3514,7 +3335,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #202124;
 }
 
-/* OS/Tech Themes */
 [data-skin="android"][data-theme="light"] .achievement-tooltip {
     color: #3DDC84;
     border-color: #3DDC84;
@@ -3541,7 +3361,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 
-/* --- FIX LINUX LIGHT MODE --- */
 [data-skin="linux"][data-theme="light"] .toggle-btn {
     background: #FFFFFF;
     border: 1px solid #333333;
@@ -3551,7 +3370,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 
 [data-skin="linux"][data-theme="light"] .toggle-btn:hover {
     background: #FCC624;
-    /* Tux Yellow */
     color: #000000;
 }
 
@@ -3561,15 +3379,12 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #000000;
 }
 
-/* --- FIX GOOGLE LIGHT MODE SHOP BACKGROUNDS --- */
-/* Use specificity and !important to override the previous heavy dark mode rule */
 [data-skin="google"][data-theme="light"] .store-item,
 [data-skin="google"][data-theme="light"] .upgrade-item {
     background-color: #FFFFFF !important;
     border: 1px solid #dadce0 !important;
     color: #202124 !important;
     box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    /* Google Card Shadow */
 }
 
 [data-skin="google"][data-theme="light"] .store-item:hover,
@@ -3579,26 +3394,17 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
 }
 
-/* --- UNIVERSAL SHOP PRICE FIX FOR LIGHT MODE --- */
-/* Ensure all themes in light mode have visible price text */
-
-/* Default fallback for any light theme */
 [data-theme="light"] .store-cost,
 [data-theme="light"] .upgrade-cost {
     color: #333333;
-    /* Dark gray default */
     font-weight: bold;
 }
 
 [data-theme="light"] .store-item.affordable .store-cost,
 [data-theme="light"] .upgrade-item.affordable .upgrade-cost {
     color: #4CAF50;
-    /* Standard Green for affordable */
 }
 
-/* --- THEME SPECIFIC OVERRIDES --- */
-
-/* Discord Light */
 [data-skin="discord"][data-theme="light"] .store-cost,
 [data-skin="discord"][data-theme="light"] .upgrade-cost {
     color: #060607;
@@ -3609,9 +3415,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #5865F2;
 }
 
-/* Blurple */
-
-/* Apple Light */
 [data-skin="apple"][data-theme="light"] .store-cost,
 [data-skin="apple"][data-theme="light"] .upgrade-cost {
     color: #000000;
@@ -3622,9 +3425,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #000000;
 }
 
-/* Apple Blue */
-
-/* Windows Light */
 [data-skin="windows"][data-theme="light"] .store-cost,
 [data-skin="windows"][data-theme="light"] .upgrade-cost {
     color: #000000;
@@ -3635,9 +3435,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #0078D4;
 }
 
-/* Windows Blue */
-
-/* Linux Light */
 [data-skin="linux"][data-theme="light"] .store-cost,
 [data-skin="linux"][data-theme="light"] .upgrade-cost {
     color: #333333;
@@ -3648,9 +3445,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #E95420;
 }
 
-/* Ubuntu Orange */
-
-/* Spotify Light */
 [data-skin="spotify"][data-theme="light"] .store-cost,
 [data-skin="spotify"][data-theme="light"] .upgrade-cost {
     color: #191414;
@@ -3661,9 +3455,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #1DB954;
 }
 
-/* Spotify Green */
-
-/* Snapchat Light */
 [data-skin="snapchat"][data-theme="light"] .store-cost,
 [data-skin="snapchat"][data-theme="light"] .upgrade-cost {
     color: #000000;
@@ -3675,9 +3466,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     text-decoration: underline;
 }
 
-/* Snap Black */
-
-/* Xbox Light */
 [data-skin="xbox"][data-theme="light"] .store-cost,
 [data-skin="xbox"][data-theme="light"] .upgrade-cost {
     color: #107C10;
@@ -3689,7 +3477,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     text-shadow: 0 0 1px rgba(16, 124, 16, 0.5);
 }
 
-/* PlayStation Light */
 [data-skin="playstation"][data-theme="light"] .store-cost,
 [data-skin="playstation"][data-theme="light"] .upgrade-cost {
     color: #003791;
@@ -3700,7 +3487,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #0070D1;
 }
 
-/* Steam Light */
 [data-skin="steam"][data-theme="light"] .store-cost,
 [data-skin="steam"][data-theme="light"] .upgrade-cost {
     color: #2a475e;
@@ -3711,7 +3497,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #66c0f4;
 }
 
-/* Duolingo Light */
 [data-skin="duolingo"][data-theme="light"] .store-cost,
 [data-skin="duolingo"][data-theme="light"] .upgrade-cost {
     color: #4B4B4B;
@@ -3722,7 +3507,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #58CC02;
 }
 
-/* Reddit Light */
 [data-skin="reddit"][data-theme="light"] .store-cost,
 [data-skin="reddit"][data-theme="light"] .upgrade-cost {
     color: #1c1c1c;
@@ -3733,7 +3517,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #FF4500;
 }
 
-/* Twitch Light */
 [data-skin="twitch"][data-theme="light"] .store-cost,
 [data-skin="twitch"][data-theme="light"] .upgrade-cost {
     color: #000000;
@@ -3744,7 +3527,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #9146FF;
 }
 
-/* YouTube Light */
 [data-skin="youtube"][data-theme="light"] .store-cost,
 [data-skin="youtube"][data-theme="light"] .upgrade-cost {
     color: #0F0F0F;
@@ -3755,7 +3537,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #FF0000;
 }
 
-/* Instagram Light */
 [data-skin="instagram"][data-theme="light"] .store-cost,
 [data-skin="instagram"][data-theme="light"] .upgrade-cost {
     color: #262626;
@@ -3766,7 +3547,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #E1306C;
 }
 
-/* TikTok Light */
 [data-skin="tiktok"][data-theme="light"] .store-cost,
 [data-skin="tiktok"][data-theme="light"] .upgrade-cost {
     color: #161823;
@@ -3777,7 +3557,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #FE2C55;
 }
 
-/* Gaming/Anime (Genshin, Pokemon, etc usually look better with their specific dark colors or stronger contrast) */
 [data-skin="genshin"][data-theme="light"] .store-cost,
 [data-skin="genshin"][data-theme="light"] .upgrade-cost {
     color: #4A4A4A;
@@ -3793,7 +3572,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #373737;
 }
 
-/* Netflix (Light mode is rare, but if used) */
 [data-skin="netflix"][data-theme="light"] .store-cost,
 [data-skin="netflix"][data-theme="light"] .upgrade-cost {
     color: #000000;
@@ -3804,36 +3582,12 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #E50914;
 }
 
-
-/* Fix X Theme Cropping */
 [data-skin="x"] .big-cookie img {
     border-radius: 0;
     object-fit: contain;
     width: 250px;
-    /* Ensure size matches */
     height: 250px;
 }
-
-/* X Theme Title Fix */
-[data-skin="x"] h1 {
-    /* No special hiding needed */
-}
-
-/* Better approach: Assume title is "X Clicker" -> hide it, show "Clicker" with logo? 
-   User said "remove x letter (not image) from title of page and from theme slector" 
-   
-   If "Image" refers to the big cookie, we are fine.
-   
-   If "Image" refers to the Emoji in the theme selector, we need to hide the text 'X' but keep the emoji '✖️'.
-*/
-
-/* Settings Theme Button: Hide "X" text, keep Emoji */
-button.theme-button[onClick*="handleSkinChange('x')"] {
-    /* This selector is tricky in pure CSS without a specific class/ID on the button.
-      React code update is cleaner. */
-}
-
-/* Shop price colors using theme accent colors */
 
 [data-skin="default"] .store-cost,
 [data-skin="default"] .upgrade-cost {
@@ -3870,7 +3624,6 @@ button.theme-button[onClick*="handleSkinChange('x')"] {
     color: var(--accent-color);
 }
 
-/* Override affordable prices in light mode to use theme accent color instead of green */
 [data-theme="light"] .store-item.affordable .store-cost,
 [data-theme="light"] .upgrade-item.affordable .upgrade-cost {
     color: var(--accent-color);

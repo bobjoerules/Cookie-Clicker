@@ -141,7 +141,6 @@
     border-color: rgba(218, 165, 32, 0.5);
 }
 
-/* Auto Clicker Special Style */
 .achievement-item.unlocked[title="Auto Clicker"] {
     background: rgba(255, 0, 0, 0.2);
     border-color: rgba(255, 0, 0, 0.6);
