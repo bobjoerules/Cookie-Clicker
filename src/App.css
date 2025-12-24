@@ -37,6 +37,7 @@
   background: radial-gradient(circle at center, #1a1a20 0%, #000000 100%);
   overflow: hidden;
   position: relative;
+  transition: background 0.5s ease, background-image 0.5s ease;
 }
 
 .right-column {
@@ -316,10 +317,9 @@ body {
 
 h1 {
   font-size: 3rem;
-  font-size: 3rem;
   margin: 0;
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(to right, #ffcc00, #ff9900);
+  background: var(--primary-gradient, linear-gradient(to right, #ffcc00, #ff9900));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -331,7 +331,7 @@ html[data-theme="light"] .app-container {
 }
 
 html[data-theme="light"] h1 {
-  background: linear-gradient(to right, #d35400, #e67e22);
+  background: var(--primary-gradient, linear-gradient(to right, #d35400, #e67e22));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

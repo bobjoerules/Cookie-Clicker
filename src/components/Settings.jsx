@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getSkinAsset } from '../utils/assetLoader';
 import './Settings.css';
-const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme, onThemeChange, currentSkin, onSkinChange, showMilk, onToggleMilk }) => {
+const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme, onThemeChange, currentSkin, onSkinChange, showMilk, onToggleMilk, variantIndices = {} }) => {
     const handleSkinChange = (newSkin) => {
         onSkinChange(newSkin);
     };
@@ -56,12 +56,30 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
     };
     const renderSkinButton = (skinId, label, defaultEmoji) => {
         let cookieFile = 'cookie.png';
+
         if (skinId === 'apple' || skinId === 'x' || skinId === 'playstation') {
             let actualTheme = currentTheme;
             if (currentTheme === 'system') {
                 actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             }
             cookieFile = actualTheme === 'light' ? 'cookie2.png' : 'cookie.png';
+        } else if (variantIndices[skinId]) {
+            const index = variantIndices[skinId];
+            if (skinId === 'amongus') cookieFile = `cookie${index > 1 ? index : ''}.png`;
+            else if (skinId === 'genshin' || skinId === 'minecraft' || skinId === 'duolingo') cookieFile = `cookie${index > 1 ? index : ''}.png`;
+            else if (skinId === 'christmas') {
+                const names = ['cookie.png', 'snow.png', 'tree.png', 'snowman.png'];
+                cookieFile = names[index - 1] || 'cookie.png';
+            } else if (skinId === 'halloween') {
+                const names = ['cookie.png', 'ghost.png', 'bat.png'];
+                cookieFile = names[index - 1] || 'cookie.png';
+            } else if (skinId === 'thanksgiving') {
+                const names = ['cookie.png', 'turkey.png', 'leaf.png'];
+                cookieFile = names[index - 1] || 'cookie.png';
+            } else if (skinId === 'valentines') {
+                const names = ['cookie.png', 'heart.png', 'rose.png'];
+                cookieFile = names[index - 1] || 'cookie.png';
+            }
         }
 
         const symbol = getSkinAsset(skinId, cookieFile);
@@ -147,6 +165,10 @@ const Settings = ({ isOpen, onClose, onReset, gameData, timePlayed, currentTheme
                             {renderSkinButton('android', 'Android', '🤖')}
                             {renderSkinButton('windows', 'Windows', '🪟')}
                             {renderSkinButton('linux', 'Linux', '🐧')}
+                            {renderSkinButton('christmas', 'Christmas', '🎄')}
+                            {renderSkinButton('halloween', 'Halloween', '🎃')}
+                            {renderSkinButton('thanksgiving', 'Thanksgiving', '🦃')}
+                            {renderSkinButton('valentines', 'Valentines', '💖')}
                         </div>
                     </div>
                     <div className="settings-section">

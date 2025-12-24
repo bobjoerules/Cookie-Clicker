@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cookieImg from '../assets/cookie.png';
 import { getSkinAsset } from '../utils/assetLoader';
 import './FallingCookies.css';
-const FallingCookies = ({ cps, skin, customImage, theme }) => {
+const FallingCookies = ({ cps, skin, customImage, theme, mode }) => {
     const [cookies, setCookies] = useState([]);
     const lastSpawnTime = React.useRef(Date.now());
     const requestRef = React.useRef();
@@ -50,7 +50,48 @@ const FallingCookies = ({ cps, skin, customImage, theme }) => {
         <div className="falling-cookies-container">
             {cookies.map(cookie => {
                 let displayImg = null;
-                if (skin === 'amongus') {
+                let emoji = '🍪';
+
+                if (skin === 'christmas') {
+                    if (mode === 4) {
+                        displayImg = getSkinAsset('christmas', 'snow.png');
+                        if (!displayImg) emoji = '❄️';
+                    } else if (customImage) {
+                        displayImg = customImage;
+                    } else {
+                        if (mode === 1) emoji = '🎁';
+                        else if (mode === 2) emoji = '❄️';
+                        else if (mode === 3) emoji = '🎄';
+                        else emoji = '❄️';
+                    }
+                } else if (skin === 'halloween') {
+                    if (customImage) {
+                        displayImg = customImage;
+                    } else {
+                        if (mode === 1) emoji = '🎃';
+                        else if (mode === 2) emoji = '👻';
+                        else if (mode === 3) emoji = '🦇';
+                        else emoji = '🎃';
+                    }
+                } else if (skin === 'thanksgiving') {
+                    if (customImage) {
+                        displayImg = customImage;
+                    } else {
+                        if (mode === 1) emoji = '🥧';
+                        else if (mode === 2) emoji = '🦃';
+                        else if (mode === 3) emoji = '🍂';
+                        else emoji = '🦃';
+                    }
+                } else if (skin === 'valentines') {
+                    if (customImage) {
+                        displayImg = customImage;
+                    } else {
+                        if (mode === 1) emoji = '🍫';
+                        else if (mode === 2) emoji = '♥️';
+                        else if (mode === 3) emoji = '🌹';
+                        else emoji = '♥️️';
+                    }
+                } else if (skin === 'amongus') {
                     const variantName = `cookie${cookie.variant > 1 ? cookie.variant : ''}.png`;
                     displayImg = getSkinAsset(skin, variantName);
                 } else if ((skin === 'genshin' || skin === 'minecraft' || skin === 'duolingo') && customImage) {
@@ -59,13 +100,14 @@ const FallingCookies = ({ cps, skin, customImage, theme }) => {
                     displayImg = getSkinAsset(skin, 'cookie2.png');
                 }
 
-                if (!displayImg) {
+                if (!displayImg && skin !== 'christmas' && skin !== 'valentines') {
                     displayImg = customImage || getSkinAsset(skin, 'cookie.png');
                 }
 
-                if (!displayImg) {
+                if (!displayImg && skin !== 'christmas' && skin !== 'valentines') {
                     displayImg = cookieImg;
                 }
+
                 return (
                     <div
                         key={cookie.id}
@@ -91,7 +133,7 @@ const FallingCookies = ({ cps, skin, customImage, theme }) => {
                                     style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                                 />
                             ) : (
-                                <span style={{ fontSize: `${cookie.size}px` }}>🍪</span>
+                                <span style={{ fontSize: `${cookie.size}px` }}>{emoji}</span>
                             )}
                         </div>
                     </div>

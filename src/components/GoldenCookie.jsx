@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getSkinAsset } from '../utils/assetLoader';
 import './GoldenCookie.css';
 
-const GoldenCookie = ({ onCollect, skin }) => {
+const GoldenCookie = ({ onCollect, skin, mode }) => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(false);
     const [isFading, setIsFading] = useState(false);
@@ -34,7 +34,13 @@ const GoldenCookie = ({ onCollect, skin }) => {
 
     if (!isVisible) return null;
 
-    const goldenImage = getSkinAsset(skin, 'golden.png') || getSkinAsset(skin, 'cookie.png');
+    const variantName = mode > 1 ? `cookie${mode}.png` : 'cookie.png';
+    const goldenVariantName = mode > 1 ? `golden${mode}.png` : 'golden.png';
+
+    const goldenImage = getSkinAsset(skin, goldenVariantName) ||
+        getSkinAsset(skin, 'golden.png') ||
+        getSkinAsset(skin, variantName) ||
+        getSkinAsset(skin, 'cookie.png');
 
     return (
         <div

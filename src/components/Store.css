@@ -140,10 +140,11 @@
 
 .upgrade-item {
     min-width: 180px;
+    height: 60px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 0 10px;
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;

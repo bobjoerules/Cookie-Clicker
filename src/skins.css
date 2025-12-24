@@ -1,6 +1,6 @@
 :root,
 [data-skin="default"] {
-    --primary-gradient: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    --primary-gradient: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
     --accent-color: #ffcc00;
     --secondary-color: #ff9900;
 }
@@ -101,6 +101,73 @@
     border-bottom-color: rgba(0, 0, 0, 0.15) !important;
 }
 
+[data-skin="default"][data-theme="light"] h1 {
+    background: linear-gradient(to right, #d35400, #e67e22) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Light Mode General Settings */
+[data-theme="light"] {
+    --text-main: #1a1a1a;
+    --text-dim: #555555;
+    --bg-dark: #f0f2f5;
+    --bg-panel: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .app-container {
+    background: #f0f2f5;
+    color: #1a1a1a;
+}
+
+[data-theme="light"] .stats-section h2,
+[data-theme="light"] .store-section h2,
+[data-theme="light"] .stats-grid p,
+[data-theme="light"] .building-name,
+[data-theme="light"] .achievement-name {
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .cookie-section h1,
+[data-theme="light"] .cookie-section p {
+    color: #1a1a1a;
+}
+
+[data-theme="light"] .store-name,
+[data-theme="light"] .upgrade-name-text,
+[data-theme="light"] .store-cps,
+[data-theme="light"] .store-count,
+[data-theme="light"] .upgrade-effect-text,
+[data-theme="light"] .upgrade-effect-inline,
+[data-theme="light"] .purchased-badge,
+[data-theme="light"] .stats-grid strong {
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .store-cps,
+[data-theme="light"] .upgrade-effect-text,
+[data-theme="light"] .upgrade-effect-inline {
+    opacity: 0.7;
+}
+
+[data-theme="light"] .store-count {
+    opacity: 0.15;
+}
+
+[data-theme="light"] .store-item.affordable,
+[data-theme="light"] .upgrade-item.affordable {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .store-item.affordable:hover,
+[data-theme="light"] .upgrade-item.affordable:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
 /* Light Mode Settings Modal for All Themes */
 [data-theme="light"] .settings-modal {
     background: #ffffff !important;
@@ -162,10 +229,10 @@
     background: radial-gradient(circle at center, #1a0033 0%, #000011 100%);
 }
 
-[data-skin="fortnite"] h1 {
+[data-skin="fortnite"] .cookie-section h1 {
     background: linear-gradient(to right, #00D9FF, #FF0080, #7928CA);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
 }
@@ -198,11 +265,11 @@
     background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1e 100%);
 }
 
-[data-skin="genshin"] h1 {
-    background: linear-gradient(to right, var(--accent-color), #FFA500);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+[data-skin="genshin"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(135deg, #4a78c2, #ffbf00)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     text-shadow: 0 0 30px color-mix(in srgb, var(--accent-color), transparent 50%);
 }
 
@@ -241,12 +308,13 @@
         url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h64v64H0z' fill='%232e2e2e'/%3E%3Cpath d='M0 0h32v32H0z' fill='%233a3a3a'/%3E%3Cpath d='M32 32h32v32H32z' fill='%233a3a3a'/%3E%3C/svg%3E");
 }
 
-[data-skin="minecraft"] h1 {
-    color: #ffffff;
-    text-shadow: 3px 3px 0 #3f3f3f;
+[data-skin="minecraft"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(135deg, #8B4513, #FFD700)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
     font-family: 'Courier New', monospace;
-    background: none;
-    -webkit-text-fill-color: #ffffff;
 }
 
 [data-skin="minecraft"] .big-cookie img {
@@ -294,12 +362,11 @@
     background-position: 0 0, 40px 60px, 130px 270px;
 }
 
-[data-skin="amongus"] h1 {
-    color: var(--accent-color);
-    background: none;
-    background-clip: unset;
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: var(--accent-color);
+[data-skin="amongus"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(135deg, #c51111, #7a0a0a)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     text-shadow: 0 0 15px var(--accent-color);
     font-family: 'Arial Black', sans-serif;
     letter-spacing: 2px;
@@ -406,7 +473,7 @@
     background-size: 40px 40px;
 }
 
-[data-skin="cyberpunk"] h1 {
+[data-skin="cyberpunk"] .cookie-section h1 {
     color: #fcee0a;
     text-shadow: 2px 2px 0 #00f0ff;
     font-family: 'Courier New', monospace;
@@ -508,11 +575,7 @@
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-[data-skin="minecraft"][data-theme="light"] h1 {
-    color: #333;
-    text-shadow: 2px 2px 0 #fff;
-    -webkit-text-fill-color: #333;
-}
+/* Removed redundant Minecraft light mode h1 override */
 
 [data-skin="amongus"][data-theme="light"] .app-container {
     background: #f0f0f0;
@@ -527,11 +590,12 @@
     border-radius: 20px;
 }
 
-[data-skin="amongus"][data-theme="light"] h1 {
-    background: linear-gradient(to right, #c51111, #ff4d4d);
+/* Removed redundant Among Us light mode h1 override */
+[data-skin="amongus"] h1 {
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: none;
 }
 
 [data-skin="pokemon"][data-theme="light"] .app-container {
@@ -1230,8 +1294,9 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 [data-skin="tiktok"][data-theme="light"] h1 {
-    color: black;
-    -webkit-text-fill-color: black;
+    color: black !important;
+    -webkit-text-fill-color: black !important;
+    background: none !important;
 }
 
 [data-skin="tiktok"][data-theme="light"] .glass-panel {
@@ -1579,6 +1644,13 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #39C5BB;
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(57, 197, 187, 0.2);
+}
+
+[data-skin="miku"] h1 {
+    background: linear-gradient(to bottom, #39C5BB, #e5097f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(57, 197, 187, 0.5);
 }
 
 [data-skin="miku"] .toggle-btn:hover {
@@ -1970,14 +2042,27 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     --text-main: #3C3C3C;
 }
 
+[data-skin="duolingo"] .theme-button.active {
+    background: var(--accent-color) !important;
+    border-color: color-mix(in srgb, var(--accent-color), black 20%) !important;
+    color: white !important;
+    border-bottom-width: 4px !important;
+}
+
+[data-skin="duolingo"] .close-button:hover {
+    background: var(--accent-color) !important;
+    color: white !important;
+}
+
 [data-skin="duolingo"] .app-container {
     background: #FFFFFF;
 }
 
-[data-skin="duolingo"] h1 {
-    color: #58CC02;
-    background: none;
-    -webkit-text-fill-color: #58CC02;
+[data-skin="duolingo"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #58CC02, #2B70C9)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     font-family: 'Din Round', sans-serif;
     font-weight: 700;
 }
@@ -2165,10 +2250,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     background: #121212;
 }
 
-[data-skin="duolingo"][data-theme="dark"] h1 {
-    color: #58CC02;
-}
-
 [data-skin="duolingo"][data-theme="dark"] .glass-panel {
     background: #202020;
     border-color: #333;
@@ -2185,7 +2266,7 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 
 [data-skin="duolingo"][data-theme="dark"] .store-cost,
 [data-skin="duolingo"][data-theme="dark"] .upgrade-cost {
-    color: #58CC02;
+    color: var(--accent-color);
 }
 
 [data-skin="spotify"][data-theme="light"] .app-container {
@@ -2227,8 +2308,9 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 [data-skin="snapchat"][data-theme="light"] h1 {
-    color: #000000;
-    -webkit-text-fill-color: #000000;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    background: none !important;
 }
 
 [data-skin="snapchat"][data-theme="light"] .glass-panel {
@@ -2343,11 +2425,6 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #3C3C3C;
 }
 
-[data-skin="duolingo"][data-theme="light"] h1 {
-    color: #58CC02;
-    -webkit-text-fill-color: #58CC02;
-}
-
 [data-skin="duolingo"][data-theme="light"] .store-item,
 [data-skin="duolingo"][data-theme="light"] .upgrade-item {
     background: #FFFFFF;
@@ -2412,8 +2489,8 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 [data-skin="duolingo"] .toggle-btn.active {
-    background: #58CC02;
-    border-color: #46A302;
+    background: var(--accent-color);
+    border-color: color-mix(in srgb, var(--accent-color), black 20%);
     border-bottom-width: 4px;
     color: #FFFFFF;
     box-shadow: none;
@@ -2426,8 +2503,8 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 }
 
 [data-skin="duolingo"][data-theme="dark"] .toggle-btn.active {
-    background: #58CC02;
-    border-color: #46A302;
+    background: var(--accent-color);
+    border-color: color-mix(in srgb, var(--accent-color), black 20%);
     color: #fff;
 }
 
@@ -3321,9 +3398,9 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     border-color: #1DB954;
 }
 
-[data-skin="duolingo"][data-theme="light"] .achievement-tooltip {
-    border: 2px solid #58CC02;
-    color: #58CC02;
+[data-skin="duolingo"] .achievement-tooltip {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
 }
 
 [data-skin="netflix"][data-theme="light"] .achievement-tooltip {
@@ -3358,6 +3435,11 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-skin="miku"][data-theme="light"] .achievement-tooltip {
     border-color: #39C5BB;
     background: rgba(57, 197, 187, 0.1);
+}
+
+[data-skin="christmas"] .achievement-tooltip {
+    border: 2px solid var(--accent-color);
+    color: var(--secondary-color, #ffffff);
 }
 
 
@@ -3502,9 +3584,15 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
     color: #4B4B4B;
 }
 
+[data-skin="duolingo"] .store-cost,
+[data-skin="duolingo"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+
 [data-skin="duolingo"][data-theme="light"] .affordable .store-cost,
 [data-skin="duolingo"][data-theme="light"] .affordable .upgrade-cost {
-    color: #58CC02;
+    color: var(--accent-color);
 }
 
 [data-skin="reddit"][data-theme="light"] .store-cost,
@@ -3627,4 +3715,431 @@ html[data-theme="light"][data-skin="instagram"] .upgrade-cost {
 [data-theme="light"] .store-item.affordable .store-cost,
 [data-theme="light"] .upgrade-item.affordable .upgrade-cost {
     color: var(--accent-color);
+}
+
+[data-skin="christmas"] {
+    --primary-gradient: linear-gradient(135deg, #d42426 0%, #2f5a28 100%);
+    --accent-color: #FFD700;
+    --secondary-color: #FFFFFF;
+    --bg-dark: #1a2f1a;
+    --bg-panel: rgba(212, 36, 38, 0.15);
+    --glass-border: rgba(47, 90, 40, 0.5);
+}
+
+[data-skin="christmas"] .app-container {
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 3px),
+        var(--holiday-bg, radial-gradient(circle at center, #1a2f1a 0%, #0a140a 100%));
+    background-size: 550px 550px, 350px 350px, 250px 250px, cover;
+    background-position: 0 0, 40px 60px, 130px 270px, center;
+}
+
+[data-skin="christmas"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #d42426, #2f5a28)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent-color), transparent 30%));
+    font-family: 'Georgia', serif;
+    font-weight: 900;
+}
+
+[data-skin="christmas"] .cookie-section p {
+    color: var(--secondary-color, #ffffff) !important;
+    text-shadow: 0 0 15px var(--accent-color);
+    font-weight: bold;
+}
+
+[data-skin="christmas"] .store-cost,
+[data-skin="christmas"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+[data-skin="christmas"] .toggle-btn.active {
+    background: var(--bg-panel, rgba(212, 36, 38, 0.3));
+    border-color: var(--accent-color);
+}
+
+[data-skin="christmas"] .big-cookie img {
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    transform: scale(1.1);
+    /* Slightly larger to fill space better */
+    filter: drop-shadow(0 0 25px var(--accent-color));
+}
+
+[data-skin="christmas"] .big-cookie:hover img {
+    filter: drop-shadow(0 0 40px var(--accent-color));
+    transform: scale(1.15);
+}
+
+[data-skin="christmas"] .toggle-btn img {
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+[data-skin="christmas"] .glass-panel {
+    background: var(--bg-panel, rgba(212, 36, 38, 0.15));
+    border-color: var(--glass-border, rgba(47, 90, 40, 0.5));
+}
+
+
+/* Halloween Theme */
+[data-skin="halloween"] {
+    --primary-gradient: linear-gradient(135deg, #ff9a00 0%, #6600cc 100%);
+    --accent-color: #ff9a00;
+    --secondary-color: #9d00ff;
+    --bg-dark: #1a0524;
+    --bg-panel: rgba(102, 0, 204, 0.15);
+    --glass-border: rgba(255, 154, 0, 0.3);
+}
+
+[data-skin="halloween"] .app-container {
+    background: var(--holiday-bg, radial-gradient(circle at center, #1a0524 0%, #000000 100%));
+}
+
+[data-skin="halloween"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #ff9a00, #6600cc));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+    font-family: 'Impact', fantasy;
+    letter-spacing: 2px;
+}
+
+[data-skin="halloween"][data-theme="dark"] .store-cost,
+[data-skin="halloween"][data-theme="dark"] .upgrade-cost {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+[data-skin="halloween"] .toggle-btn.active {
+    background: rgba(102, 0, 204, 0.3);
+    border-color: var(--accent-color);
+}
+
+[data-skin="halloween"] .big-cookie img {
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 0 20px var(--accent-color));
+}
+
+[data-skin="halloween"] .big-cookie:hover img {
+    filter: drop-shadow(0 0 35px var(--accent-color));
+}
+
+
+/* Thanksgiving Theme */
+[data-skin="thanksgiving"] {
+    --primary-gradient: linear-gradient(135deg, #d2691e 0%, #8b4513 100%);
+    --accent-color: #ff8c00;
+    --secondary-color: #ffcc00;
+    --bg-dark: #2b1d0e;
+    --bg-panel: rgba(139, 69, 19, 0.2);
+    --glass-border: rgba(210, 105, 30, 0.3);
+}
+
+[data-skin="thanksgiving"] .app-container {
+    background: var(--holiday-bg, radial-gradient(circle at center, #2b1d0e 0%, #1a1005 100%));
+}
+
+[data-skin="thanksgiving"] h1 {
+    background: linear-gradient(to right, #ff8c00, #ffcc00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Georgia', serif;
+}
+
+[data-skin="thanksgiving"] .store-cost,
+[data-skin="thanksgiving"] .upgrade-cost {
+    color: #ffcc00;
+}
+
+[data-skin="thanksgiving"] .toggle-btn.active {
+    background: rgba(139, 69, 19, 0.3);
+    border-color: #ffcc00;
+}
+
+[data-skin="thanksgiving"] .big-cookie img {
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 0 20px var(--accent-color));
+}
+
+[data-skin="thanksgiving"] .big-cookie:hover img {
+    filter: drop-shadow(0 0 35px var(--accent-color));
+}
+
+
+/* Valentines Theme */
+[data-skin="valentines"] {
+    --primary-gradient: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    --accent-color: #ff1493;
+    --secondary-color: #ffc0cb;
+    --bg-dark: #240510;
+    --bg-panel: rgba(255, 105, 180, 0.15);
+    --glass-border: rgba(255, 20, 147, 0.3);
+}
+
+[data-skin="valentines"] .app-container {
+    background: var(--holiday-bg, radial-gradient(circle at center, #240510 0%, #1a0008 100%));
+}
+
+[data-skin="valentines"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #ff69b4, #ff1493));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    font-family: 'Brush Script MT', cursive;
+}
+
+[data-skin="valentines"] .store-cost,
+[data-skin="valentines"] .upgrade-cost {
+    color: var(--accent-color);
+}
+
+[data-skin="valentines"] .toggle-btn.active {
+    background: rgba(255, 105, 180, 0.3);
+    border-color: var(--accent-color);
+}
+
+[data-skin="valentines"] .big-cookie img {
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 0 20px var(--accent-color));
+}
+
+[data-skin="valentines"] .big-cookie:hover img {
+    filter: drop-shadow(0 0 35px var(--accent-color));
+}
+
+/* Light Mode Overrides for New Themes */
+
+[data-skin="christmas"][data-theme="light"] .app-container {
+    background: var(--holiday-bg-light) !important;
+    background-image: var(--holiday-bg-light) !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+[data-skin="christmas"][data-theme="light"] .cookie-section h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #d42426, #2f5a28)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    font-family: 'Georgia', serif;
+}
+
+[data-skin="christmas"][data-theme="light"] .cookie-section p {
+    color: #1a1a1a !important;
+    text-shadow: none;
+    font-weight: bold;
+}
+
+[data-skin="christmas"][data-theme="light"] .glass-panel {
+    background: var(--bg-panel-light, rgba(255, 255, 255, 0.9));
+    border: 2px solid var(--glass-border, #2f5a28);
+    color: #333;
+}
+
+
+[data-skin="halloween"][data-theme="light"] .app-container {
+    background: var(--holiday-bg-light) !important;
+    background-image: var(--holiday-bg-light) !important;
+    background-size: cover !important;
+}
+
+[data-skin="halloween"][data-theme="light"] h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #6600cc, #9d00ff));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+[data-skin="halloween"][data-theme="light"] .glass-panel {
+    background: var(--bg-panel-light, rgba(255, 255, 255, 0.9));
+    border: 2px solid var(--glass-border, #ff9a00);
+    color: #333;
+}
+
+
+[data-skin="thanksgiving"][data-theme="light"] .app-container {
+    background: var(--holiday-bg-light) !important;
+    background-image: var(--holiday-bg-light) !important;
+    background-size: cover !important;
+}
+
+[data-skin="thanksgiving"][data-theme="light"] h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #d2691e, #8b4513));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+[data-skin="thanksgiving"][data-theme="light"] .glass-panel {
+    background: var(--bg-panel-light, rgba(255, 255, 255, 0.9));
+    border: 2px solid var(--glass-border, #d2691e);
+    color: #333;
+}
+
+
+[data-skin="valentines"][data-theme="light"] .app-container {
+    background: var(--holiday-bg-light) !important;
+    background-image: var(--holiday-bg-light) !important;
+    background-size: cover !important;
+}
+
+[data-skin="valentines"][data-theme="light"] h1 {
+    background: var(--primary-gradient, linear-gradient(to right, #ff69b4, #ff1493));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+[data-skin="valentines"][data-theme="light"] .glass-panel {
+    background: var(--bg-panel-light, rgba(255, 255, 255, 0.9));
+    border: 2px solid var(--glass-border, #ff69b4);
+    color: #333;
+}
+
+/* Christmas Toggle Buttons */
+[data-skin="christmas"] .toggle-btn {
+    background: var(--bg-panel, rgba(26, 47, 26, 0.6));
+    border: 1px solid var(--glass-border, rgba(255, 215, 0, 0.3));
+    color: #fff;
+}
+
+[data-skin="christmas"] .toggle-btn:hover {
+    background: rgba(47, 90, 40, 0.6);
+    border-color: #FFD700;
+}
+
+[data-skin="christmas"][data-theme="light"] .toggle-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--glass-border, rgba(47, 90, 40, 0.3));
+    color: var(--accent-color, #2f5a28);
+}
+
+[data-skin="christmas"][data-theme="light"] .toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Halloween Toggle Buttons */
+[data-skin="halloween"] .toggle-btn {
+    background: var(--bg-panel, rgba(26, 5, 36, 0.6));
+    border: 1px solid var(--glass-border, rgba(255, 154, 0, 0.3));
+    color: #fff;
+}
+
+[data-skin="halloween"] .toggle-btn:hover {
+    background: rgba(102, 0, 204, 0.4);
+    border-color: #ff9a00;
+}
+
+[data-skin="halloween"][data-theme="light"] .toggle-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--glass-border, rgba(102, 0, 204, 0.3));
+    color: var(--accent-color, #6600cc);
+}
+
+[data-skin="halloween"][data-theme="light"] .toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Thanksgiving Toggle Buttons */
+[data-skin="thanksgiving"] .toggle-btn {
+    background: var(--bg-panel, rgba(43, 29, 14, 0.6));
+    border: 1px solid var(--glass-border, rgba(255, 204, 0, 0.3));
+    color: #fff;
+}
+
+[data-skin="thanksgiving"] .toggle-btn:hover {
+    background: rgba(139, 69, 19, 0.4);
+    border-color: #ffcc00;
+}
+
+[data-skin="thanksgiving"][data-theme="light"] .toggle-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--glass-border, rgba(139, 69, 19, 0.3));
+    color: var(--accent-color, #8b4513);
+}
+
+[data-skin="thanksgiving"][data-theme="light"] .toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Valentines Toggle Buttons */
+[data-skin="valentines"] .toggle-btn {
+    background: var(--bg-panel, rgba(36, 5, 16, 0.6));
+    border: 1px solid var(--glass-border, rgba(255, 20, 147, 0.3));
+    color: #fff;
+}
+
+[data-skin="valentines"] .toggle-btn:hover {
+    background: rgba(255, 105, 180, 0.3);
+    border-color: #ff1493;
+}
+
+[data-skin="valentines"][data-theme="light"] .toggle-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--glass-border, rgba(255, 20, 147, 0.3));
+    color: var(--accent-color, #ff1493);
+}
+
+[data-skin="valentines"][data-theme="light"] .toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Active Toggle Button States for Light Mode */
+
+[data-skin="christmas"][data-theme="light"] .toggle-btn.active {
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: inset 0 0 5px color-mix(in srgb, var(--accent-color), transparent 80%);
+}
+
+[data-skin="halloween"][data-theme="light"] .toggle-btn.active {
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: inset 0 0 5px color-mix(in srgb, var(--accent-color), transparent 80%);
+}
+
+[data-skin="thanksgiving"][data-theme="light"] .toggle-btn.active {
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: inset 0 0 5px color-mix(in srgb, var(--accent-color), transparent 80%);
+}
+
+[data-skin="valentines"][data-theme="light"] .toggle-btn.active {
+    background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: inset 0 0 5px color-mix(in srgb, var(--accent-color), transparent 80%);
 }
