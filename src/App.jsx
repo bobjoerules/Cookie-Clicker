@@ -891,7 +891,7 @@ function App() {
         let totalRefund = 0;
         for (let i = 0; i < amountToSell; i++) {
           const currentBuildingIndex = count - 1 - i;
-          const costOfLast = Math.floor(building.baseCost * Math.pow(1.15, currentBuildingIndex));
+          const costOfLast = Math.floor(building.baseCost * Math.pow(1.12, currentBuildingIndex));
           totalRefund += Math.floor(costOfLast * 0.5);
         }
 

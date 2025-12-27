@@ -12,7 +12,7 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
     const getCost = (baseCost, startCount, amount) => {
         let totalCost = 0;
         for (let i = 0; i < amount; i++) {
-            totalCost += Math.floor(baseCost * Math.pow(1.15, startCount + i));
+            totalCost += Math.floor(baseCost * Math.pow(1.12, startCount + i));
         }
         return totalCost;
     };
@@ -24,7 +24,7 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
 
         for (let i = 0; i < availableToSell; i++) {
             const currentBuildingIndex = startCount - 1 - i;
-            const costOfLast = Math.floor(baseCost * Math.pow(1.15, currentBuildingIndex));
+            const costOfLast = Math.floor(baseCost * Math.pow(1.12, currentBuildingIndex));
             totalRefund += Math.floor(costOfLast * 0.5);
         }
         return totalRefund;
@@ -60,19 +60,13 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
     const formatNumber = (num) => {
         if (num >= 1000000) {
             const suffixes = [
-                "", " Million", " Billion", " Trillion",
+                "", " Thousand", " Million", " Billion", " Trillion",
                 " Quadrillion", " Quintillion", " Sextillion", " Septillion",
                 " Octillion", " Nonillion", " Decillion"];
             const tier = Math.floor(Math.log10(Math.abs(num)) / 3);
             if (tier >= suffixes.length) return num.toExponential(2);
-
-            const appSuffixes = ["", " Thousand", " Million", " Billion", " Trillion",
-                " Quadrillion", " Quintillion", " Sextillion", " Septillion",
-                " Octillion", " Nonillion", " Decillion"];
-            const appTier = Math.floor(Math.log10(Math.abs(num)) / 3);
-            if (appTier >= appSuffixes.length) return num.toExponential(2);
-            const suffix = appSuffixes[appTier];
-            const scale = Math.pow(10, appTier * 3);
+            const suffix = suffixes[tier];
+            const scale = Math.pow(10, tier * 3);
             const scaled = num / scale;
             return scaled.toFixed(3) + suffix;
         }
@@ -119,7 +113,6 @@ const Store = ({ cookies, buildingsOwned, upgradesOwned, onPurchase, onSell, onU
                                         <img
                                             src={getSkinAsset(skin, 'golden.png')}
                                             alt={displayUpgrade.name}
-                                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                                         />
                                     ) : (
                                         displayUpgrade.icon
